@@ -1,0 +1,546 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5B535162-10C2-4238-BC56-193B968E1834}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UserFB.Web</RootNamespace>
+    <AssemblyName>UserFB.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode>true</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LTP.Accounts">
+      <HintPath>..\Lib\LTP.Accounts.dll</HintPath>
+    </Reference>
+    <Reference Include="Maticsoft.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Maticsoft.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.UI.WebControls">
+      <HintPath>..\Lib\Microsoft.Web.UI.WebControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.UI.WebControls">
+      <HintPath>..\Lib\LTP.Accounts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplyMessage\Add.aspx" />
+    <Content Include="ApplyMessage\List.aspx" />
+    <Content Include="ApplyMessage\Modify.aspx" />
+    <Content Include="ApplyMessage\Show.aspx" />
+    <Content Include="App_Themes\BlueTheme\Default.css" />
+    <Content Include="App_Themes\Green2Theme\Default.css" />
+    <Content Include="App_Themes\GreenTheme\Default.css" />
+    <Content Include="App_Themes\PurpleTheme\Default.css" />
+    <Content Include="App_Themes\RedTheme\Default.css" />
+    <Content Include="bootstrap\css\styles.css" />
+    <Content Include="bootstrap\js\carbon.js" />
+    <Content Include="bootstrap\js\demo.js" />
+    <Content Include="bootstrap\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="bootstrap\vendor\chart.js\chart.js" />
+    <Content Include="bootstrap\vendor\chart.js\chart.min.js" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fa-brands.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fa-brands.min.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fa-regular.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fa-regular.min.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fa-solid.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fa-solid.min.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fontawesome-all.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fontawesome-all.min.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fontawesome.css" />
+    <Content Include="bootstrap\vendor\font-awesome\css\fontawesome.min.css" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-brands-400.svg" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-regular-400.svg" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-solid-900.svg" />
+    <Content Include="bootstrap\vendor\jquery\jquery.js" />
+    <Content Include="bootstrap\vendor\jquery\jquery.min.js" />
+    <Content Include="bootstrap\vendor\popper.js\popper.min.js" />
+    <Content Include="bootstrap\vendor\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Category\Add.aspx" />
+    <Content Include="Category\List.aspx" />
+    <Content Include="Category\Modify.aspx" />
+    <Content Include="Category\Show.aspx" />
+    <Content Include="Controls\checkright.ascx" />
+    <Content Include="Controls\copyright.ascx" />
+    <Content Include="Distribution\Add.aspx" />
+    <Content Include="Distribution\List.aspx" />
+    <Content Include="Distribution\Modify.aspx" />
+    <Content Include="Distribution\Show.aspx" />
+    <Content Include="Feedback\Add.aspx" />
+    <Content Include="Feedback\List.aspx" />
+    <Content Include="Feedback\Modify.aspx" />
+    <Content Include="Feedback\Show.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="G_Admin_List\G_Index.aspx" />
+    <Content Include="Images\top1.gif" />
+    <Content Include="Images\用户反馈处理系统2.PNG" />
+    <Content Include="Images\用户头像.jpg" />
+    <Content Include="Index.aspx" />
+    <Content Include="Login\AdminLogin.aspx" />
+    <Content Include="Login\AdminRegister.aspx" />
+    <Content Include="Login\UserLogin.aspx" />
+    <Content Include="N_Admin\Apply_Permission.aspx" />
+    <Content Include="N_Admin\N_Index.aspx" />
+    <Content Include="Question\Add.aspx" />
+    <Content Include="Question\List.aspx" />
+    <Content Include="Question\Modify.aspx" />
+    <Content Include="Question\Show.aspx" />
+    <Content Include="Reply\Add.aspx" />
+    <Content Include="Reply\List.aspx" />
+    <Content Include="Reply\Modify.aspx" />
+    <Content Include="Reply\Show.aspx" />
+    <Content Include="Setting\Category_Setting.aspx" />
+    <Content Include="Setting\Question_Setting.aspx" />
+    <Content Include="Users\Add.aspx" />
+    <Content Include="Users\List.aspx" />
+    <Content Include="Users\Modify.aspx" />
+    <Content Include="Users\Show.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplyMessage\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplyMessage\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyMessage\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplyMessage\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyMessage\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplyMessage\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyMessage\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplyMessage\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Category\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Category\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Category\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Category\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CheckRight.ascx.cs">
+      <DependentUpon>checkright.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CheckRight.ascx.designer.cs">
+      <DependentUpon>checkright.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CopyRight.ascx.cs">
+      <DependentUpon>copyright.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CopyRight.ascx.designer.cs">
+      <DependentUpon>copyright.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Distribution\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Distribution\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Distribution\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Distribution\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedback\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedback\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedback\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedback\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="G_Admin_List\G_Index.aspx.cs">
+      <DependentUpon>G_Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="G_Admin_List\G_Index.aspx.designer.cs">
+      <DependentUpon>G_Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\AdminRegister.aspx.cs">
+      <DependentUpon>AdminRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\AdminRegister.aspx.designer.cs">
+      <DependentUpon>AdminRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\UserLogin.aspx.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\UserLogin.aspx.designer.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.master.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.master.designer.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="N_Admin\Apply_Permission.aspx.cs">
+      <DependentUpon>Apply_Permission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="N_Admin\Apply_Permission.aspx.designer.cs">
+      <DependentUpon>Apply_Permission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="N_Admin\N_Index.aspx.cs">
+      <DependentUpon>N_Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="N_Admin\N_Index.aspx.designer.cs">
+      <DependentUpon>N_Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Question\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Question\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Question\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Question\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Question\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Question\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Question\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reply\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reply\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reply\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reply\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reply\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reply\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reply\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reply\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Category_Setting.aspx.cs">
+      <DependentUpon>Category_Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\Category_Setting.aspx.designer.cs">
+      <DependentUpon>Category_Setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\Question_Setting.aspx.cs">
+      <DependentUpon>Question_Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\Question_Setting.aspx.designer.cs">
+      <DependentUpon>Question_Setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\CheckRight.ascx.resx">
+      <DependentUpon>CheckRight.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CopyRight.ascx.resx">
+      <DependentUpon>CopyRight.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Global.asax.resx">
+      <DependentUpon>Global.asax.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{38D7AA58-C95B-449B-86C6-A8073A56E11F}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{53995DBB-9836-4647-AD22-865884FDEB9E}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPage.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="bin\" />
+    <Folder Include="Components\" />
+    <Folder Include="obj\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\BlueTheme\Control.skin" />
+    <Content Include="App_Themes\Green2Theme\Control.skin" />
+    <Content Include="App_Themes\GreenTheme\Control.skin" />
+    <Content Include="App_Themes\PurpleTheme\Control.skin" />
+    <Content Include="App_Themes\RedTheme\Control.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-brands-400.eot" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-brands-400.woff" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-regular-400.eot" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-regular-400.woff" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-solid-900.eot" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-solid-900.woff" />
+    <Content Include="bootstrap\vendor\font-awesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3448</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
