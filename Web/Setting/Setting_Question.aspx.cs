@@ -4,25 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserFB.BLL;
 using System.Text;
 using System.Data;
 using Maticsoft.Common;
 using System.Drawing;
 using LTP.Accounts.Bus;
-using UserFB.BLL;
-using UserFB.Model;
+
 
 namespace UserFB.Web.Setting
 {
-    public partial class Question_Setting : System.Web.UI.Page
+    public partial class Setting_Question : System.Web.UI.Page
     {
+        UserFB.BLL.QuestionManager bll = new UserFB.BLL.QuestionManager();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    Bind();
-            //}
-
             if (!Page.IsPostBack)
             {
                 gridView.BorderColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_bordercolorlight"].ToString());
@@ -31,19 +28,49 @@ namespace UserFB.Web.Setting
                 BindData();
             }
         }
-        protected void Bind()
-        {
-           
-            //Model.Question question1 = new Model.Question();
-            //BLL.QuestionManager question2 = new BLL.QuestionManager();
-            //GridView1.DataSource = question2.GetAllList();
-            //GridView1.DataBind();
 
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            string idlist = GetSelIDlist();
+            if (idlist.Trim().Length == 0)
+                return;
+            bll.DeleteList(idlist);
+            BindData();
+        }
+        public void BindData()
+        {
+            #region
+            //if (!Context.User.Identity.IsAuthenticated)
+            //{
+            //    return;
+            //}
+            //AccountsPrincipal user = new AccountsPrincipal(Context.User.Identity.Name);
+            //if (user.HasPermissionID(PermId_Modify))
+            //{
+            //    gridView.Columns[6].Visible = true;
+            //}
+            //if (user.HasPermissionID(PermId_Delete))
+            //{
+            //    gridView.Columns[7].Visible = true;
+            //}
+            #endregion
+
+            DataSet ds = new DataSet();
+            StringBuilder strWhere = new StringBuilder();
+//            if (txtKeyword.Text.Trim() != "")
+//            {
+//#warning 代码生成警告：请修改 keywordField 为需要匹配查询的真实字段名称
+//                //strWhere.AppendFormat("keywordField like '%{0}%'", txtKeyword.Text.Trim());
+//            }
+            ds = bll.GetList(strWhere.ToString());
+            gridView.DataSource = ds;
+            gridView.DataBind();
         }
 
         protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            gridView.PageIndex = e.NewPageIndex;
+            BindData();
         }
 
         protected void gridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -66,32 +93,6 @@ namespace UserFB.Web.Setting
         protected void gridView_RowCreated(object sender, GridViewRowEventArgs e)
         {
 
-        }
-
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-            string idlist = GetSelIDlist();
-            if (idlist.Trim().Length == 0)
-                return;
-            Model.Question question1 = new Model.Question();
-            BLL.QuestionManager question2 = new BLL.QuestionManager();
-            question2.DeleteList(idlist);
-           // BLL.DeleteList(idlist);
-            BindData();
-        }
-        public void BindData()
-        {
-            Model.Question question1 = new Model.Question();
-            BLL.QuestionManager question2 = new BLL.QuestionManager();
-            //gridView.DataSource = question2.GetAllList();
-            //gridView.DataBind();
-
-            DataSet ds = new DataSet();
-            StringBuilder strWhere = new StringBuilder();
-            
-            ds = question2.GetList(strWhere.ToString());
-            gridView.DataSource = ds;
-            gridView.DataBind();
         }
         private string GetSelIDlist()
         {
@@ -116,5 +117,7 @@ namespace UserFB.Web.Setting
             }
             return idlist;
         }
+
+
     }
 }

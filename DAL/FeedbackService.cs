@@ -42,7 +42,7 @@ namespace UserFB.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(UserFB.Model.Feedback model)
+		public bool Add(UserFB.Model.Feedback model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Feedback(");
@@ -73,11 +73,11 @@ namespace UserFB.DAL
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
-				return 0;
+				return false;
 			}
 			else
 			{
-				return Convert.ToInt32(obj);
+				return true;
 			}
 		}
 		/// <summary>

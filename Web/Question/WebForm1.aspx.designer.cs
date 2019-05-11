@@ -10,7 +10,7 @@
 namespace UserFB.Web.Question {
     
     
-    public partial class List {
+    public partial class WebForm1 {
         
         /// <summary>
         /// txtKeyword 控件。

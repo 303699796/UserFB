@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Question_Setting.aspx.cs" Inherits="UserFB.Web.Setting.Question_Setting" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Setting_Question.aspx.cs" Inherits="UserFB.Web.Setting.Setting_Question" %>
 
 <!DOCTYPE html>
 
@@ -14,6 +14,7 @@
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
        <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.min.js"></script>
     <script language="javascript" src="/js/CheckBox.js" type="text/javascript"></script>
+    
     </head>
 <body class="sidebar-fixed header-fixed">
     <form id="form1" runat="server" onsubmit="return false">
@@ -128,7 +129,7 @@
 
 
         <asp:GridView ID="gridView" runat="server" AllowPaging="True" 
-            class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" OnPageIndexChanging ="gridView_PageIndexChanging"
+            OnPageIndexChanging ="gridView_PageIndexChanging"
                     BorderWidth="1px" DataKeyNames="questionID" OnRowDataBound="gridView_RowDataBound"
                     AutoGenerateColumns="false" PageSize="10"  RowStyle-HorizontalAlign="Center" OnRowCreated="gridView_RowCreated">
                     <Columns>

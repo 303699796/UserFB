@@ -130,26 +130,32 @@
     <Content Include="G_Admin_List\G_Index.aspx" />
     <Content Include="Images\top1.gif" />
     <Content Include="Images\用户反馈处理系统2.PNG" />
+    <Content Include="Images\用户反馈系统2.PNG" />
     <Content Include="Images\用户头像.jpg" />
     <Content Include="Index.aspx" />
     <Content Include="Login\AdminLogin.aspx" />
     <Content Include="Login\AdminRegister.aspx" />
     <Content Include="Login\UserLogin.aspx" />
+    <Content Include="Login\UserRegister.aspx" />
     <Content Include="N_Admin\Apply_Permission.aspx" />
     <Content Include="N_Admin\N_Index.aspx" />
     <Content Include="Question\Add.aspx" />
     <Content Include="Question\List.aspx" />
     <Content Include="Question\Modify.aspx" />
     <Content Include="Question\Show.aspx" />
+    <Content Include="Question\WebForm1.aspx" />
     <Content Include="Reply\Add.aspx" />
     <Content Include="Reply\List.aspx" />
     <Content Include="Reply\Modify.aspx" />
     <Content Include="Reply\Show.aspx" />
     <Content Include="Setting\Category_Setting.aspx" />
     <Content Include="Setting\Question_Setting.aspx" />
+    <Content Include="Setting\Setting_Question.aspx" />
     <Content Include="Users\Add.aspx" />
+    <Content Include="Users\Fill_Feedback.aspx" />
     <Content Include="Users\List.aspx" />
     <Content Include="Users\Modify.aspx" />
+    <Content Include="Users\Question.aspx" />
     <Content Include="Users\Show.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -327,12 +333,26 @@
     <Compile Include="Login\UserLogin.aspx.designer.cs">
       <DependentUpon>UserLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login\UserRegister.aspx.cs">
+      <DependentUpon>UserRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\UserRegister.aspx.designer.cs">
+      <DependentUpon>UserRegister.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPage.master.designer.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="master\master_1.Master.cs">
+      <DependentUpon>master_1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="master\master_1.Master.designer.cs">
+      <DependentUpon>master_1.Master</DependentUpon>
     </Compile>
     <Compile Include="N_Admin\Apply_Permission.aspx.cs">
       <DependentUpon>Apply_Permission.aspx</DependentUpon>
@@ -377,6 +397,13 @@
     <Compile Include="Question\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Question\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Question\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reply\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,12 +446,26 @@
     <Compile Include="Setting\Question_Setting.aspx.designer.cs">
       <DependentUpon>Question_Setting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Setting\Setting_Question.aspx.cs">
+      <DependentUpon>Setting_Question.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\Setting_Question.aspx.designer.cs">
+      <DependentUpon>Setting_Question.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Users\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Fill_Feedback.aspx.cs">
+      <DependentUpon>Fill_Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Fill_Feedback.aspx.designer.cs">
+      <DependentUpon>Fill_Feedback.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
@@ -439,6 +480,13 @@
     </Compile>
     <Compile Include="Users\Modify.aspx.designer.cs">
       <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Question.aspx.cs">
+      <DependentUpon>Question.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Question.aspx.designer.cs">
+      <DependentUpon>Question.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Show.aspx.cs">
       <DependentUpon>Show.aspx</DependentUpon>
@@ -509,6 +557,9 @@
     <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
     <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff" />
     <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="master\master_1.Master" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

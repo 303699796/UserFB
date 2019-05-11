@@ -24,9 +24,11 @@ namespace UserFB.Web.Login
             DataSet ds = bllusersManager.GetList(strWhere);
             if (ds.Tables[0].Rows.Count > 0)
             {
+                Session["userID"] = ds.Tables[0].Rows[0]["UserID"].ToString();
                 Session["username"] = txbUserName.Text.Trim();
-                Session["password"] = ds.Tables[0].Rows[0]["userid"].ToString();
-                Response.Redirect("~/Default.aspx");
+               // Session["password"] = ds.Tables[0].Rows[0]["userid"].ToString();
+               
+                Response.Redirect("~/Users/Fill_Feedback.aspx");
                 return;
             }
             else

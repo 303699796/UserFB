@@ -34,7 +34,7 @@ namespace UserFB.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int  Add(UserFB.Model.Feedback model)
+		public bool   Add(UserFB.Model.Feedback model)
 		{
 			return dal.Add(model);
 		}
