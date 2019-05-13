@@ -3,6 +3,9 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Maticsoft.DBUtility;//Please add references
+using UserFB.Model;
+using System.Collections.Generic;
+
 namespace UserFB.DAL
 {
 	/// <summary>
@@ -42,7 +45,7 @@ namespace UserFB.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(UserFB.Model.Question model)
+		public bool  Add(UserFB.Model.Question model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Question(");
@@ -63,11 +66,11 @@ namespace UserFB.DAL
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
-				return 0;
+				return false;
 			}
 			else
 			{
-				return Convert.ToInt32(obj);
+				return true;
 			}
 		}
 		/// <summary>
@@ -291,7 +294,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -316,10 +319,47 @@ namespace UserFB.DAL
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
 
+        public List<QuestionEX> GetAllQuestion()
+        {
+            List<QuestionEX> QuestionList = new List<QuestionEX>();
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.AppendLine("select Q.questionID,");
+            strSql.AppendLine("C.categoryID as categoryID,C.category as category,");
+            strSql.AppendLine("Q.question,Q.solution,Q.time");
+            strSql.AppendLine("from Question as Q");
+            strSql.AppendLine("inner join Category as C on Q.categoryID=C.categoryID");
+            SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
+            while (reader.Read())
+            {
+                #region 封装反馈对象
+                QuestionEX questionEX = new QuestionEX();
+                questionEX.questionID = int.Parse(reader["questionID"].ToString());
+                questionEX.question = reader["question"].ToString();
+                questionEX.solution = reader["solution"].ToString();
+                questionEX.time = DateTime.Parse(reader["time"].ToString());
+                questionEX.categoryID = int.Parse(reader["categoryID"].ToString());
+                Category c = new Category();
+                c.categoryID = int.Parse(reader["categoryID"].ToString());
+                c.category = reader["category"].ToString();
+                questionEX.Category = c;
+
+              
+
+                #endregion
+
+                QuestionList.Add(questionEX);
+            }
+            reader.Close();
+            return QuestionList;
+        }
+
+           
+
+        
 		#endregion  ExtensionMethod
 	}
 }
-

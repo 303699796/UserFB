@@ -172,7 +172,10 @@ namespace UserFB.BLL
 
 		#endregion  BasicMethod
 		#region  ExtensionMethod
-
+        public List<feedbackEX> GetAllFeedback()
+        {
+            return dal.GetAllFeedback();
+        }
 		#endregion  ExtensionMethod
 	}
 }

@@ -46,6 +46,18 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IronPython, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.SQLite, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Wpf, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="LTP.Accounts">
       <HintPath>..\Lib\LTP.Accounts.dll</HintPath>
     </Reference>
@@ -53,6 +65,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Maticsoft.Common.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.2.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.2\lib\net45\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.2.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.2\lib\net45\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.2.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.2\lib\net45\Microsoft.Scripting.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.UI.WebControls">
       <HintPath>..\Lib\Microsoft.Web.UI.WebControls.dll</HintPath>
@@ -116,6 +137,7 @@
     <Content Include="Category\List.aspx" />
     <Content Include="Category\Modify.aspx" />
     <Content Include="Category\Show.aspx" />
+    <Content Include="Chart_Analysis\Keywords.aspx" />
     <Content Include="Controls\checkright.ascx" />
     <Content Include="Controls\copyright.ascx" />
     <Content Include="Distribution\Add.aspx" />
@@ -139,6 +161,8 @@
     <Content Include="Login\UserRegister.aspx" />
     <Content Include="N_Admin\Apply_Permission.aspx" />
     <Content Include="N_Admin\N_Index.aspx" />
+    <Content Include="Pytest.aspx" />
+    <Content Include="Python\newfile_jieba1.py" />
     <Content Include="Question\Add.aspx" />
     <Content Include="Question\List.aspx" />
     <Content Include="Question\Modify.aspx" />
@@ -148,9 +172,11 @@
     <Content Include="Reply\List.aspx" />
     <Content Include="Reply\Modify.aspx" />
     <Content Include="Reply\Show.aspx" />
+    <Content Include="Setting\Admin_Setting.aspx" />
     <Content Include="Setting\Category_Setting.aspx" />
     <Content Include="Setting\Question_Setting.aspx" />
-    <Content Include="Setting\Setting_Question.aspx" />
+    <Content Include="S_Admin_List\ApplyMessage_List.aspx" />
+    <Content Include="S_Admin_List\List.aspx" />
     <Content Include="Users\Add.aspx" />
     <Content Include="Users\Fill_Feedback.aspx" />
     <Content Include="Users\List.aspx" />
@@ -217,6 +243,13 @@
     </Compile>
     <Compile Include="Category\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chart_Analysis\Keywords.aspx.cs">
+      <DependentUpon>Keywords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chart_Analysis\Keywords.aspx.designer.cs">
+      <DependentUpon>Keywords.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\CheckRight.ascx.cs">
       <DependentUpon>checkright.ascx</DependentUpon>
@@ -369,6 +402,13 @@
       <DependentUpon>N_Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pytest.aspx.cs">
+      <DependentUpon>Pytest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pytest.aspx.designer.cs">
+      <DependentUpon>Pytest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Question\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -432,6 +472,13 @@
     <Compile Include="Reply\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Setting\Admin_Setting.aspx.cs">
+      <DependentUpon>Admin_Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\Admin_Setting.aspx.designer.cs">
+      <DependentUpon>Admin_Setting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Setting\Category_Setting.aspx.cs">
       <DependentUpon>Category_Setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -446,12 +493,19 @@
     <Compile Include="Setting\Question_Setting.aspx.designer.cs">
       <DependentUpon>Question_Setting.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Setting\Setting_Question.aspx.cs">
-      <DependentUpon>Setting_Question.aspx</DependentUpon>
+    <Compile Include="S_Admin_List\ApplyMessage_List.aspx.cs">
+      <DependentUpon>ApplyMessage_List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Setting\Setting_Question.aspx.designer.cs">
-      <DependentUpon>Setting_Question.aspx</DependentUpon>
+    <Compile Include="S_Admin_List\ApplyMessage_List.aspx.designer.cs">
+      <DependentUpon>ApplyMessage_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="S_Admin_List\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="S_Admin_List\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
@@ -560,6 +614,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="master\master_1.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

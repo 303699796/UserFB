@@ -71,11 +71,16 @@ namespace UserFB.BLL
 			
 			return dal.GetModel(adminID);
 		}
+        public UserFB.Model.Admin GetModel1(string adminID)
+        {
 
-		/// <summary>
-		/// 得到一个对象实体，从缓存中
-		/// </summary>
-		public UserFB.Model.Admin GetModelByCache(int adminID)
+            return dal.GetModel1(adminID);
+        }
+
+        /// <summary>
+        /// 得到一个对象实体，从缓存中
+        /// </summary>
+        public UserFB.Model.Admin GetModelByCache(int adminID)
 		{
 			
 			string CacheKey = "AdminModel-" + adminID;

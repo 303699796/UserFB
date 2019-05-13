@@ -184,12 +184,34 @@ namespace UserFB.DAL
 				return null;
 			}
 		}
+        public UserFB.Model.Admin GetModel1(string adminID)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 adminID,adminName,adminPassword,department,job,permission,remark from Admin ");
+            strSql.Append(" where adminID=@adminID");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@adminID", SqlDbType.Int,4)
+            };
+            parameters[0].Value = adminID;
+
+            UserFB.Model.Admin model = new UserFB.Model.Admin();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
 
-		/// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-		public UserFB.Model.Admin DataRowToModel(DataRow row)
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public UserFB.Model.Admin DataRowToModel(DataRow row)
 		{
 			UserFB.Model.Admin model=new UserFB.Model.Admin();
 			if (row != null)

@@ -42,7 +42,7 @@ namespace UserFB.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(UserFB.Model.ApplyMessage model)
+		public bool  Add(UserFB.Model.ApplyMessage model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into ApplyMessage(");
@@ -73,11 +73,11 @@ namespace UserFB.DAL
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
-				return 0;
+				return false;
 			}
 			else
 			{
-				return Convert.ToInt32(obj);
+				return true;
 			}
 		}
 		/// <summary>
@@ -268,6 +268,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
+
 		/// <summary>
 		/// 获得前几行数据
 		/// </summary>
@@ -336,7 +337,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -361,10 +362,34 @@ namespace UserFB.DAL
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
+        public DataSet GetNewList(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select ApplyID,applicantID,approverID,name,department,job,permission,applyTime,applyState,remark");
+            strSql.Append(" FROM ApplyMessage ");
+            strSql.Append(" where applyState is null ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            return DbHelperSQL.Query(strSql.ToString());
+        }
 
-		#endregion  ExtensionMethod
-	}
+        public DataSet GetHistoryList(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select ApplyID,applicantID,approverID,name,department,job,permission,applyTime,applyState,remark");
+            strSql.Append(" FROM ApplyMessage ");
+            strSql.Append(" where applyState is not null ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+        #endregion  ExtensionMethod
+    }
 }
 

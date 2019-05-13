@@ -175,11 +175,37 @@ namespace UserFB.DAL
 			}
 		}
 
+        public UserFB.Model.Users GetModel1(string  UserID)
+        {
 
-		/// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-		public UserFB.Model.Users DataRowToModel(DataRow row)
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 UserID,userName,password,gender,birthDate from Users ");
+            strSql.Append(" where UserID=@UserID");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@UserID", SqlDbType.Int,4)
+            };
+            parameters[0].Value = UserID;
+
+            UserFB.Model.Users model = new UserFB.Model.Users();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public UserFB.Model.Users DataRowToModel(DataRow row)
 		{
 			UserFB.Model.Users model=new UserFB.Model.Users();
 			if (row != null)

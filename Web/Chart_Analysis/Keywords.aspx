@@ -1,23 +1,21 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Setting_Question.aspx.cs" Inherits="UserFB.Web.Setting.Setting_Question" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Keywords.aspx.cs" Inherits="UserFB.Web.Chart_Analysis.Keywords" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
-    <meta charset="UTF-8"/>
+ <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>问题设置</title>
+    <title>关键词分析</title>
      <link rel="stylesheet" href="../bootstrap/vendor/simple-line-icons/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
        <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.min.js"></script>
-    <script language="javascript" src="/js/CheckBox.js" type="text/javascript"></script>
     
     </head>
 <body class="sidebar-fixed header-fixed">
-    <form id="form1" runat="server" onsubmit="return false">
+    <form id="form1" runat="server" >
 <div class="page-wrapper">
     <div class="page-header">
         <nav class="navbar page-header">
@@ -112,57 +110,28 @@
                         </ul>     
             </nav>
         </div>
-   <div class="content">
-            <div class="row">
+
+
+        <div class="content">
+          
+             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
+                    
                         <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>管理员设置</h5> 
+                         <h5>关键词分析</h5>
+                     
                         </div>
+                            
                      </div>
                 </div>
             </div>
 
-     
-
-
-
-
-        <asp:GridView ID="gridView" runat="server" AllowPaging="True" 
-            OnPageIndexChanging ="gridView_PageIndexChanging"
-                    BorderWidth="1px" DataKeyNames="questionID" OnRowDataBound="gridView_RowDataBound"
-                    AutoGenerateColumns="false" PageSize="10"  RowStyle-HorizontalAlign="Center" OnRowCreated="gridView_RowCreated">
-                    <Columns>
-                    <asp:TemplateField ControlStyle-Width="30" HeaderText="选择"    >
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="DeleteThis" onclick="javascript:CCA(this);" runat="server" />
-                                </ItemTemplate>
-                            </asp:TemplateField> 
-                            
-		<asp:BoundField DataField="categoryID" HeaderText="categoryID" SortExpression="categoryID" ItemStyle-HorizontalAlign="Center"  /> 
-		<asp:BoundField DataField="question" HeaderText="question" SortExpression="question" ItemStyle-HorizontalAlign="Center"  /> 
-		<asp:BoundField DataField="solution" HeaderText="solution" SortExpression="solution" ItemStyle-HorizontalAlign="Center"  /> 
-		<asp:BoundField DataField="time" HeaderText="time" SortExpression="time" ItemStyle-HorizontalAlign="Center"  /> 
-                            
-                            <asp:HyperLinkField HeaderText="详细" ControlStyle-Width="50" DataNavigateUrlFields="questionID" DataNavigateUrlFormatString="Show.aspx?id={0}"
-                                Text="详细"  />
-                            <asp:HyperLinkField HeaderText="编辑" ControlStyle-Width="50" DataNavigateUrlFields="questionID" DataNavigateUrlFormatString="Modify.aspx?id={0}"
-                                Text="编辑"  />
-                            <asp:TemplateField ControlStyle-Width="50" HeaderText="删除"   Visible="false"  >
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete"
-                                         Text="删除"></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                </asp:GridView>
-          <asp:Button ID="btnDelete" runat="server" Text="删除" OnClick="btnDelete_Click"/>    
-
-
-
+            
+       </div>
              </div>
     </div>
-    </div>
+    
 
         </form>  
 

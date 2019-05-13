@@ -16,7 +16,7 @@
     <script language="javascript" src="/js/CheckBox.js" type="text/javascript"></script>
     </head>
 <body class="sidebar-fixed header-fixed">
-    <form id="form1" runat="server" onsubmit="return false">
+    <form id="form1" runat="server" >
 <div class="page-wrapper">
     <div class="page-header">
         <nav class="navbar page-header">
@@ -111,18 +111,57 @@
                         </ul>     
             </nav>
         </div>
-   <div class="content">
-            <div class="row">
+   
+       <div class="content">
+          
+           <button class="btn btn-primary px-5" type="button" data-toggle="modal" data-target="#modal-1" style="float:left">新增问题</button>
+
+
+            <br /><br /><br />
+           <%--  <div class="row">
                 <div class="col-md-6">
                     <div class="card">
+                    
                         <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>管理员设置</h5> 
+                         <h5>管理员设置</h5>
+                     
                         </div>
+                            
                      </div>
                 </div>
+            </div>--%>
+
+         <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">新增问题</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
-     
+            <div class="modal-body">
+                <asp:Label ID="LabelCategory" runat="server" Text="请选择新增问题分类"></asp:Label>
+                <asp:DropDownList ID="DropDownList_Category" runat="server"></asp:DropDownList>
+                <br /><br />
+                 <asp:Label ID="LabelQuestion" runat="server" Text="请输入新增问题描述"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtQuestion" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+                  <br /><br />
+                <asp:Label ID="LabelSolution" runat="server" Text="请输入解决方案描述"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtSolution" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+            </div>
+
+            <div class="modal-footer" >
+                <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>
+               <%-- <button  type="button" class="btn btn-primary" onclick=""  >保存</button>--%>
+                <asp:Button ID="BntSave" type="button" runat="server"  class="btn btn-primary" OnClick="BntSave_Click"  Text="保存" />
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -130,30 +169,55 @@
         <asp:GridView ID="gridView" runat="server" AllowPaging="True" 
             class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" OnPageIndexChanging ="gridView_PageIndexChanging"
                     BorderWidth="1px" DataKeyNames="questionID" OnRowDataBound="gridView_RowDataBound"
-                    AutoGenerateColumns="false" PageSize="10"  RowStyle-HorizontalAlign="Center" OnRowCreated="gridView_RowCreated">
+            OnRowEditing="gridView_RowEditing" OnRowCancelingEdit="gridView_RowCancelingEdit" OnRowUpdating="gridView_RowUpdating" 
+                    AutoGenerateColumns="False"  RowStyle-HorizontalAlign="Center" OnRowCreated="gridView_RowCreated">
                     <Columns>
                     <asp:TemplateField ControlStyle-Width="30" HeaderText="选择"    >
                                 <ItemTemplate>
                                     <asp:CheckBox ID="DeleteThis" onclick="javascript:CCA(this);" runat="server" />
                                 </ItemTemplate>
+
+<ControlStyle Width="30px"></ControlStyle>
                             </asp:TemplateField> 
                             
-		<asp:BoundField DataField="categoryID" HeaderText="categoryID" SortExpression="categoryID" ItemStyle-HorizontalAlign="Center"  /> 
-		<asp:BoundField DataField="question" HeaderText="question" SortExpression="question" ItemStyle-HorizontalAlign="Center"  /> 
-		<asp:BoundField DataField="solution" HeaderText="solution" SortExpression="solution" ItemStyle-HorizontalAlign="Center"  /> 
-		<asp:BoundField DataField="time" HeaderText="time" SortExpression="time" ItemStyle-HorizontalAlign="Center"  /> 
+		                <asp:TemplateField HeaderText="categoryID" SortExpression="categoryID">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtCcategory" runat="server" Text='<%# Bind("categoryID") %>'></asp:TextBox>
+                               <%-- <asp:DropDownList ID="ddl_category" runat="server"></asp:DropDownList>
+                                <asp:HiddenField ID="hf_Category" runat="server" Text='<%# Bind("categoryID") %>' />--%>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("categoryID") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="question" SortExpression="question">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtQuestion" runat="server" Text='<%# Bind("question") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("question") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="solution" SortExpression="solution">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtSolution" runat="server" Text='<%# Bind("solution") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("solution") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
                             
-                            <asp:HyperLinkField HeaderText="详细" ControlStyle-Width="50" DataNavigateUrlFields="questionID" DataNavigateUrlFormatString="Show.aspx?id={0}"
-                                Text="详细"  />
-                            <asp:HyperLinkField HeaderText="编辑" ControlStyle-Width="50" DataNavigateUrlFields="questionID" DataNavigateUrlFormatString="Modify.aspx?id={0}"
-                                Text="编辑"  />
-                            <asp:TemplateField ControlStyle-Width="50" HeaderText="删除"   Visible="false"  >
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete"
-                                         Text="删除"></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+		<asp:BoundField DataField="time" HeaderText="time" SortExpression="time" ItemStyle-HorizontalAlign="Center"  > 
+<ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:CommandField HeaderText="编辑" ShowEditButton="True" />
+                            
                         </Columns>
+
+<RowStyle HorizontalAlign="Center" Height="50px"></RowStyle>
                 </asp:GridView>
           <asp:Button ID="btnDelete" runat="server" Text="删除" OnClick="btnDelete_Click"/>    
 

@@ -28,7 +28,7 @@ namespace UserFB.Web.Login
                 Session["username"] = txbUserName.Text.Trim();
                // Session["password"] = ds.Tables[0].Rows[0]["userid"].ToString();
                
-                Response.Redirect("~/Users/Fill_Feedback.aspx");
+                Response.Redirect("~/N_Admin/Apply_Permission.aspx"); 
                 return;
             }
             else

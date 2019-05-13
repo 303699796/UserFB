@@ -66,16 +66,23 @@ namespace UserFB.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public UserFB.Model.Users GetModel(int UserID)
+		public UserFB.Model.Users GetModel(int  UserID)
 		{
 			
 			return dal.GetModel(UserID);
 		}
 
-		/// <summary>
-		/// 得到一个对象实体，从缓存中
-		/// </summary>
-		public UserFB.Model.Users GetModelByCache(int UserID)
+        public UserFB.Model.Users GetModel1(string  UserID)
+        {
+
+            return dal.GetModel1(UserID);
+        }
+
+
+        /// <summary>
+        /// 得到一个对象实体，从缓存中
+        /// </summary>
+        public UserFB.Model.Users GetModelByCache(int UserID)
 		{
 			
 			string CacheKey = "UsersModel-" + UserID;

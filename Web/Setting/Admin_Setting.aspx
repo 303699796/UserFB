@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Category_Setting.aspx.cs" Inherits="UserFB.Web.Setting.Category_Setting" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Admin_Setting.aspx.cs" Inherits="UserFB.Web.Setting.Admin_Setting" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>分类设置</title>
+    <title>管理员设置</title>
      <link rel="stylesheet" href="../bootstrap/vendor/simple-line-icons/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
@@ -122,81 +122,91 @@
                             </li>                         
                         </ul>
                     </li>                 
-                        </ul>
-                
+                        </ul>              
             </nav>
         </div>
-               
-
-
 
         <div class="content">
-            
-                   
-                          <button class="btn btn-primary px-5" type="button" data-toggle="modal" data-target="#modal-1" style="float:left">新增问题分类</button>
+           <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                    
+                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
+                         <h5>管理员设置</h5>
+                     
+                        </div>
+                            
+                     </div>
+                </div>
+            </div>
 
-
-            <br /><br /><br />
-         
-
-       <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px"
-                OnRowDeleting="GridView1_RowDeleting"  OnRowDataBound="GridView1_RowDataBound" OnRowEditing="GridView1_RowEditing" 
-           OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" AutoGenerateColumns="False" DataKeyNames="categoryID">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
+                class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px"
+                OnRowDeleting="GridView1_RowDeleting"  OnRowDataBound="GridView1_RowDataBound" OnRowEditing="GridView1_RowEditing"
+           OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" DataKeyNames="adminID" >
                     <Columns>
-                        <asp:TemplateField HeaderText="问题ID">
+                
+                    <asp:TemplateField HeaderText="管理员ID">
+                        <EditItemTemplate>
+                            <asp:Label ID="LabelID" runat="server" Text='<%# Eval("adminID") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Labelid" runat="server" Text='<%# Bind("adminID") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="管理员">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtAdmin" runat="server" Text='<%# Bind("adminName") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="LabelAdmin" runat="server" Text='<%# Bind("adminName") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                        <asp:TemplateField HeaderText="密码" Visible="False">
                             <EditItemTemplate>
-                                <asp:Label ID="LabelID" runat="server" Text='<%# Eval("categoryID") %>'></asp:Label>
+                                <asp:Label ID="LabelPassword" runat="server" Text='<%# Eval("adminPassword") %>'></asp:Label>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Labelid" runat="server" Text='<%# Bind("categoryID") %>'></asp:Label>
+                                <asp:Label ID="Labelpassword" runat="server" Text='<%# Bind("adminPassword") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="问题分类">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="txtCategory" runat="server" Text='<%# Bind("category") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="LabelCategory" runat="server" Text='<%# Bind("category") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="修改时间">
-                            <EditItemTemplate>
-                                <asp:Label ID="LabelTime" runat="server" Text='<%# Eval("time") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Labeltime" runat="server" Text='<%# Bind("time") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                    <asp:TemplateField HeaderText="部门">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtDepartment" runat="server" Text='<%# Bind("department") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="LabelDepartment" runat="server" Text='<%# Bind("department") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="职位">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtJob" runat="server" Text='<%# Bind("job") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="LabelJob" runat="server" Text='<%# Bind("job") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="权限">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtPermission" runat="server" Text='<%# Bind("permission") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="LabelPermission" runat="server" Text='<%# Bind("permission") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                   
                         <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-           </Columns>
+                   
+                </Columns>
+
 <RowStyle Height="50px"></RowStyle>
+
             </asp:GridView>
-                </div> 
 
-        <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">添加问题分类</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
 
-            <div class="modal-body">
-                 <asp:Label ID="Label1" runat="server" Text="请输入新增问题分类"></asp:Label>
-                &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txbAdd" runat="server" Width="300px" Height="30px"></asp:TextBox>
             </div>
-
-            <div class="modal-footer" >
-                <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>
-               <%-- <button  type="button" class="btn btn-primary" onclick=""  >保存</button>--%>
-                <asp:Button ID="BntSave" type="button" runat="server"  class="btn btn-primary" OnClick="BntSave_Click"  Text="保存" />
-            </div>
-        </div>
+       </div>
     </div>
-</div>
    </form>  
 
 

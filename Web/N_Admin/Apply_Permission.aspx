@@ -13,24 +13,9 @@
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
        <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.min.js"></script>
-    <style type="text/css">
-        .auto-style1 {
-            position: relative;
-            width: 100%;
-            min-height: 1px;
-            -webkit-box-flex: 0;
-            -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-            max-width: 50%;
-            left: 9px;
-            top: -12px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    </style>
-</head>
+    </head>
 <body class="sidebar-fixed header-fixed">
-    <form id="form1" runat="server" onsubmit="return false">
+    <form id="form1" runat="server" >
 <div class="page-wrapper">
     <div class="page-header">
         <nav class="navbar page-header">
@@ -76,47 +61,75 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>权限申请</h5> 
+                        <div class="card-header bg-light" style="font-weight:700">
+                            个人信息
                         </div>
-                       
 
-                       
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+
+                                <div class="col-md-6">
+                                         <div class="form-group">    
+                                          <asp:Label ID="LabelID"   class="form-control-label" runat="server" Text="用户ID :"></asp:Label>
+                                           
+                                           <asp:TextBox ID="txtID" class="form-control" Width="190%" runat="server" ReadOnly></asp:TextBox>
+                         <br />
+                                          <asp:Label ID="LabelName" class="form-control-label" runat="server" Text="用户名 :"></asp:Label>
+                                            
+                                           <asp:TextBox ID="txtName" class="form-control" Width="190%" runat="server" ReadOnly></asp:TextBox>
+                                   <br />
+                                          <asp:Label ID="LabelDepartment" class="form-control-label" runat="server" Text="部门 :"></asp:Label>
+                                           <asp:TextBox ID="txtDepartment" class="form-control" Width="190%" runat="server" ReadOnly></asp:TextBox>
+                                    <br />
+                                          <asp:Label ID="LabelJob" class="form-control-label" runat="server" Text="职位 :"></asp:Label>
+                                           <asp:TextBox ID="txtJob" class="form-control" Width="190%" runat="server" ReadOnly></asp:TextBox>
+ </div>
+                                        </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-light" style="font-weight:700">
+                            权限申请
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                 <div class="card-footer bg-light text-center">
+                                  <h5>— — 请选择要申请的权限 — —  </h5>
+                             <br />
+                              <asp:RadioButtonList ID="RadioButtonList_Choose" RepeatDirection="Horizontal"  runat="server" Height="10px" Width="100%">
+                                      <asp:ListItem Value="1">&nbsp;&nbsp;&nbsp;&nbsp;普通管理员</asp:ListItem>
+                                    <asp:ListItem Value="2">&nbsp;&nbsp;&nbsp;&nbsp;超级管理员</asp:ListItem>
+                                </asp:RadioButtonList>
+                                  
+                          
+                                <asp:Button ID="But_Apply" runat="server" class="btn btn-primary" Text="提   交" OnClick="But_Apply_Click" />
+                            </div>
+                                  <br />   <br />
+                                <div style="text-align:center">
+                                      <h5>— — — 权限介绍— — — </h5>
+                                </div>
+                        
+                                 <br />
+                                <h6> ①  普通管理员：</h6>
+                                <h6> ②  超级管理员：</h6>
+                              
+                             
+                               
+                            </div>
+                                  
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h6>用户信息</h6>
-            <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="100px">
-                 <Columns>
-            <asp:TemplateField HeaderText ="用户ID">
-                        <ItemTemplate>
-                            <asp:Label ID="Label_ID" runat="server" Text='<%#Bind("adminID")%>'></asp:Label>
-                          </ItemTemplate>
-                    </asp:TemplateField>
 
-                     <asp:TemplateField HeaderText ="用户名">
-                        <ItemTemplate>
-                            <asp:Label ID="Label_Name" runat="server"  style="text-align:center"  Text='<%#Bind("adminName")%>'></asp:Label>                         
-                          </ItemTemplate>
-                    </asp:TemplateField>
-
-                     <asp:TemplateField HeaderText ="部门">
-                        <ItemTemplate>
-                            <asp:Label ID="Label_Department" runat="server"  style="text-align:center"  Text='<%#Bind("department")%>'></asp:Label>                         
-                          </ItemTemplate>
-                    </asp:TemplateField>
-
-                      <asp:TemplateField HeaderText ="职位">
-                        <ItemTemplate>
-                            <asp:Label ID="Label_Job" runat="server"  style="text-align:center"  Text='<%#Bind("job")%>'></asp:Label>                         
-                          </ItemTemplate>
-                    </asp:TemplateField>
-
-                      </Columns>
-                    <RowStyle />
-            </asp:GridView>
-
+          
 
            </div>
                  </div>

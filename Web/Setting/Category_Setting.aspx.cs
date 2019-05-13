@@ -30,7 +30,7 @@ namespace UserFB.Web.Setting
         {
             Model.Category category3 = new Model.Category();
             BLL.CategoryManager category4 = new BLL.CategoryManager();
-            int categoryID = Convert.ToInt32((GridView1.Rows[e.RowIndex].FindControl("txbCategory") as TextBox).Text);
+            int categoryID = Convert.ToInt32((GridView1.Rows[e.RowIndex].FindControl("LabelID") as Label).Text);
             bool bo = category4.Delete(categoryID);
             if (bo == true)
             {
@@ -45,11 +45,7 @@ namespace UserFB.Web.Setting
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            //GridView1.EditIndex = e.NewEditIndex;
-            //Bind();
-
-
-
+            
             GridView1.EditIndex = e.NewEditIndex;
             Bind();
 
@@ -63,7 +59,23 @@ namespace UserFB.Web.Setting
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            Model.Category category = new Model.Category();
+            category.categoryID= Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            category.category= (GridView1.Rows[e.RowIndex].FindControl("txtCategory") as TextBox).Text;
 
+            BLL.CategoryManager categoryManager = new BLL.CategoryManager();
+            bool bo = categoryManager.Update(category);
+            if (bo == true)
+            {
+                Response.Write("<script language=javascript>alert('修改成功！')</script>");
+                GridView1.EditIndex = -1;
+                Bind();
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('修改失败！请重试')");
+            }
+           
         }
 
         protected void BntSave_Click(object sender, EventArgs e)

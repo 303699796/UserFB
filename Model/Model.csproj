@@ -109,7 +109,9 @@
     <Compile Include="Category.cs" />
     <Compile Include="Distribution.cs" />
     <Compile Include="Feedback.cs" />
+    <Compile Include="feedbackEX.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="QuestionEX.cs" />
     <Compile Include="Reply.cs" />
     <Compile Include="Users.cs" />
   </ItemGroup>

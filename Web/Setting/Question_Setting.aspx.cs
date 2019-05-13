@@ -18,19 +18,35 @@ namespace UserFB.Web.Setting
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    Bind();
-            //}
+          
 
             if (!Page.IsPostBack)
             {
-                gridView.BorderColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_bordercolorlight"].ToString());
-                gridView.HeaderStyle.BackColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_titlebgcolor"].ToString());
-                btnDelete.Attributes.Add("onclick", "return confirm(\"你确认要删除吗？\")");
+                //gridView.BorderColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_bordercolorlight"].ToString());
+                //gridView.HeaderStyle.BackColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_titlebgcolor"].ToString());
+                //btnDelete.Attributes.Add("onclick", "return confirm(\"你确认要删除吗？\")");
                 BindData();
+               CategoryDataBind();
+               
             }
         }
+
+        protected void CategoryDataBind()
+        {
+            Model.Category category1 = new Model.Category();
+            BLL.CategoryManager category2 = new BLL.CategoryManager();
+            DropDownList_Category.DataTextField = "category";
+            DropDownList_Category.DataValueField = "categoryID";
+            DataSet ds = new CategoryManager().GetAllList();
+            DataRow dr = ds.Tables[0].NewRow();
+            dr["categoryID"] = 0;
+            dr["category"] = "---请选择问题分类---";
+            ds.Tables[0].Rows.InsertAt(dr, 0);
+            DropDownList_Category.DataSource = ds;
+            DropDownList_Category.DataBind();
+
+        }
+       
         protected void Bind()
         {
            
@@ -48,19 +64,14 @@ namespace UserFB.Web.Setting
 
         protected void gridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Attributes.Add("style", "background:#FFF");
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                LinkButton linkbtnDel = (LinkButton)e.Row.FindControl("LinkButton1");
-                linkbtnDel.Attributes.Add("onclick", "return confirm(\"你确认要删除吗\")");
+            //e.Row.Attributes.Add("style", "background:#FFF");
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    LinkButton linkbtnDel = (LinkButton)e.Row.FindControl("LinkButton1");
+            //    linkbtnDel.Attributes.Add("onclick", "return confirm(\"你确认要删除吗\")");
 
-                //object obj1 = DataBinder.Eval(e.Row.DataItem, "Levels");
-                //if ((obj1 != null) && ((obj1.ToString() != "")))
-                //{
-                //    e.Row.Cells[1].Text = obj1.ToString();
-                //}
 
-            }
+            //}
         }
 
         protected void gridView_RowCreated(object sender, GridViewRowEventArgs e)
@@ -76,15 +87,14 @@ namespace UserFB.Web.Setting
             Model.Question question1 = new Model.Question();
             BLL.QuestionManager question2 = new BLL.QuestionManager();
             question2.DeleteList(idlist);
-           // BLL.DeleteList(idlist);
+          
             BindData();
         }
         public void BindData()
         {
             Model.Question question1 = new Model.Question();
             BLL.QuestionManager question2 = new BLL.QuestionManager();
-            //gridView.DataSource = question2.GetAllList();
-            //gridView.DataBind();
+           
 
             DataSet ds = new DataSet();
             StringBuilder strWhere = new StringBuilder();
@@ -103,7 +113,7 @@ namespace UserFB.Web.Setting
                 if (ChkBxItem != null && ChkBxItem.Checked)
                 {
                     BxsChkd = true;
-                    //#warning 代码生成警告：请检查确认Cells的列索引是否正确
+                  
                     if (gridView.DataKeys[i].Value != null)
                     {
                         idlist += gridView.DataKeys[i].Value.ToString() + ",";
@@ -115,6 +125,75 @@ namespace UserFB.Web.Setting
                 idlist = idlist.Substring(0, idlist.LastIndexOf(","));
             }
             return idlist;
+        }
+
+        protected void BntSave_Click(object sender, EventArgs e)
+        {
+
+            Model.Question question = new Model.Question();
+            question.question = txtQuestion.Text.Trim();
+            question.solution = txtSolution.Text.Trim();
+            question.categoryID =Convert.ToInt32( DropDownList_Category.SelectedValue.ToString());
+
+            BLL.QuestionManager questionManager = new BLL.QuestionManager();
+            bool bo = questionManager.Add(question);
+            if (bo == true)
+            {
+                Response.Write("<script language=javascript>alert('添加成功！')</script>");
+                BindData();
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('添加失败！请重试')");
+            }
+
+           
+        }
+
+        protected void gridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gridView.EditIndex = e.NewEditIndex;
+            BindData();
+          //  CategoryModifyBind(e.NewEditIndex);
+        }
+        //private void CategoryModifyBind(int questionID)
+        //{
+        //    DropDownList list = gridView.Rows[questionID].FindControl("DDL_Category") as DropDownList;
+        //    BLL.CategoryManager categoryM = new CategoryManager();
+         
+
+
+
+        //}
+
+
+        protected void gridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gridView.EditIndex = -1;
+            BindData();
+        }
+
+        protected void gridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            Model.Question question = new Model.Question();
+            question.question = (gridView.Rows[e.RowIndex].FindControl("txtQuestion") as TextBox).Text;
+            question.solution=(gridView.Rows[e.RowIndex].FindControl("txtSolution") as TextBox).Text;
+            question.questionID = Convert.ToInt32(gridView.DataKeys[e.RowIndex].Value);
+            question.categoryID=Int32.Parse((gridView.Rows[e.RowIndex].FindControl("txtCcategory") as TextBox).Text); 
+
+            BLL.QuestionManager questionManager = new BLL.QuestionManager();
+            bool bo = questionManager.Update(question);
+            if (bo == true)
+            {
+                Response.Write("<script language=javascript>alert('修改成功！')</script>");
+                gridView.EditIndex = -1;
+                BindData();
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('修改失败！请重试')");
+            }
+            
         }
     }
 }

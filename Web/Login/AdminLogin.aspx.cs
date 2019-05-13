@@ -28,24 +28,24 @@ namespace UserFB.Web.Login
             DataSet ds0 = adminManager.GetList(Str0);
             if (ds1.Tables[0].Rows.Count > 0)
             {
-                Session["adminname"] = txbUserName.Text.Trim();
-                Session["adminpassword"] = ds1.Tables[0].Rows[0]["adminid"].ToString();
+                Session["adminName"] = txbUserName.Text.Trim();
+                Session["adminID"] = ds1.Tables[0].Rows[0]["adminID"].ToString();
                 Response.Redirect("~/UserLogin.aspx");
                 return;
             }
 
             else if (ds2.Tables[0].Rows.Count > 0)
                 {
-                    Session["adminname"] = txbUserName.Text.Trim();
-                    Session["adminpassword"] = ds2.Tables[0].Rows[0]["adminid"].ToString();
+                    Session["adminName"] = txbUserName.Text.Trim();
+                    Session["adminID"] = ds2.Tables[0].Rows[0]["adminID"].ToString();
                     Response.Redirect("~/UserLogin.aspx");
                     return;
                 }
             else if (ds0.Tables[0].Rows.Count > 0)
             {
-                Session["adminname"] = txbUserName.Text.Trim();
-                Session["adminpassword"] = ds0.Tables[0].Rows[0]["adminid"].ToString();
-                Response.Redirect("~/Default.aspx");
+                Session["adminName"] = txbUserName.Text.Trim();
+                Session["adminID"] = ds0.Tables[0].Rows[0]["adminID"].ToString();
+                Response.Redirect("~/N_Admin/Apply_Permission.aspx"); 
                 return;
             }
 

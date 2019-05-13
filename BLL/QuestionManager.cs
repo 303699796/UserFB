@@ -34,7 +34,7 @@ namespace UserFB.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int  Add(UserFB.Model.Question model)
+		public bool  Add(UserFB.Model.Question model)
 		{
 			return dal.Add(model);
 		}
@@ -162,18 +162,24 @@ namespace UserFB.BLL
 		{
 			return dal.GetListByPage( strWhere,  orderby,  startIndex,  endIndex);
 		}
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		//public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		//{
-			//return dal.GetList(PageSize,PageIndex,strWhere);
-		//}
+        /// <summary>
+        /// 分页获取数据列表
+        /// </summary>
+        //public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+        //{
+        //return dal.GetList(PageSize,PageIndex,strWhere);
+        //}
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
+       
+             public List<QuestionEX> GetAllQuestion()
+        {
+            return dal.GetAllQuestion();
+        }
 
-		#endregion  ExtensionMethod
-	}
+       
+            #endregion  ExtensionMethod
+        }
 }
 

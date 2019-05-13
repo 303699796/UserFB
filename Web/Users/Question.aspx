@@ -84,21 +84,98 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="Columns">
+
+                   
                     <div class="col-md-2">
                         <div class="list-group">
                             <a href="#" class="list-group-item">常见问题</a>
                             <a href="#" class="list-group-item active">填写反馈</a>
                             <a href="#" class="list-group-item">我的消息</a>
                             <a href="#" class="list-group-item">历史反馈</a>
+                          
+                               <a  class="list-group-item" >   &nbsp;</a>
+                               <a class="list-group-item" style="border:none">  &nbsp;</a>
+                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
+                               <a class="list-group-item" style="border:none">  &nbsp;</a>
+                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
+                               <a class="list-group-item" style="border:none">  &nbsp;</a>
+                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
+                               <a class="list-group-item" style="border:none">  &nbsp;</a>
+                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
+                               <a class="list-group-item" style="border:none">  &nbsp;</a>
+                            
                         </div>
                     </div>
+                         </div>
 
+
+                   
+
+                          <asp:DropDownList ID="DropDownList_Category" runat="server" >
+
+                        </asp:DropDownList>
+                             
+
+
+
+                   
+                    <div>
+                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="categoryID"
+                              class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="100px">
+                            <Columns>
+                                <asp:TemplateField HeaderText="请选择问题分类" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="" OnClick="LinkButton1_Click" Text='<%# Eval("category") %>'></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                
+                            </Columns>
+
+<RowStyle Height="100px"></RowStyle>
                             
+                        </asp:GridView>
+
+                       
+                          <asp:Button ID="Button1" runat="server" Text="Button" />
+                    </div>
+                  
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="questionID"
+                         class="tab-content" style="width: 400%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px">
+                        <Columns>
+                            <asp:TemplateField HeaderText="问题分类">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Category.category") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Category.category") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="question" HeaderText="遇到的问题" />
+                            <asp:BoundField DataField="solution" HeaderText="如何解决？" />
+                        </Columns>
+
+<RowStyle Height="50px"></RowStyle>
+
+                    </asp:GridView>
+
+
+                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" Visible="False"
+                         class="tab-content" style="width: 400%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px">
+                        <Columns>
+                            <asp:BoundField DataField="question" HeaderText="遇到的问题" />
+                            <asp:BoundField DataField="solution" HeaderText="如何解决" />
+                        </Columns>
+                    </asp:GridView>
+
                          
                         </div>
-                    </div>
+                
                 </div>
             </div>
+         </div>
+     
       
   
 

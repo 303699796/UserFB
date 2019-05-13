@@ -45,8 +45,8 @@ namespace UserFB.Web.Users
             feedback.categoryID = int.Parse(this.DropDownList_Category.SelectedValue);
             feedback.Info = txbInfo.Text.Trim();
             feedback.contact = txbContact.Text.Trim();
+            feedback.handler = "未处理";
 
-            //   feedback.UserID= Convert.ToInt32(Membership.GetUser().ProviderUserKey);
             feedback.UserID = Convert.ToInt32(Session["userID"]);
 
             BLL.FeedbackManager feedbackManager = new FeedbackManager();
@@ -54,7 +54,12 @@ namespace UserFB.Web.Users
             if (bo == true)
             {
                 Response.Write("<script language=javascript>alert('提交成功')</script>");
+                txbContact.Text = "";
+                txbInfo.Text = "";
+                this.DropDownList_Category.SelectedIndex = 0;
+              
             }
+
             else
             {
                 Response.Write("<script language=javascript>alert('提交失败！请重试')");
