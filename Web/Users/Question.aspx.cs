@@ -20,7 +20,7 @@ namespace UserFB.Web.Users
             if (!IsPostBack)
             {
                 Bind();
-                CategoryBind();
+               // CategoryBind();
                 DDLCategoryBind();
 
             }
@@ -33,20 +33,20 @@ namespace UserFB.Web.Users
             GridView1.DataBind();
 
         }
-        protected void CategoryBind()
-        {
+        //protected void CategoryBind()
+        //{
            
-            GridView2.DataSource = categoryManager.GetAllList();         
-            GridView2.DataBind();
+        //    GridView2.DataSource = categoryManager.GetAllList();         
+        //    GridView2.DataBind();
 
-        }
+        //}
 
         private void DDLCategoryBind()
         {
 
             DataSet ds = new CategoryManager().GetAllList();
             DataRow dr = ds.Tables[0].NewRow();
-            dr["category"] = "--全部分类--";
+            dr["category"] = "请选择问题分类";
             ds.Tables[0].Rows.InsertAt(dr, 0);
 
             DropDownList_Category.DataTextField = "category";
@@ -55,30 +55,46 @@ namespace UserFB.Web.Users
             DropDownList_Category.DataBind();
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
+        //protected void LinkButton1_Click(object sender, EventArgs e)
+        //{
            
+        //    //LinkButton tempBTN = (LinkButton)sender;
+        //    //Button1.Text = tempBTN.Text;
+        //    Button1.Text = DropDownList_Category.SelectedValue;
+        //    string strWhere = "categoryID='" + DropDownList_Category.SelectedValue + "'";
+        //   // string Str = "categoryID'" + DropDownList_Category.SelectedValue + "'";
+        //    BLL.QuestionManager questionManager = new QuestionManager();
+        //    DataSet ds = questionManager.GetList(strWhere);
+        //    if (ds.Tables[0].Rows.Count > 0)
+        //    { 
+        //        GridView3.DataSource = ds;
+        //        GridView3.DataBind();
+        //        GridView1.Visible = false;
+        //        GridView3.Visible = true;
+        //    }
+
+
+
+
+
+        
+
+        protected void But_Search_Click(object sender, EventArgs e)
+        {
             //LinkButton tempBTN = (LinkButton)sender;
             //Button1.Text = tempBTN.Text;
             Button1.Text = DropDownList_Category.SelectedValue;
             string strWhere = "categoryID='" + DropDownList_Category.SelectedValue + "'";
-           // string Str = "categoryID'" + DropDownList_Category.SelectedValue + "'";
+            // string Str = "categoryID'" + DropDownList_Category.SelectedValue + "'";
             BLL.QuestionManager questionManager = new QuestionManager();
             DataSet ds = questionManager.GetList(strWhere);
             if (ds.Tables[0].Rows.Count > 0)
-            { 
+            {
                 GridView3.DataSource = ds;
                 GridView3.DataBind();
                 GridView1.Visible = false;
                 GridView3.Visible = true;
             }
-
-
-
-
-
         }
-
-        
     }
 }

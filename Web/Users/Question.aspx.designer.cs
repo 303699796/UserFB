@@ -31,13 +31,13 @@ namespace UserFB.Web.Users {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_Category;
         
         /// <summary>
-        /// GridView2 控件。
+        /// But_Search 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.Button But_Search;
         
         /// <summary>
         /// Button1 控件。

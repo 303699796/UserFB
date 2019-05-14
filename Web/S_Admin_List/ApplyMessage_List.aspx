@@ -126,12 +126,36 @@
                 </div>
             </div>
 
+             <div class="row">
+                 <asp:Button ID="Btn_Agree" runat="server" Text="同意申请" OnClick="Btn_Agree_Click" />
+                 <asp:Button ID="Btn_Refuse" runat="server" Text="拒绝申请" OnClick ="Btn_Refuse_Click" />
+                 <br />
+                 </div>
+
             <asp:GridView ID="GridView1" runat="server"  AllowPaging="True" 
             class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" OnPageIndexChanging ="GridView1_PageIndexChanging"
               OnRowDataBound="GridView1_RowCreated" OnRowEditing="GridView1_RowEditing" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" 
                     AutoGenerateColumns="False"  RowStyle-HorizontalAlign="Center" OnRowCreated="GridView1_RowCreated" DataKeyNames="ApplyID" >
 
                 <Columns>
+                  
+
+                      <asp:TemplateField HeaderText="选择">
+                         
+                          <ItemTemplate>
+                              <asp:CheckBox ID="ModifyThis" runat="server" />
+                          </ItemTemplate>
+                      </asp:TemplateField>
+                  
+
+                      <asp:TemplateField HeaderText="申请人ID" Visible="False">
+                          <EditItemTemplate>
+                              <asp:Label ID="LabelApplicantID" runat="server" Text='<%# Eval("applicantID") %>'></asp:Label>
+                          </EditItemTemplate>
+    <ItemTemplate>
+        <asp:Label ID="LabelID" runat="server" Text='<%# Bind("applicantID") %>'></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField> 
                     <asp:TemplateField HeaderText="申请人">
                         <EditItemTemplate>
                             <asp:Label ID="LabelName" runat="server" Text='<%# Eval("name") %>'></asp:Label>
@@ -174,14 +198,16 @@
                     </asp:TemplateField>
                   
 
-                      <asp:TemplateField HeaderText="操作">
-    <ItemTemplate>
-    <asp:Button ID="btnAgree" runat="server" Text="同意" CssClass="btn btn-primary" CausesValidation="false" CommandName=""  OnClick="btnAgree_Click"/> 
-         <asp:Button ID="btnRefuse" runat="server" Text="拒绝" CssClass="btn btn-primary" CausesValidation="false" CommandName=""  OnClick="btnRefuse_Click" /> 
-    </ItemTemplate>
-</asp:TemplateField> 
-                    <asp:ButtonField ButtonType="Button" Text="同意"  />
                     <asp:CommandField ShowEditButton="True" EditText="同意" UpdateText="确认同意" ButtonType="Button" />
+                    <asp:CommandField ButtonType="Button" EditText="拒绝" ShowEditButton="True" UpdateText="确认拒绝" />
+                    <asp:TemplateField HeaderText="审批人" Visible="False">
+                        <EditItemTemplate>
+                            <asp:Label ID="LabelApproverID" runat="server" Text='<%# Eval("approverID") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="LabelapproverID" runat="server" Text='<%# Bind("approverID") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
 
 <RowStyle Height="50px"></RowStyle>

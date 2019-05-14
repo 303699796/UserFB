@@ -189,7 +189,19 @@ namespace UserFB.BLL
             return GetHistoryList("");
         }
 
-        #endregion  ExtensionMethod
-    }
+        ///<summary>
+        ///批量更新申请状态
+        /// </summary>
+        /// <param name="state">状态信息</param>
+        /// <param name="idList">要修改的申请消息</param>
+        /// <returns>如果更新成功，返回TRUE</returns>
+
+        public bool UpdateList(string state, string idList)
+        {
+            return dal.UpdateList(state,idList);
+        }
+
+            #endregion  ExtensionMethod
+        }
 }
 

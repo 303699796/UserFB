@@ -389,6 +389,20 @@ namespace UserFB.DAL
             }
             return DbHelperSQL.Query(strSql.ToString());
         }
+
+        ///<summary>
+        ///批量更新申请状态
+        /// </summary>
+        /// <param name="state">状态信息</param>
+        /// <param name="idList">要修改的申请消息</param>
+        /// <returns>如果更新成功，返回TRUE</returns>
+        
+        public bool UpdateList(string state,string idList)
+        {
+            string sql = string.Format("update [ApplyMessage] set [applyState]={0} where [ApplyID] in({1})",state,idList);
+            int rows = DbHelperSQL.ExecuteSql(sql);
+            return rows > 0 ? true : false;
+        }
         #endregion  ExtensionMethod
     }
 }

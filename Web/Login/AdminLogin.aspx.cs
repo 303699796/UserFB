@@ -28,23 +28,23 @@ namespace UserFB.Web.Login
             DataSet ds0 = adminManager.GetList(Str0);
             if (ds1.Tables[0].Rows.Count > 0)
             {
-                Session["adminName"] = txbUserName.Text.Trim();
-                Session["adminID"] = ds1.Tables[0].Rows[0]["adminID"].ToString();
+                Session["SadminName"] = txbUserName.Text.Trim();
+                Session["SadminID"] = ds1.Tables[0].Rows[0]["adminID"].ToString();
                 Response.Redirect("~/UserLogin.aspx");
                 return;
             }
 
             else if (ds2.Tables[0].Rows.Count > 0)
                 {
-                    Session["adminName"] = txbUserName.Text.Trim();
-                    Session["adminID"] = ds2.Tables[0].Rows[0]["adminID"].ToString();
+                    Session["GadminName"] = txbUserName.Text.Trim();
+                    Session["GadminID"] = ds2.Tables[0].Rows[0]["adminID"].ToString();
                     Response.Redirect("~/UserLogin.aspx");
                     return;
                 }
             else if (ds0.Tables[0].Rows.Count > 0)
             {
-                Session["adminName"] = txbUserName.Text.Trim();
-                Session["adminID"] = ds0.Tables[0].Rows[0]["adminID"].ToString();
+                Session["NadminName"] = txbUserName.Text.Trim();
+                Session["NadminID"] = ds0.Tables[0].Rows[0]["adminID"].ToString();
                 Response.Redirect("~/N_Admin/Apply_Permission.aspx"); 
                 return;
             }
