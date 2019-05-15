@@ -127,9 +127,9 @@
             </div>
 
              <div class="row">
-                 <asp:Button ID="Btn_Agree" runat="server" Text="同意申请" OnClick="Btn_Agree_Click" />
-                 <asp:Button ID="Btn_Refuse" runat="server" Text="拒绝申请" OnClick ="Btn_Refuse_Click" />
-                 <br />
+                 <asp:Button ID="Btn_Agree" runat="server" class="btn btn-info" Text="同意申请" OnClick="Btn_Agree_Click" />
+                 <asp:Button ID="Btn_Refuse" runat="server" class="btn btn-info" Text="拒绝申请" OnClick ="Btn_Refuse_Click" />
+                 <br />   <br />
                  </div>
 
             <asp:GridView ID="GridView1" runat="server"  AllowPaging="True" 
@@ -198,8 +198,8 @@
                     </asp:TemplateField>
                   
 
-                    <asp:CommandField ShowEditButton="True" EditText="同意" UpdateText="确认同意" ButtonType="Button" />
-                    <asp:CommandField ButtonType="Button" EditText="拒绝" ShowEditButton="True" UpdateText="确认拒绝" />
+                    <%--<asp:CommandField ShowEditButton="True" EditText="同意" UpdateText="确认同意" ButtonType="Button" />
+                    <asp:CommandField ButtonType="Button" EditText="拒绝" ShowEditButton="True" UpdateText="确认拒绝" />--%>
                     <asp:TemplateField HeaderText="审批人" Visible="False">
                         <EditItemTemplate>
                             <asp:Label ID="LabelApproverID" runat="server" Text='<%# Eval("approverID") %>'></asp:Label>
@@ -234,7 +234,7 @@
                     <asp:BoundField DataField="job" HeaderText="职位" />
                     <asp:BoundField DataField="permission" HeaderText="申请权限" />
                     <asp:BoundField DataField="applyTime" HeaderText="审核时间" />
-                    <asp:BoundField DataField="applyState" HeaderText="状态" />
+                    <asp:BoundField DataField="applyState" HeaderText="状态(1为同意，2为拒绝)" />
                 </Columns>
 
                 <RowStyle Height="50px" />

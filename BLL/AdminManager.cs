@@ -3,6 +3,8 @@ using System.Data;
 using System.Collections.Generic;
 using Maticsoft.Common;
 using UserFB.Model;
+using Maticsoft.DBUtility;
+
 namespace UserFB.BLL
 {
 	/// <summary>
@@ -167,18 +169,23 @@ namespace UserFB.BLL
 		{
 			return dal.GetListByPage( strWhere,  orderby,  startIndex,  endIndex);
 		}
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		//public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		//{
-			//return dal.GetList(PageSize,PageIndex,strWhere);
-		//}
+        /// <summary>
+        /// 分页获取数据列表
+        /// </summary>
+        //public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+        //{
+        //return dal.GetList(PageSize,PageIndex,strWhere);
+        //}
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
-
-		#endregion  ExtensionMethod
-	}
+        #endregion  BasicMethod
+        #region  ExtensionMethod
+        public bool UpdateAdminList(string state, string idList)
+        {
+            string sql = string.Format("update [Admin] set [permission] ={0} where [ApplyID] in({1})", state, idList);
+            int rows = DbHelperSQL.ExecuteSql(sql);
+            return rows > 0 ? true : false;
+        }
+        #endregion  ExtensionMethod
+    }
 }
 

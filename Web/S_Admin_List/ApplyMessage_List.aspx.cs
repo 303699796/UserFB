@@ -41,28 +41,28 @@ namespace UserFB.Web.S_Admin_List
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
            
-            ApplyMessage.ApplyID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            ApplyMessage.name = (GridView1.Rows[e.RowIndex].FindControl("LabelName") as Label).Text;
-            ApplyMessage.department = (GridView1.Rows[e.RowIndex].FindControl("LabelDepartment") as Label).Text;
-            ApplyMessage.job = (GridView1.Rows[e.RowIndex].FindControl("LabelJob") as Label).Text;
-            ApplyMessage.applyTime = DateTime.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelTime") as Label).Text);
-            ApplyMessage.applyState = "已同意";
-            ApplyMessage.permission= (GridView1.Rows[e.RowIndex].FindControl("LabelPermission") as Label).Text;
-            ApplyMessage.applicantID= Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApplicantID") as Label).Text);
-            ApplyMessage.approverID = Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApproverID") as Label).Text);
+            //ApplyMessage.ApplyID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            //ApplyMessage.name = (GridView1.Rows[e.RowIndex].FindControl("LabelName") as Label).Text;
+            //ApplyMessage.department = (GridView1.Rows[e.RowIndex].FindControl("LabelDepartment") as Label).Text;
+            //ApplyMessage.job = (GridView1.Rows[e.RowIndex].FindControl("LabelJob") as Label).Text;
+            //ApplyMessage.applyTime = DateTime.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelTime") as Label).Text);
+            //ApplyMessage.applyState = "已同意";
+            //ApplyMessage.permission= (GridView1.Rows[e.RowIndex].FindControl("LabelPermission") as Label).Text;
+            //ApplyMessage.applicantID= Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApplicantID") as Label).Text);
+            //ApplyMessage.approverID = Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApproverID") as Label).Text);
 
-            bool bo = apply.Update(ApplyMessage);
-            if (bo == true)
-            {
-              //  Response.Write("<script language=javascript>alert('修改成功！')</script>");
-                GridView1.EditIndex = -1;
-                NewBind();
-                HistoryBind();
-            }
-            else
-            {
-                Response.Write("<script language=javascript>alert('修改失败！请重试')");
-            }
+            //bool bo = apply.Update(ApplyMessage);
+            //if (bo == true)
+            //{
+            //  //  Response.Write("<script language=javascript>alert('修改成功！')</script>");
+            //    GridView1.EditIndex = -1;
+            //    NewBind();
+            //    HistoryBind();
+            //}
+            //else
+            //{
+            //    Response.Write("<script language=javascript>alert('修改失败！请重试')");
+            //}
 
             
         }
@@ -160,17 +160,14 @@ namespace UserFB.Web.S_Admin_List
 
         protected void Btn_Agree_Click(object sender, EventArgs e)
         {
-            string state = "已同意";
+            string state = "1";
             string idList = GetSelIDList();
             if(idList.Trim().Length==0)
             {
                 return;
-            }
-
-            Model.ApplyMessage ApplyMessage1 = new Model.ApplyMessage();
-            BLL.ApplyMessageManager apply1 = new BLL.ApplyMessageManager();
-
-            apply1.UpdateList(state, idList);
+            }          
+            new BLL.ApplyMessageManager().UpdateList(state,idList);
+            Response.Write("<script language=javascript>alert('已同意该申请！')</script>");
             NewBind();
             HistoryBind();
 
@@ -178,7 +175,16 @@ namespace UserFB.Web.S_Admin_List
 
         protected void Btn_Refuse_Click(object sender, EventArgs e)
         {
-
+            string state = "2";
+            string idList = GetSelIDList();
+            if (idList.Trim().Length == 0)
+            {
+                return;
+            }
+            new BLL.ApplyMessageManager().UpdateList(state, idList);
+            Response.Write("<script language=javascript>alert('已拒绝该申请！')</script>");
+            NewBind();
+            HistoryBind();
         }
     }
 }

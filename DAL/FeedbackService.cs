@@ -409,9 +409,33 @@ namespace UserFB.DAL
             }
             reader.Close();
             return feedbackList;
-
         }
-		#endregion  ExtensionMethod
-	}
+
+        ///<summary>
+        ///批量更新申请状态
+        /// </summary>
+        /// <param name="state">状态信息</param>
+        /// <param name="idList">要修改的申请消息</param>
+        /// <returns>如果更新成功，返回TRUE</returns>
+        public bool UpdateInvalid(string state, string idList)
+        {
+            string sql = string.Format("update [Feedback] set [isInvalid] ={0} where [feedbackID] in({1})",state,idList);
+            int rows = DbHelperSQL.ExecuteSql(sql);
+            return rows > 0 ? true : false;
+        }
+
+        public bool UpdateSolution(string solution, string name, string idList)
+        {
+            string sql = string.Format("update [Feedback] set [solutionState] ={0},[handler]={1} where [feedbackID] in({2})", solution, name,idList);
+            int rows = DbHelperSQL.ExecuteSql(sql);
+            return rows > 0 ? true : false;
+        }
+
+
+
+
+
+        #endregion  ExtensionMethod
+    }
 }
 

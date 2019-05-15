@@ -1,9 +1,7 @@
 #coding=utf-8
 import os
 import sys
-import sys
-sys.path.append("F:/weijie/UserFB/UserFB/packages/IronPython.2.7.9/lib;")
-import os
+sys.path.append("F:/weijie/UserFB/UserFB/packages/IronPython.2.7.9")
 
 
 import xlrd
@@ -51,7 +49,7 @@ def makeWordCloud(txt):
 
     mask = (x - 150) ** 2 + (y - 150) ** 2 > 150 ** 2
     mask = 255 * mask.astype(int)
-    backgroud_Image = plt.imread('C:/Users/Weijie/Desktop/beijing002.jpg')
+    backgroud_Image = plt.imread('C:/Users/Weijie/Desktop/beijing004.jpg')
     wc = WordCloud(background_color="white",
                     max_words=500,
                     #mask=mask,圆形
@@ -70,7 +68,9 @@ def makeWordCloud(txt):
 
    # new_report(test_report)
     # return file_new
-    
+def result():
+    return "Hello，World！"
+
 
 if __name__ == '__main__':
     test_report="C:/Users/Weijie/Desktop/ceshi1"#目录地址
@@ -79,3 +79,5 @@ if __name__ == '__main__':
     txt = ''
     #makeWordCloud(getExcelData('C:/Users/Weijie/Desktop/ceshi1/1小游戏归类3.14.xlsx', txt))
     makeWordCloud(getExcelData(path_test, txt))
+    
+ 

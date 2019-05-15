@@ -162,7 +162,8 @@
     <Content Include="N_Admin\Apply_Permission.aspx" />
     <Content Include="N_Admin\N_Index.aspx" />
     <Content Include="Pytest.aspx" />
-    <Content Include="Python\newfile_jieba1.py" />
+    <Content Include="Python\2.7test1.py" />
+    <Content Include="Python\test001.py" />
     <Content Include="Question\Add.aspx" />
     <Content Include="Question\List.aspx" />
     <Content Include="Question\Modify.aspx" />

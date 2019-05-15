@@ -23,7 +23,7 @@ namespace UserFB.Web.N_Admin
         {
            
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            Model.Admin admin1 = adminManager1.GetModel1(Session["adminID"].ToString());
+            Model.Admin admin1 = adminManager1.GetModel1(Session["NadminID"].ToString());
             txtID.Text = Convert.ToString(admin1.adminID);
             txtName.Text = admin1.adminName;
             txtDepartment.Text = admin1.department;

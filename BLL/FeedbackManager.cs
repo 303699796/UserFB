@@ -176,7 +176,25 @@ namespace UserFB.BLL
         {
             return dal.GetAllFeedback();
         }
-		#endregion  ExtensionMethod
-	}
+
+        ///<summary>
+        ///批量更新申请状态
+        /// </summary>
+        /// <param name="state">状态信息</param>
+        /// <param name="idList">要修改的申请消息</param>
+        /// <returns>如果更新成功，返回TRUE</returns>
+
+        public bool UpdateInvalid(string state,string idList)
+        {
+            return dal.UpdateInvalid(state,idList);
+        }
+
+        public bool UpdateSolution(string solution, string name, string idList)
+        {
+            return dal.UpdateSolution(solution,name,idList);
+        }
+
+        #endregion  ExtensionMethod
+    }
 }
 

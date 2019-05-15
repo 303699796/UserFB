@@ -176,11 +176,11 @@
             <br />
       
        
-       <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" AutoGenerateColumns="False">
+       <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="feedbackID" >
            <Columns>
                <asp:TemplateField HeaderText="选择">
                     <ItemTemplate>
-                       <asp:CheckBox ID="ModifyThis" runat="server"  />
+                       <asp:CheckBox ID="Modify" runat="server"  />
                     </ItemTemplate>
                 </asp:TemplateField>
                <asp:TemplateField HeaderText="反馈用户">
