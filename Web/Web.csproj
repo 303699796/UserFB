@@ -83,6 +83,9 @@
       <HintPath>..\Lib\LTP.Accounts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -137,19 +140,25 @@
     <Content Include="Category\List.aspx" />
     <Content Include="Category\Modify.aspx" />
     <Content Include="Category\Show.aspx" />
+    <Content Include="Chart_Analysis\Category_Analysis.aspx" />
     <Content Include="Chart_Analysis\Keywords.aspx" />
+    <Content Include="Chart_Analysis\User_Analysis.aspx" />
     <Content Include="Controls\checkright.ascx" />
     <Content Include="Controls\copyright.ascx" />
     <Content Include="Distribution\Add.aspx" />
     <Content Include="Distribution\List.aspx" />
     <Content Include="Distribution\Modify.aspx" />
     <Content Include="Distribution\Show.aspx" />
+    <Content Include="Echarts\echarts.min.js" />
+    <Content Include="Echarts\macarons.js" />
+    <Content Include="Echart_Test.aspx" />
     <Content Include="Feedback\Add.aspx" />
     <Content Include="Feedback\List.aspx" />
     <Content Include="Feedback\Modify.aspx" />
     <Content Include="Feedback\Show.aspx" />
     <Content Include="Global.asax" />
     <Content Include="G_Admin_List\G_Index.aspx" />
+    <Content Include="Images\beijing003.png" />
     <Content Include="Images\top1.gif" />
     <Content Include="Images\用户反馈处理系统2.PNG" />
     <Content Include="Images\用户反馈系统2.PNG" />
@@ -164,6 +173,7 @@
     <Content Include="Pytest.aspx" />
     <Content Include="Python\2.7test1.py" />
     <Content Include="Python\test001.py" />
+    <Content Include="Python\test_txt.py" />
     <Content Include="Question\Add.aspx" />
     <Content Include="Question\List.aspx" />
     <Content Include="Question\Modify.aspx" />
@@ -245,12 +255,26 @@
     <Compile Include="Category\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Chart_Analysis\Category_Analysis.aspx.cs">
+      <DependentUpon>Category_Analysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chart_Analysis\Category_Analysis.aspx.designer.cs">
+      <DependentUpon>Category_Analysis.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Chart_Analysis\Keywords.aspx.cs">
       <DependentUpon>Keywords.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Chart_Analysis\Keywords.aspx.designer.cs">
       <DependentUpon>Keywords.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chart_Analysis\User_Analysis.aspx.cs">
+      <DependentUpon>User_Analysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chart_Analysis\User_Analysis.aspx.designer.cs">
+      <DependentUpon>User_Analysis.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\CheckRight.ascx.cs">
       <DependentUpon>checkright.ascx</DependentUpon>
@@ -300,6 +324,13 @@
     </Compile>
     <Compile Include="Distribution\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Echart_Test.aspx.cs">
+      <DependentUpon>Echart_Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Echart_Test.aspx.designer.cs">
+      <DependentUpon>Echart_Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Feedback\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>

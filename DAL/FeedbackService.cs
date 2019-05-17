@@ -432,7 +432,50 @@ namespace UserFB.DAL
         }
 
 
+        public int GetRecordCountNum(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(distinct UserID ) FROM Feedback ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where UserID in");
+                strSql.Append("(select UserID FROM Users where " + strWhere +")");
+             //  strSql.Append("  inner join Users as U on F.UserID = U.UserID");
+               
+            }
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(obj);
+            }
+        }
 
+        //public int GetRecordCountTime(string strWhere,string strTime)
+        //{
+        //    StringBuilder strSql = new StringBuilder();
+        //    strSql.Append("select count(distinct UserID ) FROM Feedback ");
+        //    if (strWhere.Trim() != "")
+        //    {
+              
+        //        strSql.Append(" where UserID in");
+        //        strSql.Append("(select UserID FROM Users where " + strWhere + ") and "+ strTime);
+        //        //  strSql.Append("  inner join Users as U on F.UserID = U.UserID");
+
+        //    }
+        //    object obj = DbHelperSQL.GetSingle(strSql.ToString());
+        //    if (obj == null)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return Convert.ToInt32(obj);
+        //    }
+        //}
 
 
         #endregion  ExtensionMethod

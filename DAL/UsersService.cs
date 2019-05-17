@@ -175,28 +175,7 @@ namespace UserFB.DAL
 			}
 		}
 
-        public UserFB.Model.Users GetModel1(string  UserID)
-        {
-
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 UserID,userName,password,gender,birthDate from Users ");
-            strSql.Append(" where UserID=@UserID");
-            SqlParameter[] parameters = {
-                    new SqlParameter("@UserID", SqlDbType.Int,4)
-            };
-            parameters[0].Value = UserID;
-
-            UserFB.Model.Users model = new UserFB.Model.Users();
-            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                return DataRowToModel(ds.Tables[0].Rows[0]);
-            }
-            else
-            {
-                return null;
-            }
-        }
+       
 
 
 
@@ -317,7 +296,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -342,10 +321,52 @@ namespace UserFB.DAL
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
+        public UserFB.Model.Users GetModel1(string UserID)
+        {
 
-		#endregion  ExtensionMethod
-	}
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 UserID,userName,password,gender,birthDate from Users ");
+            strSql.Append(" where UserID=@UserID");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@UserID", SqlDbType.Int,4)
+            };
+            parameters[0].Value = UserID;
+
+            UserFB.Model.Users model = new UserFB.Model.Users();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        //public int GetRecordCountNum(string strWhere)
+        //{
+        //    StringBuilder strSql = new StringBuilder();
+        //    strSql.Append("select count(1) FROM Users ");
+        //    if (strWhere.Trim() != "")
+        //    {
+        //        strSql.Append(" where Users.UserID=Feedback.UserID and " + strWhere);
+        //    }
+        //    object obj = DbHelperSQL.GetSingle(strSql.ToString());
+        //    if (obj == null)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return Convert.ToInt32(obj);
+        //    }
+        //}
+
+
+        #endregion  ExtensionMethod
+    }
 }
 

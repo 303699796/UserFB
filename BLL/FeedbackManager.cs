@@ -194,6 +194,16 @@ namespace UserFB.BLL
             return dal.UpdateSolution(solution,name,idList);
         }
 
+        public int GetRecordCountNum(string strWhere)
+        {
+            return dal.GetRecordCountNum(strWhere);
+        }
+
+        //public int GetRecordCountTime(string strWhere, string strTime)
+        //{
+        //    return dal.GetRecordCountTime(strWhere, strTime);
+        //}
+
         #endregion  ExtensionMethod
     }
 }

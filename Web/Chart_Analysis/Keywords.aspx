@@ -13,6 +13,12 @@
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
        <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.min.js"></script>
     
+    <style type="text/css">
+        .auto-style1 {
+            margin-right: 0px;
+        }
+    </style>
+    
     </head>
 <body class="sidebar-fixed header-fixed">
     <form id="form1" runat="server" >
@@ -127,6 +133,11 @@
                 </div>
             </div>
 
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/beijing003.png" CssClass="auto-style1" Width="748px" />
             
        </div>
              </div>
