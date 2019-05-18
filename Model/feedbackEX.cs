@@ -10,5 +10,6 @@ namespace UserFB.Model
     {
         public Users Users { get; set; }
         public Category Category { get; set; }
+
     }
 }

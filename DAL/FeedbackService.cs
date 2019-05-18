@@ -412,6 +412,51 @@ namespace UserFB.DAL
         }
 
         ///<summary>
+        ///查看详情
+        /// </summary>
+        /// 
+
+        public feedbackEX GetDetails(int id)
+        {
+            feedbackEX Details = new feedbackEX();
+            StringBuilder strSql = new StringBuilder();
+            strSql.AppendLine("select F.feedbackID,U.UserID as UserID,U.userName as userName,");
+            strSql.AppendLine("F.feedbackTime,C.categoryID as categoryID,C.category as category,");
+            strSql.AppendLine("F.Info,F.contact,F.isInvalid,F.solutionState,F.handler,F.remark");
+            strSql.AppendLine("from Feedback as F");
+            strSql.AppendLine("inner join Users as U on F.UserID=U.UserID");
+            strSql.AppendLine("inner join Category as C on F.categoryID=C.categoryID");
+            strSql.AppendFormat(" where  F.[feedbackID]={0}",id);
+
+            SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
+            if (reader.Read())
+            {
+                feedbackEX feedback = new feedbackEX();
+                feedback.feedbackID = int.Parse(reader["feedbackID"].ToString());
+                feedback.Info = reader["Info"].ToString();
+                feedback.contact = reader["contact"].ToString();
+                feedback.isInvalid = reader["isInvalid"].ToString();
+                feedback.solutionState = reader["solutionState"].ToString();
+                feedback.handler = reader["handler"].ToString();
+                feedback.remark = reader["remark"].ToString();
+                feedback.feedbackTime = DateTime.Parse(reader["feedbackTime"].ToString());
+                feedback.UserID = int.Parse(reader["UserID"].ToString());
+
+                Users users = new Users();
+                users.UserID = int.Parse(reader["UserID"].ToString());
+                users.userName = reader["userName"].ToString();
+                feedback.Users = users;
+
+                feedback.categoryID = int.Parse(reader["categoryID"].ToString());
+                Category c = new Category();
+                c.categoryID = int.Parse(reader["categoryID"].ToString());
+                c.category = reader["category"].ToString();
+                feedback.Category = c;
+            }
+            return Details;
+        }
+
+        ///<summary>
         ///批量更新申请状态
         /// </summary>
         /// <param name="state">状态信息</param>
@@ -460,7 +505,7 @@ namespace UserFB.DAL
         //    strSql.Append("select count(distinct UserID ) FROM Feedback ");
         //    if (strWhere.Trim() != "")
         //    {
-              
+
         //        strSql.Append(" where UserID in");
         //        strSql.Append("(select UserID FROM Users where " + strWhere + ") and "+ strTime);
         //        //  strSql.Append("  inner join Users as U on F.UserID = U.UserID");
@@ -477,6 +522,49 @@ namespace UserFB.DAL
         //    }
         //}
 
+
+        public bool UpdateHandler(string strWhere,string str)
+        {
+            StringBuilder strSql = new StringBuilder();
+           
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append("Update Feedback set " + strWhere);
+                strSql.Append(" where " + str);
+
+            }
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true ;
+            }
+        }
+
+
+        public bool UpdateSolution(string strWhere, string str)
+        {
+            StringBuilder strSql = new StringBuilder();
+
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append("Update Feedback set " + strWhere);
+                strSql.Append(" where FeedbackID in");
+                strSql.Append("(select FeedbackID FROM Distribution where " + str + ")");
+            }
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         #endregion  ExtensionMethod
     }

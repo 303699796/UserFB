@@ -3,6 +3,9 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Maticsoft.DBUtility;//Please add references
+using System.Collections.Generic;
+using UserFB.Model;
+
 namespace UserFB.DAL
 {
 	/// <summary>
@@ -42,7 +45,7 @@ namespace UserFB.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(UserFB.Model.Distribution model)
+		public bool Add(UserFB.Model.Distribution model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Distribution(");
@@ -67,11 +70,11 @@ namespace UserFB.DAL
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
-				return 0;
+				return false;
 			}
 			else
 			{
-				return Convert.ToInt32(obj);
+				return true;
 			}
 		}
 		/// <summary>
@@ -309,7 +312,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -334,10 +337,72 @@ namespace UserFB.DAL
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
 
-		#endregion  ExtensionMethod
-	}
+        //public DistributionEX GetDistributionD(int id)
+        //{
+        //    DistributionEX distribution = new DistributionEX();
+        //    StringBuilder strSql = new StringBuilder();
+        //    strSql.AppendLine("select D.distributionID,D.feedbackID,D.description,D.distributionTime,D.state");
+        //   
+        //}
+
+        //public List<feedbackEX> GetAllFeedback()
+        //{
+        //    List<feedbackEX> feedbackList = new List<feedbackEX>();
+        //    StringBuilder strSql = new StringBuilder();
+        //    // strSql.Append(" feedbackID,UserID,feedbackTime,categoryID,Info,contact,isInvalid,solutionState,handler,remark ");
+        //    // strSql.Append(" FROM Feedback ");
+        //    strSql.AppendLine("select F.feedbackID,U.UserID as UserID,U.userName as userName,");
+        //    strSql.AppendLine("F.feedbackTime,C.categoryID as categoryID,C.category as category,");
+        //    strSql.AppendLine("F.Info,F.contact,F.isInvalid,F.solutionState,F.handler,F.remark");
+        //    strSql.AppendLine("from Feedback as F");
+        //    strSql.AppendLine("inner join Users as U on F.UserID=U.UserID");
+        //    strSql.AppendLine("inner join Category as C on F.categoryID=C.categoryID");
+        //    SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
+        //    while (reader.Read())
+        //    {
+        //        #region 封装反馈对象
+        //        feedbackEX feedback = new feedbackEX();
+        //        feedback.feedbackID = int.Parse(reader["feedbackID"].ToString());
+        //        feedback.Info = reader["Info"].ToString();
+        //        feedback.contact = reader["contact"].ToString();
+        //        feedback.isInvalid = reader["isInvalid"].ToString();
+        //        feedback.solutionState = reader["solutionState"].ToString();
+        //        feedback.handler = reader["handler"].ToString();
+        //        feedback.remark = reader["remark"].ToString();
+        //        feedback.feedbackTime = DateTime.Parse(reader["feedbackTime"].ToString());
+        //        feedback.UserID = int.Parse(reader["UserID"].ToString());
+
+        //        Users users = new Users();
+        //        users.UserID = int.Parse(reader["UserID"].ToString());
+        //        users.userName = reader["userName"].ToString();
+        //        feedback.Users = users;
+
+        //        feedback.categoryID = int.Parse(reader["categoryID"].ToString());
+        //        Category c = new Category();
+        //        c.categoryID = int.Parse(reader["categoryID"].ToString());
+        //        c.category = reader["category"].ToString();
+        //        feedback.Category = c;
+        //        #endregion
+
+        //        feedbackList.Add(feedback);
+        //    }
+        //    reader.Close();
+        //    return feedbackList;
+        //}
+
+        public bool UpdateList(string state, string idList)
+        {
+            string sql = string.Format("update [Distribution] set [state] ={0} where [distributionID] in({1})", state, idList);
+            int rows = DbHelperSQL.ExecuteSql(sql);
+            return rows > 0 ? true : false;
+        }
+
+
+
+        #endregion  ExtensionMethod
+    }
 }
 

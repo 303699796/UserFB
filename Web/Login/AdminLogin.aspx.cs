@@ -38,7 +38,7 @@ namespace UserFB.Web.Login
                 {
                     Session["GadminName"] = txbUserName.Text.Trim();
                     Session["GadminID"] = ds2.Tables[0].Rows[0]["adminID"].ToString();
-                    Response.Redirect("~/UserLogin.aspx");
+                    Response.Redirect("~/G_Admin_List/G_List.aspx");
                     return;
                 }
             else if (ds0.Tables[0].Rows.Count > 0)

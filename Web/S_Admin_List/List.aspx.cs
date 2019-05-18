@@ -28,6 +28,8 @@ namespace UserFB.Web.S_Admin_List
             {
                 Bind();
                 CategoryDataBind();
+                AdminDataBind();
+
             }
         }
         protected void Bind()
@@ -164,9 +166,190 @@ namespace UserFB.Web.S_Admin_List
             {
                 return;
             }
-            new BLL.FeedbackManager().UpdateSolution(solution, name,idList);
+            new BLL.FeedbackManager().UpdateSolution(solution, name, idList);
             Response.Write("<script language=javascript>alert('已标记为已处理！')</script>");
             Bind();
         }
+
+        protected void BntReply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Btn_Distribution_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            //    // int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+
+
+            //  //  int row4 = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+            //   // string sno = GridView1.Rows[row4].Cells[3].Text;
+
+
+
+
+            Model.Distribution distribution = new Model.Distribution();
+            BLL.DistributionManager manager = new DistributionManager();
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            int s = Convert.ToInt32(admin1.adminID);
+            //    //  = Convert.(admin1);
+
+            //    //  int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+            //    //  string a=GridView1.Rows[row].Cells[1].Text;
+            //    distribution.feedbackID = Convert.ToInt32(GridView1.DataKeys[0].Value);
+
+            //    //Button btn = sender as Button;
+            //    //GridViewRow row = btn.Parent.Parent as GridViewRow;
+            //    //string a = row.Cells[1].ToString();//获得第一个单元格的值   
+            //    //string b = Convert.ToString( this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
+
+
+
+            distribution.feedbackID = Convert.ToInt32(Labeltest.Text);
+            distribution.description = txtDistribution.Text.Trim();
+            distribution.adminID = Convert.ToInt32(DropDownList_Distribution.SelectedValue.ToString());
+            distribution.assignerID = s;
+            distribution.state = "待处理";
+            bool bo = manager.Add(distribution);
+            if (bo == true)
+            {
+                Response.Write("<script language=javascript>alert('分配成功！')</script>");
+               
+                UpdateFeedback(sender,e);
+                Bind();
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('分配失败！请重试')");
+            }
+
+
+           
+
+            //    //Model.Question question = new Model.Question();
+            //    //question.question = txtQuestion.Text.Trim();
+            //    //question.solution = txtSolution.Text.Trim();
+            //    //question.categoryID = Convert.ToInt32(DropDownList_Category.SelectedValue.ToString());
+
+            //    //BLL.QuestionManager questionManager = new BLL.QuestionManager();
+            //    //bool bo = questionManager.Add(question);
+            //    //if (bo == true)
+            //    //{
+            //    //    Response.Write("<script language=javascript>alert('添加成功！')</script>");
+            //    //    BindData();
+            //    //}
+            //    //else
+            //    //{
+            //    //    Response.Write("<script language=javascript>alert('添加失败！请重试')");
+            //    //}
+
+        }
+
+        protected void AdminDataBind()
+        {
+            Model.Admin admin = new Model.Admin();
+            BLL.AdminManager adminManager = new AdminManager();
+            DropDownList_Distribution.DataTextField = "adminName";
+            DropDownList_Distribution.DataValueField = "adminID";
+            DataSet ds = new AdminManager().GetAllList();
+            DataRow dr = ds.Tables[0].NewRow();
+            dr["adminID"] = 0;
+            dr["adminName"] = "---请选择---";
+            ds.Tables[0].Rows.InsertAt(dr, 0);
+            DropDownList_Distribution.DataSource = ds;
+            DropDownList_Distribution.DataBind();
+            //Model.Category category1 = new Model.Category();
+            //BLL.CategoryManager category2 = new BLL.CategoryManager();
+            //DropDownList_Category.DataTextField = "category";
+            //DropDownList_Category.DataValueField = "categoryID";
+            //DataSet ds = new CategoryManager().GetAllList();
+            //DataRow dr = ds.Tables[0].NewRow();
+            //dr["categoryID"] = 0;
+            //dr["category"] = "---请选择问题分类---";
+            //ds.Tables[0].Rows.InsertAt(dr, 0);
+            //DropDownList_Category.DataSource = ds;
+            //DropDownList_Category.DataBind();
+
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //if (e.CommandName == "getID")
+            //{
+            //    int RowIndex = Convert.ToInt32(e.CommandArgument);
+            //    DataKey keys = GridView1.DataKeys[RowIndex];      //行中的数据;
+            //    string perid = keys.Value.ToString();
+            //    Labeltest.Text = perid;
+
+            //}
+
+
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            GridViewRow row = btn.Parent.Parent as GridViewRow;
+            string a = row.Cells[0].ToString();//获得第一个单元格的值   
+            string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
+            Labeltest.Text = b;
+        }
+
+        protected void UpdateFeedback (object sender, EventArgs e)
+        {
+            Model.Distribution distribution = new Model.Distribution();
+            BLL.DistributionManager manager = new DistributionManager();
+
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());         
+            string handlers = DropDownList_Distribution.SelectedItem.Text;               
+
+
+            Model.Feedback feedback = new Model.Feedback();
+            BLL.FeedbackManager Fmanager = new FeedbackManager();
+
+            feedback.feedbackID =Convert.ToInt32( Labeltest.Text.Trim());
+            feedback.handler = handlers;
+            string Str1 = "handler='" + handlers + "'";
+            string Str2 = "feedbackID='" + Labeltest.Text.Trim() + "'";
+            bool bo2 = Fmanager.UpdateHandler(Str1,Str2);
+            if (bo2 == true)
+            {
+                Response.Write("<script language=javascript>alert('修改成功！')</script>");
+                Bind();
+            }
+            //Model.Category category = new Model.Category();
+            //category.categoryID = Convert.ToInt32(GridView1.DataKeys[0].Value);
+            //category.category = (GridView1.Rows[0].FindControl("txtCategory") as TextBox).Text;
+
+                //BLL.CategoryManager categoryManager = new BLL.CategoryManager();
+                //bool bo1 = categoryManager.Update(category);
+                //if (bo1 == true)
+                //{
+                //    Response.Write("<script language=javascript>alert('修改成功！')</script>");
+                //    GridView1.EditIndex = -1;
+                //    Bind();
+                //}
+                //else
+                //{
+                //    Response.Write("<script language=javascript>alert('修改失败！请重试')");
+                //}
+        }
+
     }
-}
+
+        //protected void Button2_Click(object sender, EventArgs e)
+        //{
+
+
+        //    int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
+        //    string sno = GridView1.Rows[row].Cells[2].Text;
+        //    string s = sno;
+        //    Response.Write("<script>alert('" + sno + "')</script>");
+        //}
+    }

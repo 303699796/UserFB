@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
        <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.min.js"></script>
-    
+   
+
     </head>
 <body class="sidebar-fixed header-fixed">
     <form id="form1" runat="server" >
@@ -142,8 +143,9 @@
 
                                        </div>
                               <div class="row">
-           <asp:Button ID="btn_Reply"   class="btn btn-rounded btn-info"  data-toggle="modal" data-target="#modal-1" style="width:80px" runat="server" Text="回复" />&nbsp;&nbsp;
-             <asp:Button ID="btn_Distribution"   class="btn btn-rounded btn-info"  data-toggle="modal" data-target="#modal-2"  style="width:80px" runat="server" Text="分配" />&nbsp;&nbsp;
+        
+             <button class="btn btn-rounded btn-info" type="button" data-toggle="modal" data-target="#modal-1" style="width:80px">回复</button>&nbsp;&nbsp;          
+             <button class="btn btn-rounded btn-info" type="button" data-toggle="modal" data-target="#modal-2" style="width:80px">分配</button>&nbsp;&nbsp;
               <asp:Button ID="btn_Dealwith"  class="btn btn-rounded btn-info"  runat="server" Text="标记为已处理"  OnClick="btn_Dealwith_Click"/>&nbsp;&nbsp;
               <asp:Button ID="btn_Invalid" class="btn btn-rounded btn-info"  runat="server" Text="标记为无效" OnClick="btn_Invalid_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -175,8 +177,9 @@
                        
             <br />
       
-       
-       <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="feedbackID" >
+            <asp:Label ID="Labeltest" runat="server" ></asp:Label>
+       <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
+           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="feedbackID" >
            <Columns>
                <asp:TemplateField HeaderText="选择">
                     <ItemTemplate>
@@ -205,10 +208,81 @@
                <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />
                <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
                <asp:BoundField DataField="handler" HeaderText="处理人" />
+               <asp:TemplateField ShowHeader="False">
+                   <ItemTemplate>
+                      
+                         <button  id="Btn_Dtr" class="btn btn-primary" type="button"  data-toggle="modal" data-target="#modal-2"  style="width:80px"  >分配</button>
+                   </ItemTemplate>
+               </asp:TemplateField>
+               <asp:TemplateField>
+                   <ItemTemplate>
+                       <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="分配1" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
+                   </ItemTemplate>
+               </asp:TemplateField>
            </Columns>
 
 <RowStyle Height="50px"></RowStyle>
              </asp:GridView>
+
+
+   <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">回复用户</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+               
+                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+                 
+            </div>
+
+            <div class="modal-footer" >
+                <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>   
+                <asp:Button ID="BntReply" type="button" runat="server"  class="btn btn-primary" OnClick="BntReply_Click"  Text="回复" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+              <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">问题分配</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                 <asp:Label ID="Label4" runat="server" Text="分配给："></asp:Label>
+                <asp:DropDownList ID="DropDownList_Distribution" runat="server"></asp:DropDownList>
+                <br /><br />
+                 <asp:Label ID="Label3" runat="server" Text="分配描述"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtDistribution" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+             
+            </div>
+
+            <div class="modal-footer" >
+                <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>   
+                <asp:Button ID="Btn_Distribution" type="button" runat="server"  class="btn btn-primary" OnClick="Btn_Distribution_Click"  Text="确认分配" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
        </div>
              </div>

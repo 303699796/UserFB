@@ -204,6 +204,20 @@ namespace UserFB.BLL
         //    return dal.GetRecordCountTime(strWhere, strTime);
         //}
 
+        public bool UpdateHandler(string strWhere, string str)
+        {
+            return dal.UpdateHandler(strWhere, str);
+        }
+
+        public feedbackEX GetDetails(int id)
+        {
+            return dal.GetDetails(id);
+        }
+
+        public bool UpdateSolution(string strWhere, string str)
+        {
+            return dal.UpdateSolution(strWhere, str);
+        }
         #endregion  ExtensionMethod
     }
 }

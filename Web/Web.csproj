@@ -158,6 +158,8 @@
     <Content Include="Feedback\Show.aspx" />
     <Content Include="Global.asax" />
     <Content Include="G_Admin_List\G_Index.aspx" />
+    <Content Include="G_Admin_List\G_List.aspx" />
+    <Content Include="G_Admin_List\G_List_Details.aspx" />
     <Content Include="Images\beijing003.png" />
     <Content Include="Images\top1.gif" />
     <Content Include="Images\用户反馈处理系统2.PNG" />
@@ -187,6 +189,7 @@
     <Content Include="Setting\Category_Setting.aspx" />
     <Content Include="Setting\Question_Setting.aspx" />
     <Content Include="S_Admin_List\ApplyMessage_List.aspx" />
+    <Content Include="S_Admin_List\Distribution.aspx" />
     <Content Include="S_Admin_List\List.aspx" />
     <Content Include="Users\Add.aspx" />
     <Content Include="Users\Fill_Feedback.aspx" />
@@ -370,6 +373,20 @@
     <Compile Include="G_Admin_List\G_Index.aspx.designer.cs">
       <DependentUpon>G_Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="G_Admin_List\G_List.aspx.cs">
+      <DependentUpon>G_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="G_Admin_List\G_List.aspx.designer.cs">
+      <DependentUpon>G_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="G_Admin_List\G_List_Details.aspx.cs">
+      <DependentUpon>G_List_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="G_Admin_List\G_List_Details.aspx.designer.cs">
+      <DependentUpon>G_List_Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -531,6 +548,13 @@
     </Compile>
     <Compile Include="S_Admin_List\ApplyMessage_List.aspx.designer.cs">
       <DependentUpon>ApplyMessage_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="S_Admin_List\Distribution.aspx.cs">
+      <DependentUpon>Distribution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="S_Admin_List\Distribution.aspx.designer.cs">
+      <DependentUpon>Distribution.aspx</DependentUpon>
     </Compile>
     <Compile Include="S_Admin_List\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
