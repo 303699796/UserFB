@@ -10,7 +10,7 @@
 namespace UserFB.Web.S_Admin_List {
     
     
-    public partial class ApplyMessage_List {
+    public partial class Reply_Message {
         
         /// <summary>
         /// form1 控件。
@@ -58,22 +58,13 @@ namespace UserFB.Web.S_Admin_List {
         protected global::System.Web.UI.WebControls.Label LabelUser;
         
         /// <summary>
-        /// Btn_Agree 控件。
+        /// Labeltest 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Agree;
-        
-        /// <summary>
-        /// Btn_Refuse 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Refuse;
+        protected global::System.Web.UI.WebControls.Label Labeltest;
         
         /// <summary>
         /// GridView1 控件。
@@ -85,12 +76,48 @@ namespace UserFB.Web.S_Admin_List {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// GridView2 控件。
+        /// LabelReceive 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.Label LabelReceive;
+        
+        /// <summary>
+        /// LabelName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelName;
+        
+        /// <summary>
+        /// LabelReply 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelReply;
+        
+        /// <summary>
+        /// txtReply 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReply;
+        
+        /// <summary>
+        /// BntReply 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BntReply;
     }
 }

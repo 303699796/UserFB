@@ -29,6 +29,7 @@ namespace UserFB.Web.S_Admin_List
                 Bind();
                 CategoryDataBind();
                 AdminDataBind();
+                ApplyNumber();
 
             }
         }
@@ -173,6 +174,32 @@ namespace UserFB.Web.S_Admin_List
 
         protected void BntReply_Click(object sender, EventArgs e)
         {
+            //Model.Distribution distribution = new Model.Distribution();
+            //BLL.DistributionManager manager = new DistributionManager();
+            Model.Reply reply = new Model.Reply();
+            BLL.ReplyManager replyManager = new ReplyManager();
+
+
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            int s = Convert.ToInt32(admin1.adminID);
+            reply.feedbackID = Convert.ToInt32(Labeltest.Text);
+            reply.text = txtReply.Text;
+            reply.replierID = s;
+            reply.receiverID = Convert.ToInt32(LabelName.Text.Trim());
+            bool bo = replyManager.Add(reply);
+            if (bo == true)
+            {
+
+                Response.Write("<script language=javascript>alert('回复成功！')</script>");
+
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('回复失败！请重试')");
+            }
+
+
 
         }
 
@@ -218,8 +245,8 @@ namespace UserFB.Web.S_Admin_List
             if (bo == true)
             {
                 Response.Write("<script language=javascript>alert('分配成功！')</script>");
-               
-                UpdateFeedback(sender,e);
+
+                UpdateFeedback(sender, e);
                 Bind();
             }
             else
@@ -228,24 +255,7 @@ namespace UserFB.Web.S_Admin_List
             }
 
 
-           
 
-            //    //Model.Question question = new Model.Question();
-            //    //question.question = txtQuestion.Text.Trim();
-            //    //question.solution = txtSolution.Text.Trim();
-            //    //question.categoryID = Convert.ToInt32(DropDownList_Category.SelectedValue.ToString());
-
-            //    //BLL.QuestionManager questionManager = new BLL.QuestionManager();
-            //    //bool bo = questionManager.Add(question);
-            //    //if (bo == true)
-            //    //{
-            //    //    Response.Write("<script language=javascript>alert('添加成功！')</script>");
-            //    //    BindData();
-            //    //}
-            //    //else
-            //    //{
-            //    //    Response.Write("<script language=javascript>alert('添加失败！请重试')");
-            //    //}
 
         }
 
@@ -262,17 +272,7 @@ namespace UserFB.Web.S_Admin_List
             ds.Tables[0].Rows.InsertAt(dr, 0);
             DropDownList_Distribution.DataSource = ds;
             DropDownList_Distribution.DataBind();
-            //Model.Category category1 = new Model.Category();
-            //BLL.CategoryManager category2 = new BLL.CategoryManager();
-            //DropDownList_Category.DataTextField = "category";
-            //DropDownList_Category.DataValueField = "categoryID";
-            //DataSet ds = new CategoryManager().GetAllList();
-            //DataRow dr = ds.Tables[0].NewRow();
-            //dr["categoryID"] = 0;
-            //dr["category"] = "---请选择问题分类---";
-            //ds.Tables[0].Rows.InsertAt(dr, 0);
-            //DropDownList_Category.DataSource = ds;
-            //DropDownList_Category.DataBind();
+
 
         }
 
@@ -296,52 +296,64 @@ namespace UserFB.Web.S_Admin_List
             Button btn = sender as Button;
             GridViewRow row = btn.Parent.Parent as GridViewRow;
             string a = row.Cells[0].ToString();//获得第一个单元格的值   
+
             string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
             Labeltest.Text = b;
+
+
+            Model.Feedback feedback = new Model.Feedback();
+            BLL.FeedbackManager Fmanager = new FeedbackManager();
+            string Str1 = "feedbackID='" + Labeltest.Text + "'";
+            string s = Fmanager.GetListID(Str1);
+            LabelName.Text = s;
+
         }
 
-        protected void UpdateFeedback (object sender, EventArgs e)
+        protected void UpdateFeedback(object sender, EventArgs e)
         {
             Model.Distribution distribution = new Model.Distribution();
             BLL.DistributionManager manager = new DistributionManager();
 
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());         
-            string handlers = DropDownList_Distribution.SelectedItem.Text;               
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            string handlers = DropDownList_Distribution.SelectedItem.Text;
 
 
             Model.Feedback feedback = new Model.Feedback();
             BLL.FeedbackManager Fmanager = new FeedbackManager();
 
-            feedback.feedbackID =Convert.ToInt32( Labeltest.Text.Trim());
+            feedback.feedbackID = Convert.ToInt32(Labeltest.Text.Trim());
             feedback.handler = handlers;
             string Str1 = "handler='" + handlers + "'";
             string Str2 = "feedbackID='" + Labeltest.Text.Trim() + "'";
-            bool bo2 = Fmanager.UpdateHandler(Str1,Str2);
+            bool bo2 = Fmanager.UpdateHandler(Str1, Str2);
             if (bo2 == true)
             {
                 Response.Write("<script language=javascript>alert('修改成功！')</script>");
                 Bind();
             }
-            //Model.Category category = new Model.Category();
-            //category.categoryID = Convert.ToInt32(GridView1.DataKeys[0].Value);
-            //category.category = (GridView1.Rows[0].FindControl("txtCategory") as TextBox).Text;
 
-                //BLL.CategoryManager categoryManager = new BLL.CategoryManager();
-                //bool bo1 = categoryManager.Update(category);
-                //if (bo1 == true)
-                //{
-                //    Response.Write("<script language=javascript>alert('修改成功！')</script>");
-                //    GridView1.EditIndex = -1;
-                //    Bind();
-                //}
-                //else
-                //{
-                //    Response.Write("<script language=javascript>alert('修改失败！请重试')");
-                //}
+        }
+        protected void ApplyNumber()
+        {
+
+            Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+            BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+            string str = "remark='" + "1" + "'";
+            int number = apply.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelApply.Visible = true;
+                LabelApply.Text = Convert.ToString(number);
+
+            }
+
         }
 
-    }
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
         //protected void Button2_Click(object sender, EventArgs e)
         //{
@@ -352,4 +364,7 @@ namespace UserFB.Web.S_Admin_List
         //    string s = sno;
         //    Response.Write("<script>alert('" + sno + "')</script>");
         //}
+
+
     }
+}

@@ -191,9 +191,11 @@
     <Content Include="S_Admin_List\ApplyMessage_List.aspx" />
     <Content Include="S_Admin_List\Distribution.aspx" />
     <Content Include="S_Admin_List\List.aspx" />
+    <Content Include="S_Admin_List\Reply_Message.aspx" />
     <Content Include="Users\Add.aspx" />
     <Content Include="Users\Fill_Feedback.aspx" />
     <Content Include="Users\List.aspx" />
+    <Content Include="Users\Message.aspx" />
     <Content Include="Users\Modify.aspx" />
     <Content Include="Users\Question.aspx" />
     <Content Include="Users\Show.aspx" />
@@ -451,6 +453,7 @@
       <DependentUpon>N_Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicClass.cs" />
     <Compile Include="Pytest.aspx.cs">
       <DependentUpon>Pytest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -563,6 +566,13 @@
     <Compile Include="S_Admin_List\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="S_Admin_List\Reply_Message.aspx.cs">
+      <DependentUpon>Reply_Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="S_Admin_List\Reply_Message.aspx.designer.cs">
+      <DependentUpon>Reply_Message.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -583,6 +593,13 @@
     </Compile>
     <Compile Include="Users\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Message.aspx.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Message.aspx.designer.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Modify.aspx.cs">
       <DependentUpon>Modify.aspx</DependentUpon>

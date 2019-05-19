@@ -18,7 +18,8 @@ namespace UserFB.Web.S_Admin_List
             {
                 NewBind();
                 HistoryBind();
-
+                ApplyNumber();
+                GetLoginName();
             }
         }
         protected void NewBind()
@@ -185,6 +186,46 @@ namespace UserFB.Web.S_Admin_List
             Response.Write("<script language=javascript>alert('已拒绝该申请！')</script>");
             NewBind();
             HistoryBind();
+        }
+
+        //protected void ButtonTest_Click(object sender, EventArgs e)
+        //{
+
+        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+        //    string str = "remark='" + "1" + "'";
+        //    int number= apply.GetRecordCount(str);
+        //    LabelApply.Text = Convert.ToString(number);
+
+        //}
+
+        //protected void ApplyNumber()
+        //{
+           
+        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+        //    string str = "remark='" + "1" + "'";
+        //    int number = apply.GetRecordCount(str);
+        //    if(number>0)
+        //    {
+        //        LabelApply.Visible = true;
+        //        LabelApply.Text = Convert.ToString(number);
+
+        //    }
+            
+       // }
+
+        protected void ApplyNumber()
+        {
+            LabelApply.Text = "0";
+            LabelApply.Visible = false;
+        }
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+         
+            LabelUser.Text = admin1.adminName;
         }
     }
 }

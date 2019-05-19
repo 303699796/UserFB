@@ -218,6 +218,14 @@ namespace UserFB.BLL
         {
             return dal.UpdateSolution(strWhere, str);
         }
+
+
+        public string GetListID(string strWhere)
+        {
+            return dal.GetListID(strWhere);
+        }
+            
+
         #endregion  ExtensionMethod
     }
 }

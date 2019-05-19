@@ -113,6 +113,7 @@
     <Compile Include="Question.cs" />
     <Compile Include="QuestionEX.cs" />
     <Compile Include="Reply.cs" />
+    <Compile Include="ReplyEX.cs" />
     <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>

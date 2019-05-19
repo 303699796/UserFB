@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ApplyMessage_List.aspx.cs" Inherits="UserFB.Web.S_Admin_List.ApplyMessage_List" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Reply_Message.aspx.cs" Inherits="UserFB.Web.S_Admin_List.Reply_Message" %>
 
 <!DOCTYPE html>
 
@@ -172,7 +172,8 @@
                     <div class="card">
                     
                         <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>权限申请消息</h5>
+                         <h5>我的回复消息</h5>
+                            <asp:Label ID="Labeltest" runat="server" Text="Label"></asp:Label>
                      
                         </div>
                             
@@ -180,121 +181,124 @@
                 </div>
             </div>
 
-             <div class="row">
-                 <asp:Button ID="Btn_Agree" runat="server" class="btn btn-info" Text="同意申请" OnClick="Btn_Agree_Click" />
-                 <asp:Button ID="Btn_Refuse" runat="server" class="btn btn-info" Text="拒绝申请" OnClick ="Btn_Refuse_Click" />
-                 <br />   <br />
-                 </div>
+            
 
-            <asp:GridView ID="GridView1" runat="server"  AllowPaging="True" 
-            class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" OnPageIndexChanging ="GridView1_PageIndexChanging"
-              OnRowDataBound="GridView1_RowCreated" OnRowEditing="GridView1_RowEditing" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" 
-                    AutoGenerateColumns="False"  RowStyle-HorizontalAlign="Center" OnRowCreated="GridView1_RowCreated" DataKeyNames="ApplyID" >
 
-                <Columns>
-                  
+            <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                
+                            </div>
 
-                      <asp:TemplateField HeaderText="选择">
-                         
-                          <ItemTemplate>
-                              <asp:CheckBox ID="ModifyThis" runat="server" />
-                          </ItemTemplate>
-                      </asp:TemplateField>
-                  
-
-                      <asp:TemplateField HeaderText="申请人ID" Visible="False">
-                          <EditItemTemplate>
-                              <asp:Label ID="LabelApplicantID" runat="server" Text='<%# Eval("applicantID") %>'></asp:Label>
-                          </EditItemTemplate>
-    <ItemTemplate>
-        <asp:Label ID="LabelID" runat="server" Text='<%# Bind("applicantID") %>'></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField> 
-                    <asp:TemplateField HeaderText="申请人">
-                        <EditItemTemplate>
-                            <asp:Label ID="LabelName" runat="server" Text='<%# Eval("name") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Labelname" runat="server" Text='<%# Bind("name") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="部门">
-                        <EditItemTemplate>
-                            <asp:Label ID="LabelDepartment" runat="server" Text='<%# Eval("department") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Labeldepartment" runat="server" Text='<%# Bind("department") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="职位">
-                        <EditItemTemplate>
-                            <asp:Label ID="LabelJob" runat="server" Text='<%# Eval("job") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Labeljob" runat="server" Text='<%# Bind("job") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="申请权限">
-                        <EditItemTemplate>
-                            <asp:Label ID="LabelPermission" runat="server" Text='<%# Eval("permission") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Labelpermission" runat="server" Text='<%# Bind("permission") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="申请时间">
-                        <EditItemTemplate>
-                            <asp:Label ID="LabelTime" runat="server" Text='<%# Eval("applyTime") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Labeltime" runat="server" Text='<%# Bind("applyTime") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                  
-
-                    <%--<asp:CommandField ShowEditButton="True" EditText="同意" UpdateText="确认同意" ButtonType="Button" />
-                    <asp:CommandField ButtonType="Button" EditText="拒绝" ShowEditButton="True" UpdateText="确认拒绝" />--%>
-                    <asp:TemplateField HeaderText="审批人" Visible="False">
-                        <EditItemTemplate>
-                            <asp:Label ID="LabelApproverID" runat="server" Text='<%# Eval("approverID") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="LabelapproverID" runat="server" Text='<%# Bind("approverID") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
+                            <div class="card-body">
+                              
+                                    <asp:GridView ID="GridView1" class="tab-content" style="width: 100%;text-align:left;word-break :break-all;word-wrap:break-word "
+           RowStyle-Height="50px" runat="server" AutoGenerateColumns="False" DataKeyNames="replyID" BorderWidth="0px" GridLines="Horizontal" ShowHeader="False">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="回复时间">
+                                                <EditItemTemplate>
+                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("time") %>'></asp:Label>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("time") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="ID">
+                                                <EditItemTemplate>
+                                                    <asp:Label ID="Label1" runat="server" Text="ID为"></asp:Label>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label7" runat="server" Text="ID为"></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="回复用户">
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("replierID") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("replierID") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="用户">
+                                                <EditItemTemplate>
+                                                    <asp:Label ID="Label8" runat="server" Text="的用户"></asp:Label>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label6" runat="server" Text="的用户"></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="回复">
+                                                <EditItemTemplate>
+                                                    <asp:Label ID="Label2" runat="server" Text="回复了你："></asp:Label>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label1" runat="server" Text="回复了你："></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="回复内容">
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("text") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("text") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <ItemStyle Font-Bold="True" />
+                                            </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="原反馈内容">
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Feedback.Info") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("Feedback.Info") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField ShowHeader="False">
+                   <ItemTemplate>
+                      
+                         <button  id="Btn_Dtr" class="btn btn-primary" type="button"  data-toggle="modal" data-target="#modal-1"  style="width:80px"  >回复</button>
+                   
+                   <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="回复1" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
+                   </ItemTemplate>
+                                              
+               </asp:TemplateField>
+              
+                                        </Columns>
 
 <RowStyle Height="50px"></RowStyle>
+                                    </asp:GridView> 
 
-            </asp:GridView>
-            <br />
-             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>历史申请消息</h5>
-                           
-                        </div>
-                            
-                     </div>
-                </div>
+
+    <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">回复用户</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <asp:Label ID="LabelReceive" runat="server" Text="回复给："></asp:Label>
+                <asp:Label ID="LabelName" runat="server" ></asp:Label>
+                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+                 
+            </div>
+
+            <div class="modal-footer" >
+                <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>   
+                <asp:Button ID="BntReply" type="button" runat="server"  class="btn btn-primary" OnClick="BntReply_Click"  Text="回复" />
+            </div>
+        </div>
     </div>
+</div>
 
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "  RowStyle-Height="50px" >
-                <Columns>
-                    <asp:BoundField DataField="name" HeaderText="申请人" />
-                    <asp:BoundField DataField="department" HeaderText="部门" />
-                    <asp:BoundField DataField="job" HeaderText="职位" />
-                    <asp:BoundField DataField="permission" HeaderText="申请权限" />
-                    <asp:BoundField DataField="applyTime" HeaderText="审核时间" />
-                    <asp:BoundField DataField="applyState" HeaderText="状态(1为同意，2为拒绝)" />
-                </Columns>
-
-                <RowStyle Height="50px" />
-
-            </asp:GridView>
-
+                                   
+                              
+                                <hr/>
+          
                  </div>
             </div>
 

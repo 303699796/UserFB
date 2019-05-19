@@ -3,6 +3,9 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Maticsoft.DBUtility;//Please add references
+using System.Collections.Generic;
+using UserFB.Model;
+
 namespace UserFB.DAL
 {
 	/// <summary>
@@ -42,7 +45,7 @@ namespace UserFB.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(UserFB.Model.Reply model)
+		public bool Add(UserFB.Model.Reply model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Reply(");
@@ -67,11 +70,11 @@ namespace UserFB.DAL
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
-				return 0;
+				return  false;
 			}
 			else
 			{
-				return Convert.ToInt32(obj);
+				return true;
 			}
 		}
 		/// <summary>
@@ -309,7 +312,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -334,10 +337,198 @@ namespace UserFB.DAL
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
 
-		#endregion  ExtensionMethod
-	}
+
+        public List<ReplyEX> GetFBList(string str)
+        {
+            List<ReplyEX> replyIces = new List<ReplyEX>();
+            StringBuilder strSql = new StringBuilder();
+            strSql.AppendLine("select R.replyID,F.feedbackID as feedbackID,F.Info as Info,");
+            strSql.AppendLine("R.replierID,R.receiverID,R.text,R.time,R.remark");
+
+           // strSql.AppendLine("U.UserID as UserID,U.userName as userName");
+
+            strSql.AppendLine("from Reply as R");
+
+         //   strSql.AppendLine("inner join Users as U on R.replierID=U.UserID");
+
+            strSql.AppendLine("inner join Feedback as F on R.feedbackID=F.feedbackID");
+            if (str.Trim() != "")
+            {
+                strSql.Append(" where " + str);
+            }
+            SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
+            while (reader.Read())
+            {
+                
+                ReplyEX reply = new ReplyEX();
+                reply.replyID = int.Parse(reader["replyID"].ToString());
+                reply.replierID=int.Parse(reader["replierID"].ToString());
+              
+
+                //Users users = new Users();
+                //users.UserID = int.Parse(reader["UserID"].ToString());
+                //users.userName = reader["userName"].ToString();
+                //reply.Users = users;
+
+                reply.receiverID= int.Parse(reader["receiverID"].ToString());
+                reply.text= reader["text"].ToString();
+                reply.remark = reader["remark"].ToString();
+                reply.time=DateTime.Parse(reader["time"].ToString());
+
+                reply.feedbackID= int.Parse(reader["feedbackID"].ToString());
+                Feedback feedback = new Feedback();
+                feedback.feedbackID= int.Parse(reader["feedbackID"].ToString());
+                feedback.Info = reader["Info"].ToString();
+                reply.Feedback = feedback;
+
+                replyIces.Add(reply);
+            }
+            reader.Close();
+            return replyIces;
+        }
+
+        //public List<ReplyEX> GetFBList_Admin(string str)
+        //{
+        //    List<ReplyEX> replies = new List<ReplyEX>();
+        //    StringBuilder strSql = new StringBuilder();
+        //    strSql.AppendLine("select R.replyID,F.feedbackID as feedbackID,F.Info as Info,");
+        //    strSql.AppendLine("U.UserID as UserID,U.userName as userName,");
+
+        //    strSql.AppendLine("R.receiverID,R.text,R.time,R.remark");
+        //    strSql.AppendLine("from Reply as R");
+
+        //    strSql.AppendLine(" inner join Feedback as F on R.feedbackID=F.feedbackID");
+        //    strSql.AppendLine(" inner join Users as U on R.replierID=U.UserID");
+
+
+        //    SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
+        //    while (reader.Read())
+        //    {
+
+        //        ReplyEX reply = new ReplyEX();
+        //        reply.replyID = int.Parse(reader["replyID"].ToString());
+
+        //        reply.replierID = int.Parse(reader["replierID"].ToString());
+        //        Users users = new Users();
+        //        users.UserID= int.Parse(reader["UserID"].ToString());
+        //        users.userName = reader["userName"].ToString();
+        //        reply.Users = users;
+
+        //        reply.receiverID = int.Parse(reader["receiverID"].ToString());             
+        //        reply.text = reader["text"].ToString();
+        //        reply.remark = reader["remark"].ToString();
+        //        reply.time = DateTime.Parse(reader["time"].ToString());
+
+        //        reply.feedbackID = int.Parse(reader["feedbackID"].ToString());
+        //        Feedback feedback = new Feedback();
+        //        feedback.feedbackID = int.Parse(reader["feedbackID"].ToString());
+        //        feedback.Info = reader["Info"].ToString();
+        //        reply.Feedback = feedback;
+        //        replies.Add(reply);
+
+
+        //    }
+        //    reader.Close();
+        //    return replies;
+        //}
+
+        //public List<feedbackEX> GetAllFeedback()
+        //{
+        //    List<feedbackEX> feedbackList = new List<feedbackEX>();
+        //    StringBuilder strSql = new StringBuilder();
+        //    // strSql.Append(" feedbackID,UserID,feedbackTime,categoryID,Info,contact,isInvalid,solutionState,handler,remark ");
+        //    // strSql.Append(" FROM Feedback ");
+        //    strSql.AppendLine("select F.feedbackID,U.UserID as UserID,U.userName as userName,");
+        //    strSql.AppendLine("F.feedbackTime,C.categoryID as categoryID,C.category as category,");
+        //    strSql.AppendLine("F.Info,F.contact,F.isInvalid,F.solutionState,F.handler,F.remark");
+        //    strSql.AppendLine("from Feedback as F");
+        //    strSql.AppendLine("inner join Users as U on F.UserID=U.UserID");
+        //    strSql.AppendLine("inner join Category as C on F.categoryID=C.categoryID");
+        //    SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
+        //    while (reader.Read())
+        //    {
+        //        #region 封装反馈对象
+        //        feedbackEX feedback = new feedbackEX();
+        //        feedback.feedbackID = int.Parse(reader["feedbackID"].ToString());
+        //        feedback.Info = reader["Info"].ToString();
+        //        feedback.contact = reader["contact"].ToString();
+        //        feedback.isInvalid = reader["isInvalid"].ToString();
+        //        feedback.solutionState = reader["solutionState"].ToString();
+        //        feedback.handler = reader["handler"].ToString();
+        //        feedback.remark = reader["remark"].ToString();
+        //        feedback.feedbackTime = DateTime.Parse(reader["feedbackTime"].ToString());
+        //        feedback.UserID = int.Parse(reader["UserID"].ToString());
+
+        //        Users users = new Users();
+        //        users.UserID = int.Parse(reader["UserID"].ToString());
+        //        users.userName = reader["userName"].ToString();
+        //        feedback.Users = users;
+
+        //        feedback.categoryID = int.Parse(reader["categoryID"].ToString());
+        //        Category c = new Category();
+        //        c.categoryID = int.Parse(reader["categoryID"].ToString());
+        //        c.category = reader["category"].ToString();
+        //        feedback.Category = c;
+        //        #endregion
+
+        //        feedbackList.Add(feedback);
+        //    }
+        //    reader.Close();
+        //    return feedbackList;
+        //}
+
+
+        public string GetUserID(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select replierID ");
+            strSql.Append(" FROM Reply ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return "0";
+            }
+            else
+            {
+                return Convert.ToString(obj);
+            }
+
+
+        }
+
+
+        public string GetFBID(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select feedbackID ");
+            strSql.Append(" FROM Reply ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return "0";
+            }
+            else
+            {
+                return Convert.ToString(obj);
+            }
+
+
+        }
+
+
+
+        #endregion  ExtensionMethod
+    }
 }
 

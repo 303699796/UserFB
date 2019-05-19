@@ -52,12 +52,14 @@ namespace UserFB.Web.N_Admin
             applyMessage.department = txtDepartment.Text.Trim();
             applyMessage.job = txtJob.Text.Trim();
             applyMessage.permission = RadioButtonList_Choose.SelectedValue;
+            applyMessage.remark = "1";
 
             BLL.ApplyMessageManager applyMessageManager = new BLL.ApplyMessageManager();
             bool bo = applyMessageManager.Add(applyMessage);
             if (bo == true)
             {
                 Response.Write("<script language=javascript>alert('申请成功！请耐心等待管理员同意')</script>");
+               
             }
             else
             {

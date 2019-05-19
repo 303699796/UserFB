@@ -566,6 +566,29 @@ namespace UserFB.DAL
             }
         }
 
+
+        public string  GetListID(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select UserID ");
+            strSql.Append(" FROM Feedback ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return "0";
+            }
+            else
+            {
+                return Convert.ToString(obj); 
+            }
+
+
+        }
+
         #endregion  ExtensionMethod
     }
 }
