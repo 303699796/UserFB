@@ -183,6 +183,17 @@ namespace UserFB.BLL
         //{
         //    return dal.GetRecordCountNum(strWhere);
         //}
+
+
+        //public int GetAgeCount(string strWhere)
+        //{
+        //    return dal.GetAgeCount(strWhere);
+        //}
+
+        public int GetAge(int strWhere1, int strWhere2)
+        {
+            return dal.GetAge(strWhere1, strWhere2);
+        }
         #endregion  ExtensionMethod
     }
 }

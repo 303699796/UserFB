@@ -365,6 +365,64 @@ namespace UserFB.DAL
         //    }
         //}
 
+        /// <summary>
+        /// 获取年龄记录总数
+        /// </summary>
+    //    public int GetAgeCount(string strWhere)
+    //    {
+    //    StringBuilder strSql = new StringBuilder();
+    //    strSql.Append("select a.age,count(*) from (select year(getdate()) - year(rq) as "age" from tab1) a group by a.age; ");
+
+
+    //        if (strWhere.Trim() != "")
+    //        {
+    //            strSql.Append(" where " + strWhere);
+    //        }
+    //object obj = DbHelperSQL.GetSingle(strSql.ToString());
+    //        if (obj == null)
+    //        {
+    //            return 0;
+    //        }
+    //        else
+    //        {
+    //            return Convert.ToInt32(obj);
+    //        }
+     
+    //    }
+
+        public int GetAge(int strWhere1, int strWhere2)
+        {
+            StringBuilder strSql = new StringBuilder();
+          //  strSql.Append("select count(1) FROM Users WHERE datediff(year,birthDate,getdate()) BETWEEN 0 and 20");
+         //   strSql.Append("select count(1) FROM Users WHERE Users.UserID = Feedback.UserID and datediff(year,birthDate,getdate()) BETWEEN 0 and 20");
+            strSql.Append("select count(1) FROM Users ");
+            // strSql.Append(" BETWEEN 0 and 20 ");
+         //   strSql.AppendLine(" left join Feedback on Users.UserID=Feedback.UserID");
+            //   strSql.AppendFormat(" and Users.UserID = Feedback.UserID"); 
+            //  strSql.Append("select count(1) FROM Users where select datediff(year,birthDate,getdate()) BETWEEN 0 and 20 ");
+           // strSql.Append(" WHERE Feedback.UserID = Users.UserID and datediff(year,birthDate,getdate()) BETWEEN 0 and 20");
+            strSql.Append(" WHERE UserID in (select UserID from Feedback)");
+            strSql.Append("  and datediff(year,birthDate,getdate()) ");
+            strSql.AppendFormat("  between {0} and {1}", strWhere1, strWhere2);
+          //  strSql.Append("  between 2 and 20");
+
+
+
+            //if (strWhere.Trim() != "")
+            //{
+            //    strSql.Append(" where " + strWhere);
+            //}
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(obj);
+            }
+        }
+
 
         #endregion  ExtensionMethod
     }

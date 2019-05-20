@@ -159,7 +159,8 @@
 
          
       
-  
+                      
+   
              
               <div id="main" style="width:100%;height:400px;"></div>
     <script type="text/javascript">
@@ -232,7 +233,7 @@
                     //},
                     series: [{
                         // 根据名字对应到相应的系列
-                        name: names,
+                       name: ' ',
                         data: nums
 
                     }]
@@ -248,6 +249,96 @@
         }
         })
     </script>
+
+
+  <div id="main1" style="width:100%;height:400px;"></div>
+    <script type="text/javascript">
+    var mychart1 = echarts.init(document.getElementById('main1'), 'macarons');
+    mychart1.setOption({
+        title: {
+            text: '反馈用户年龄段人数分布',
+            x:'center'
+           
+            
+        },
+        tooltip: {},
+       legend: {
+        orient: 'vertical',
+        left: 'left',
+       // data: ['男','女']
+    },
+        xAxis: {
+            data: []
+        },
+        yAxis: {},
+        series: [{
+            name: '人数',
+           //type: 'pie',
+           //radius: 100,
+             type: 'bar',//直方图
+            data: []
+            // itemStyle: {
+            //    emphasis: {
+            //       shadowBlur: 10,
+            //       shadowOffsetX: 0,
+            //       shadowColor: 'rgba(0, 0, 0, 0.5)'
+            //    }
+            //}
+        }]
+    });
+    mychart1.showLoading();
+    var names1 =[];    //类别数组（实际用来盛放X轴坐标值）
+    var nums1 = [];    //销量数组（实际用来盛放Y坐标值）
+ 
+    $.ajax({
+        type: "post",
+        async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+        url: "User_Analysis.aspx?method1=getdata1",
+        //url:"Handler.ashx?method=getdata",
+        data: {},
+        dataType: "json",        //返回数据形式为json
+        success: function (result1) {
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            if (result1) {
+
+              // var json = $.parseJSON(result);
+
+             //  alert(result);
+              
+               for (var i = 0; i < result1.length; i++) {
+
+                  // alert(result[i].name);
+
+                   names1.push(result1[i].names1);    //挨个取出类别并填入类别数组
+                  
+                }
+                for (var i = 0; i < result1.length; i++) {
+                   nums1.push(result1[i].nums1);    //挨个取出销量并填入销量数组
+                }
+                mychart1.hideLoading();    //隐藏加载动画
+                mychart1.setOption({        //加载数据图表
+                    xAxis: {
+                       data: names1
+                    },
+                    series: [{
+                        // 根据名字对应到相应的系列
+                        name:  '人数',
+                        data: nums1
+
+                    }]
+                });
+ 
+            }
+ 
+        },
+        error: function (errorMsg) {
+            //请求失败时执行该函数
+            alert("图表请求数据失败!");
+            myChart1.hideLoading();
+        }
+        })
+    </script>
+
 
                 </div>
            </div>  

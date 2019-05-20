@@ -217,7 +217,7 @@
                 </div>
 
                     </div>
-      
+     <div class="card">
    <div id="main" style="width:100%;height:400px;"></div>
     <script type="text/javascript">
     var mychart = echarts.init(document.getElementById('main'), 'macarons');
@@ -290,10 +290,10 @@
         }
         })
     </script>
-
+</div>
 <div>
-     <div class="col-md-6">
-                    <div class="card">
+     <%--<div class="col-md-6">--%>
+                    <div class="card" style="text-align:center">
                         <div class="card-header bg-light">
                             反馈数量明细
                         </div>
@@ -384,7 +384,7 @@
                 </div>
            </div>  
 
-</div>
+
 
    </form>  
 
