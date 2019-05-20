@@ -291,7 +291,95 @@
         })
     </script>
 
+<div>
+     <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            反馈数量明细
+                        </div>
 
+                        <div class="card-body">
+                            <div class="table-responsive" >
+                                <table class="table table-striped" >
+                                    <thead>
+                                    <tr>
+                                        <th>日期</th>
+                                        <th>反馈数量</th>
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="LabelDay1" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelNum1" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <asp:Label ID="LabelDay2" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <asp:Label ID="LabelNum2" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                               <asp:Label ID="LabelDay3" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <asp:Label ID="LabelNum3" runat="server"></asp:Label>
+                                        </td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <asp:Label ID="LabelDay4" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <asp:Label ID="LabelNum4" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <asp:Label ID="LabelDay5" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <asp:Label ID="LabelNum5" runat="server"></asp:Label>
+
+                                        </td>
+                                        
+                                    </tr>
+                                          <tr>
+                                        <td>
+                                             <asp:Label ID="LabelDay6" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <asp:Label ID="LabelNum6" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                    </tr>
+                                          <tr>
+                                        <td>
+                                             <asp:Label ID="LabelDay7" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            <asp:Label ID="LabelNum7" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
 
                 </div>
            </div>  
