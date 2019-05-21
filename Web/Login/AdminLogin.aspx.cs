@@ -30,7 +30,7 @@ namespace UserFB.Web.Login
             {
                 Session["SadminName"] = txbUserName.Text.Trim();
                 Session["SadminID"] = ds1.Tables[0].Rows[0]["adminID"].ToString();
-                Response.Redirect("~/S_Admin_List/Reply_Message.aspx"); 
+                Response.Redirect("~/S_Admin_List/List.aspx"); 
                 return;
             }
 

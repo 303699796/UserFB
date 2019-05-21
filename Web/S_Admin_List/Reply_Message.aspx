@@ -32,8 +32,7 @@
                 <i class="fa fa-bars"></i>
             </a>   
             
-
-             <ul class="navbar-nav ml-auto">
+     <ul class="navbar-nav ml-auto">
             <li class="nav-item d-md-down-none">
                 <a href="#">
                     <i class="fa fa-bell"></i>

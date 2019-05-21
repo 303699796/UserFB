@@ -30,13 +30,20 @@ namespace UserFB.Web.S_Admin_List
                 CategoryDataBind();
                 AdminDataBind();
                 ApplyNumber();
-
+                GetLoginName();
             }
         }
         protected void Bind()
         {
             GridView1.DataSource = feedbackManager.GetAllFeedback();
             GridView1.DataBind();
+        }
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
         }
 
         private void CategoryDataBind()

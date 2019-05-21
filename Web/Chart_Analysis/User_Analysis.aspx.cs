@@ -40,6 +40,9 @@ namespace UserFB.Web.Chart_Analysis
             {
 
                 GetAge1();
+                GetPro();
+                GetAgeTable();
+                GetAgeTable();
             }
         }
 
@@ -50,10 +53,11 @@ namespace UserFB.Web.Chart_Analysis
 
             int numG = GetGSexDataALL();
             int numB= GetBSexDataALL();
+            
             string sexG = "女";
             string sexB = "男";
             var obj = new { names = sexG, nums = numG };
-            var obj1 = new { names = sexB, nums = numB };
+            var obj1 = new { names = sexB, nums =numB };
            
             lists.Add(obj);
             lists.Add(obj1);
@@ -64,6 +68,23 @@ namespace UserFB.Web.Chart_Analysis
             // Response.Write(JSONObj);
             //  一定要加，不然前端接收失败
             Response.End();
+        }
+        protected void GetPro()
+        {
+            int numG = GetGSexDataALL();
+            int numB = GetBSexDataALL();
+            int All = numG + numB;
+            double GPro =numG / (All * 1.00);           
+            string resultG = GPro.ToString("p");//保留两位小数
+            double BPro = numB / (All * 1.00);
+            string resultB = BPro.ToString("p");
+
+            LabelGnumPro.Text =Convert.ToString( resultG);
+            LabelGnum.Text = Convert.ToString(numG);
+            LabelGirl.Text = "女";
+            LabelBnum.Text = Convert.ToString(numB);
+            LabelBnumPro.Text = Convert.ToString(resultB);
+            LabelBoy.Text = "男";
         }
 
         protected int GetGSexDataALL()
@@ -113,8 +134,8 @@ namespace UserFB.Web.Chart_Analysis
             string range5 = "36岁-45岁";
             string range6 = "46岁以上";
 
-
           
+
             var obj1 = new { names1 = range1, nums1 = Age1 };
             var obj2 = new { names1 = range2, nums1 = Age2 };
             var obj3 = new { names1 = range3, nums1 = Age3 };
@@ -139,6 +160,37 @@ namespace UserFB.Web.Chart_Analysis
             Response.End();
         }
 
+        protected void GetAgeTable()
+        {
+            int Age1 = GetAge1();
+            int Age2 = GetAge2();
+            int Age3 = GetAge3();
+            int Age4 = GetAge4();
+            int Age5 = GetAge5();
+            int Age6 = GetAge6();
+
+            string range1 = "12岁以下";
+            string range2 = "13-17岁";
+            string range3 = "18-25岁";
+            string range4 = "26-35岁";
+            string range5 = "36岁-45岁";
+            string range6 = "46岁以上";
+
+            LabelAge1.Text = Convert.ToString(Age1);
+            LabelAge2.Text = Convert.ToString(Age2);
+            LabelAge3.Text = Convert.ToString(Age3);
+            LabelAge4.Text = Convert.ToString(Age4);
+            LabelAge5.Text = Convert.ToString(Age5);
+            LabelAge6.Text = Convert.ToString(Age6);
+
+            Labelrange1.Text = range1;
+            Labelrange2.Text = range2;
+            Labelrange3.Text = range3;
+            Labelrange4.Text = range4;
+            Labelrange5.Text = range5;
+            Labelrange6.Text = range6;
+
+        }
 
         protected int GetAge1()
         {

@@ -161,6 +161,7 @@
     <Content Include="G_Admin_List\G_List.aspx" />
     <Content Include="G_Admin_List\G_List_Details.aspx" />
     <Content Include="Images\beijing003.png" />
+    <Content Include="Images\blue2.jpg" />
     <Content Include="Images\top1.gif" />
     <Content Include="Images\用户反馈处理系统2.PNG" />
     <Content Include="Images\用户反馈系统2.PNG" />
@@ -189,7 +190,6 @@
     <Content Include="Setting\Category_Setting.aspx" />
     <Content Include="Setting\Question_Setting.aspx" />
     <Content Include="S_Admin_List\ApplyMessage_List.aspx" />
-    <Content Include="S_Admin_List\Distribution.aspx" />
     <Content Include="S_Admin_List\List.aspx" />
     <Content Include="S_Admin_List\Reply_Message.aspx" />
     <Content Include="Users\Add.aspx" />
@@ -551,13 +551,6 @@
     </Compile>
     <Compile Include="S_Admin_List\ApplyMessage_List.aspx.designer.cs">
       <DependentUpon>ApplyMessage_List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="S_Admin_List\Distribution.aspx.cs">
-      <DependentUpon>Distribution.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="S_Admin_List\Distribution.aspx.designer.cs">
-      <DependentUpon>Distribution.aspx</DependentUpon>
     </Compile>
     <Compile Include="S_Admin_List\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

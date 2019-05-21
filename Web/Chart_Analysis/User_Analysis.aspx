@@ -146,24 +146,36 @@
 
 
 
-             <div class ="row">
+<%--            <div class ="row">
 
              <asp:Label ID="LabelTime" runat="server"  Text="请选择时间范围："></asp:Label>&nbsp;&nbsp;
-             <%--<asp:Button ID="Btn_Time" runat="server" BorderWidth="0px" Text="请选择时间范围：" />--%>
+        
              <asp:Button ID="Btn_Today" runat="server" class="btn btn-rounded btn-info"  Text="今日" OnClick="Btn_Today_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
              <asp:Button ID="Btn_Yesterday" runat="server" class="btn btn-rounded btn-info"  Text="近七天" OnClick="Btn_Yesterday_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
              <asp:Button ID="Btn_7days" runat="server" class="btn btn-rounded btn-info"  Text="近一个月" OnClick="Btn_7days_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
              <asp:Button ID="Btn_Month" runat="server" class="btn btn-rounded btn-info"  Text="全部" OnClick="Btn_Month_Click" />     
                  <asp:Label ID="Label1" runat="server" Text="女"></asp:Label>
-              </div>
+              </div>--%>
 
          
       
                       
    
-             
-              <div id="main" style="width:100%;height:400px;"></div>
+             <div class="row">
+
+        
+                       <%--            
+                        <div class="card-header bg-light" style="width:300%;height:50px;border:none;">
+                                         
+                          
+                     </div>--%>
+              
+              <div id="main" style="width:60%;height:400px;" class="card">
+                
+              </div>
+                
     <script type="text/javascript">
+           
     var mychart = echarts.init(document.getElementById('main'), 'macarons');
     mychart.setOption({
         title: {
@@ -249,9 +261,66 @@
         }
         })
     </script>
+                 <div>
+                    
+    
+                    <div class="card" style="text-align:center;width:210%;height:400px;border:none">
+                                       <br />
+                     <br />
+                       <br />
+                        <div class="card-header bg-light">
+                            性别数量明细
+                        </div>
 
+                        <div class="card-body" >
+                            <div class="table-responsive" >
+                   
+                                <table class="table table-striped" >
+                                    <thead>
+                                    <tr>
+                                        <th>性别</th>
+                                        <th>数量</th>
+                                        <th>占比</th>
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="LabelGirl" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelGnum" runat="server"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="LabelGnumPro" runat="server" ></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                         <td>
+                                            <asp:Label ID="LabelBoy" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelBnum" runat="server"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="LabelBnumPro" runat="server" ></asp:Label>
+                                        </td>
+                                        
+                                    </tr>
+                                  
+                                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
 
-  <div id="main1" style="width:100%;height:400px;"></div>
+             <div class="row">
+
+  <div id="main1" style="width:60%;height:400px;" class="card" ></div>
     <script type="text/javascript">
     var mychart1 = echarts.init(document.getElementById('main1'), 'macarons');
     mychart1.setOption({
@@ -339,10 +408,100 @@
         })
     </script>
 
+                 
+                 <div>
+                  
+    
+                    <div class="card" style="text-align:center;width:250%;height:400px;border:none" >
+                        <div class="card-header bg-light">
+                            年龄段详细数据
+                        </div>
+
+                        <div class="card-body" >
+                            <div class="table-responsive" >
+                                <table class="table table-striped" >
+                                    <thead>
+                                    <tr>
+                                        <th>年龄段</th>
+                                        <th>人数</th>
+                                   
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Labelrange1" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelAge1" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                         <td>
+                                            <asp:Label ID="Labelrange2" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelAge2" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                        
+                                    </tr>
+                                          <tr>
+                                         <td>
+                                            <asp:Label ID="Labelrange3" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelAge3" runat="server"></asp:Label>
+                                        </td>
+                                      
+                                        
+                                    </tr>
+                                          <tr>
+                                         <td>
+                                            <asp:Label ID="Labelrange4" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelAge4" runat="server"></asp:Label>
+                                        </td>
+                                       
+                                        
+                                    </tr>
+                                          <tr>
+                                         <td>
+                                            <asp:Label ID="Labelrange5" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelAge5" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                        
+                                    </tr>
+                                          <tr>
+                                         <td>
+                                            <asp:Label ID="Labelrange6" runat="server" ></asp:Label>
+                                        </td>
+                                        <td class="text-nowrap"> 
+                                            <asp:Label ID="LabelAge6" runat="server"></asp:Label>
+                                        </td>
+                                        
+                                        
+                                    </tr>
+                                  
+                                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 </div>
            </div>  
-
+    
+             </div>
 </div>
 
    </form>  

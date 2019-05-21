@@ -18,8 +18,11 @@
      </head>
 <body>
 <form id="form1" runat="server">
-
-<div class="page-wrapper flex-row align-items-center">
+ <div >
+     
+     
+ 
+<div class="page-wrapper flex-row align-items-center" >
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
@@ -49,12 +52,11 @@
                         <div class="row">
                           
                             <div class="col-6">
-                                <a href="Register.aspx" class="btn btn-link">未有账号？注册></a>
+                                <a href="AdminRegister.aspx" class="btn btn-link">未有账号？注册></a>
                             </div>
                              <div class="col-6">
                                  <asp:Button ID="Btn_Login" runat="server" Text="登陆" CssClass="btn btn-primary px-5" OnClick="Btn_Login_Click" />
-                                 <%--<asp:TextBox ID="txtPermission1" runat="server" Text="1" Visible="false"></asp:TextBox>
-                                 <asp:TextBox ID="txtPermission2" runat="server" Text="2" Visible="false"></asp:TextBox>--%>
+                           
                                 
                             </div>
                         </div>
@@ -64,7 +66,7 @@
         </div>
     </div>
 </div>
-   
+   </div>   
  </form>  
 
  <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>

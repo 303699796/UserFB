@@ -16,6 +16,7 @@ namespace UserFB.Web.S_Admin_List
             if (!IsPostBack)
             {
                 Bind();
+                GetLoginName();
 
 
 
@@ -33,6 +34,14 @@ namespace UserFB.Web.S_Admin_List
             string Str = " receiverID='" + ID + "'";
             GridView1.DataSource = replyManager.GetFBList(Str);
             GridView1.DataBind();
+        }
+
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
