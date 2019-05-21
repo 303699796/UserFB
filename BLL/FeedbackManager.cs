@@ -172,10 +172,17 @@ namespace UserFB.BLL
 
 		#endregion  BasicMethod
 		#region  ExtensionMethod
+        public List<feedbackEX> GetFeedbackByS(string CID)
+        {
+            return dal.GetAllFeedback(CID);
+        }
+
         public List<feedbackEX> GetAllFeedback()
         {
-            return dal.GetAllFeedback();
+            return dal.GetAllFeedback("");
         }
+
+
 
         ///<summary>
         ///批量更新申请状态

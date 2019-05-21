@@ -366,7 +366,7 @@ namespace UserFB.DAL
 
 		#endregion  BasicMethod
 		#region  ExtensionMethod
-        public List<feedbackEX> GetAllFeedback()
+        public List<feedbackEX> GetAllFeedback(string CID)
         {
             List<feedbackEX> feedbackList = new List<feedbackEX>();
             StringBuilder strSql = new StringBuilder();
@@ -378,6 +378,12 @@ namespace UserFB.DAL
             strSql.AppendLine("from Feedback as F");
             strSql.AppendLine("inner join Users as U on F.UserID=U.UserID");
             strSql.AppendLine("inner join Category as C on F.categoryID=C.categoryID");
+            strSql.AppendFormat(" where  F.isInvalid <>0  or F.isInvalid is null");
+            if (CID.Trim() != "")
+            {
+                strSql.AppendFormat(" and " + CID );
+            }
+           
             SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
             while(reader.Read())
             {
@@ -588,6 +594,9 @@ namespace UserFB.DAL
 
 
         }
+
+
+
 
         #endregion  ExtensionMethod
     }

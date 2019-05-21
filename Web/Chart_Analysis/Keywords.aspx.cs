@@ -18,7 +18,9 @@ namespace UserFB.Web.Chart_Analysis
             if (!IsPostBack)
             {
                 Bind();
-               
+                GetLoginName();
+
+
             }
         }
 
@@ -38,6 +40,16 @@ namespace UserFB.Web.Chart_Analysis
                 Response.Write("<script language=javascript>alert('申请失败！请重试')");
             }
         }
+
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
+        }
+
+
         public static void RunPythonScript(string sArgName)
         {
             Process p = new Process();

@@ -26,18 +26,32 @@ namespace UserFB.Web.S_Admin_List
         {
             if (!IsPostBack)
             {
-                Bind();
+                BindY();
+                BindN();
                 CategoryDataBind();
                 AdminDataBind();
                 ApplyNumber();
                 GetLoginName();
             }
         }
-        protected void Bind()
+        protected void BindY()
         {
-            GridView1.DataSource = feedbackManager.GetAllFeedback();
+            //  GridView1.DataSource = feedbackManager.GetAllFeedback();
+            string state = "未处理";
+            string str= "handler= '" + state + "'";
+            GridView1.DataSource = feedbackManager.GetFeedbackByS(str);
             GridView1.DataBind();
         }
+
+        protected void BindN()
+        {
+            //  GridView1.DataSource = feedbackManager.GetAllFeedback();
+            string state = "未处理";
+            string str = "handler != '" + state + "'";
+            GridView2.DataSource = feedbackManager.GetFeedbackByS(str);
+            GridView2.DataBind();
+        }
+
         protected void GetLoginName()
         {
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
@@ -52,6 +66,7 @@ namespace UserFB.Web.S_Admin_List
             DataSet ds = new CategoryManager().GetAllList();
             DataRow dr = ds.Tables[0].NewRow();
             dr["category"] = "--请选择--";
+            dr["categoryID"] = "0";
             ds.Tables[0].Rows.InsertAt(dr, 0);
 
             DropDownList_Category.DataTextField = "category";
@@ -67,27 +82,10 @@ namespace UserFB.Web.S_Admin_List
 
         }
 
-        protected void btn_End_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btn_Star_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
 
-
-        protected void Calendar_End_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Calendar_Star_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         protected void btnDownload_Click(object sender, EventArgs e)
         {
@@ -122,7 +120,8 @@ namespace UserFB.Web.S_Admin_List
         {
             this.GridView1.PageIndex = e.NewPageIndex;
 
-            Bind();
+            BindY();
+            BindN();
         }
 
         private string GetSelIDList()
@@ -159,7 +158,8 @@ namespace UserFB.Web.S_Admin_List
             }
             new BLL.FeedbackManager().UpdateInvalid(state, idList);
             Response.Write("<script language=javascript>alert('已标记为无效！')</script>");
-            Bind();
+            BindY();
+            BindN();
         }
 
         protected void btn_Dealwith_Click(object sender, EventArgs e)
@@ -176,13 +176,16 @@ namespace UserFB.Web.S_Admin_List
             }
             new BLL.FeedbackManager().UpdateSolution(solution, name, idList);
             Response.Write("<script language=javascript>alert('已标记为已处理！')</script>");
-            Bind();
+            BindY();
+            BindN();
         }
 
         protected void BntReply_Click(object sender, EventArgs e)
         {
-            //Model.Distribution distribution = new Model.Distribution();
-            //BLL.DistributionManager manager = new DistributionManager();
+      
+
+         
+
             Model.Reply reply = new Model.Reply();
             BLL.ReplyManager replyManager = new ReplyManager();
 
@@ -199,13 +202,15 @@ namespace UserFB.Web.S_Admin_List
             {
 
                 Response.Write("<script language=javascript>alert('回复成功！')</script>");
+                reply.text = "";
 
             }
             else
             {
                 Response.Write("<script language=javascript>alert('回复失败！请重试')");
             }
-
+            
+       
 
 
         }
@@ -254,7 +259,8 @@ namespace UserFB.Web.S_Admin_List
                 Response.Write("<script language=javascript>alert('分配成功！')</script>");
 
                 UpdateFeedback(sender, e);
-                Bind();
+                BindY();
+                BindN();
             }
             else
             {
@@ -314,6 +320,8 @@ namespace UserFB.Web.S_Admin_List
             string s = Fmanager.GetListID(Str1);
             LabelName.Text = s;
 
+            GridView1.Columns[9].Visible = true;
+
         }
 
         protected void UpdateFeedback(object sender, EventArgs e)
@@ -337,7 +345,8 @@ namespace UserFB.Web.S_Admin_List
             if (bo2 == true)
             {
                 Response.Write("<script language=javascript>alert('修改成功！')</script>");
-                Bind();
+                BindY();
+                BindN();
             }
 
         }
@@ -357,9 +366,83 @@ namespace UserFB.Web.S_Admin_List
 
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+       
+        protected void Btn_Category_Click(object sender, EventArgs e)
         {
+           
+            Model.Feedback feedbackC = new Model.Feedback();
+            BLL.FeedbackManager managerC = new FeedbackManager();
+            int CID = Convert.ToInt32( DropDownList_Category.SelectedValue);
+            string strC= "F.categoryID='" + CID + "'";
+          //  List dsC = managerC.GetFeedbackByS(strC);   
+                // if (dsC.Tables[0].Rows.Count > 0)
+            
+                GridView1.DataSource = managerC.GetFeedbackByS(strC);
+                GridView1.DataBind();
 
+
+            
+
+            //else 
+            //{
+
+            //    Response.Write("<script language=javascript>alert('暂无该分类反馈！')</script>");
+            //    Bind();
+
+            //}
+
+
+        }
+
+        protected void btn_KeyWSearch_Click(object sender, EventArgs e)
+        {
+            Model.Feedback feedbackC = new Model.Feedback();
+            BLL.FeedbackManager managerC = new FeedbackManager();
+          //  int CID = Convert.ToInt32(DropDownList_Category.SelectedValue);
+          //  string strC = "F.categoryID='" + CID + "'";
+
+            string Keyword = txbSearch.Text;
+            string strC = "F.Info like '%" + Keyword + "%'";
+            //  List dsC = managerC.GetFeedbackByS(strC);   
+            // if (dsC.Tables[0].Rows.Count > 0)
+          //  string strC = "F.categoryID='" + CID + "'or F.Info like '%" + Keyword + "%'";
+            GridView1.DataSource = managerC.GetFeedbackByS(strC);
+            GridView1.DataBind();
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
+            }
+               
+           
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            GridView1.Columns[0].Visible = true;
+        }
+
+        protected void Btn_Choos_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            GridViewRow row = btn.Parent.Parent as GridViewRow;
+            string a = row.Cells[0].ToString();//获得第一个单元格的值   
+
+            string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
+            Labeltest.Text = b;
+
+
+            Model.Feedback feedback = new Model.Feedback();
+            BLL.FeedbackManager Fmanager = new FeedbackManager();
+            string Str1 = "feedbackID='" + Labeltest.Text + "'";
+            string s = Fmanager.GetListID(Str1);
+            LabelName.Text = s;
+
+            GridView2.Columns[9].Visible = true;
         }
 
         //protected void Button2_Click(object sender, EventArgs e)

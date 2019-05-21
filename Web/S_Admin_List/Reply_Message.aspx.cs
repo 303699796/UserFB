@@ -17,6 +17,7 @@ namespace UserFB.Web.S_Admin_List
             {
                 Bind();
                 GetLoginName();
+                ApplyNumber();
 
 
 
@@ -34,6 +35,22 @@ namespace UserFB.Web.S_Admin_List
             string Str = " receiverID='" + ID + "'";
             GridView1.DataSource = replyManager.GetFBList(Str);
             GridView1.DataBind();
+        }
+
+        protected void ApplyNumber()
+        {
+
+            Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+            BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+            string str = "remark='" + "1" + "'";
+            int number = apply.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelApply.Visible = true;
+                LabelApply.Text = Convert.ToString(number);
+
+            }
+
         }
 
         protected void GetLoginName()

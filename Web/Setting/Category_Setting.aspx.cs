@@ -14,6 +14,7 @@ namespace UserFB.Web.Setting
             if (!IsPostBack)
             {
                 Bind();
+                GetLoginName();
             }
         }
         protected void Bind()
@@ -24,6 +25,14 @@ namespace UserFB.Web.Setting
             GridView1.DataSource = category2.GetAllList();
             GridView1.DataBind();
 
+        }
+
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)

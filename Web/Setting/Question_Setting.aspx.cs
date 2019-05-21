@@ -27,8 +27,19 @@ namespace UserFB.Web.Setting
                 //btnDelete.Attributes.Add("onclick", "return confirm(\"你确认要删除吗？\")");
                 BindData();
                CategoryDataBind();
-               
+                GetLoginName();
+                
+
+
             }
+        }
+
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
         }
 
         protected void CategoryDataBind()

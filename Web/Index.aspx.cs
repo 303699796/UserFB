@@ -27,6 +27,7 @@ namespace UserFB.Web
 
             if (!IsPostBack)
             {
+                GetLoginName();
 
                 Getdata();
                 GetDay1();
@@ -60,10 +61,17 @@ namespace UserFB.Web
 
            
         }
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
 
-        
+            LabelUser.Text = admin1.adminName;
+        }
 
-            protected void Getdata()
+
+
+        protected void Getdata()
         {
             Model.Feedback feedback = new Model.Feedback();
             BLL.FeedbackManager feedbackManager = new BLL.FeedbackManager();

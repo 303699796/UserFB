@@ -528,6 +528,49 @@ namespace UserFB.DAL
 
 
 
+        /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public bool AddReply(UserFB.Model.Reply model,string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("insert into Reply(");
+            strSql.Append("feedbackID,replierID,receiverID,text,time,remark)");
+            strSql.Append(" values (");
+            strSql.Append("@feedbackID,@replierID,@receiverID,@text,@time,@remark)");
+            strSql.Append(";select @@IDENTITY");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+
+            SqlParameter[] parameters = {
+                    new SqlParameter("@feedbackID", SqlDbType.Int,4),
+                    new SqlParameter("@replierID", SqlDbType.Int,4),
+                    new SqlParameter("@receiverID", SqlDbType.Int,4),
+                    new SqlParameter("@text", SqlDbType.VarChar,128),
+                    new SqlParameter("@time", SqlDbType.SmallDateTime),
+                    new SqlParameter("@remark", SqlDbType.VarChar,64)};
+            parameters[0].Value = model.feedbackID;
+            parameters[1].Value = model.replierID;
+            parameters[2].Value = model.receiverID;
+            parameters[3].Value = model.text;
+            parameters[4].Value = model.time;
+            parameters[5].Value = model.remark;
+
+            object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
+            if (obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+
         #endregion  ExtensionMethod
     }
 }

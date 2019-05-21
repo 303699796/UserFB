@@ -33,17 +33,17 @@
             
                <ul class="navbar-nav ml-auto">
             <li class="nav-item d-md-down-none">
-                <a href="#">
+                <a href="../S_Admin_List/ApplyMessage_List.aspx">
                     <i class="fa fa-bell"></i>
-                   <%-- <span class="badge badge-pill badge-danger">5</span>--%>
+               
                     <asp:Label ID="LabelApply" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
                 </a>
             </li>
 
             <li class="nav-item d-md-down-none">
-                <a href="#">
+                <a href="../S_Admin_List/Reply_Message.aspx">
                     <i class="fa fa-envelope-open"></i>
-                   <%-- <span class="badge badge-pill badge-danger">5</span>--%>
+                
                     <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" ></asp:Label>
                 </a>
             </li>
@@ -51,32 +51,15 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="../Images/用户头像.jpg" class="avatar avatar-sm" alt="logo">
-                     <%--  <span class="small ml-1 d-md-down-none">John Smith</span>--%>
+                  
                     <asp:Label ID="Label5" runat="server" class="small ml-1 d-md-down-none" Text="欢迎您！"></asp:Label>
-                    <asp:Label ID="LabelUser" runat="server" class="small ml-1 d-md-down-none"></asp:Label>
+                    <asp:Label ID="LabelUser" runat="server" Font-Bold="true">  </asp:Label>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header"></div>
 
-                    <%--<a href="#" class="dropdown-item">
-                        <i class="fa fa-user"></i> 退出登录
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-envelope"></i> 我的回复消息 
-                    </a>
-
-                    <div class="dropdown-header">Settings</div>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-bell"></i> Notifications
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-wrench"></i> Settings
-                    </a>--%>
-
+                   
                     <a href="../Login/AdminLogin.aspx" class="dropdown-item">
                         <i class="fa fa-lock"></i> 退出登录
                     </a>
@@ -98,13 +81,14 @@
                             <i class="icon icon-puzzle"></i>反馈列表
                         </a>
                     </li>                                    
-                         <li class="nav-item nav-dropdown">
+                         <li class="nav-item nav-dropdown"> 
+
                         <a href="#" class="nav-link nav-dropdown-toggle">
                             <i class="icon icon-grid"></i> 反馈分析 <i class="fa fa-caret-left"></i>
                         </a>
 
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
+                        <ul class="nav-dropdown-items" >
+                            <li class="nav-item" >
                                 <a href="../Index.aspx" class="nav-link">
                                     <i class="icon icon-grid"></i> 反馈数量
                                 </a>
@@ -179,80 +163,65 @@
 
 
         <div class="content">
-          
+           <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">未分配反馈</button>
+               <br />        
          
 
 
 
 
              <div class="row">
+                  &nbsp;&nbsp;
+                 &nbsp;&nbsp &nbsp;&nbsp
+
+ <asp:Button ID="Button3"  class="btn btn-rounded btn-outline-info"  runat="server" OnClick="Button3_Click" Text="多选标记" />&nbsp;&nbsp;
+              <asp:Button ID="btn_Dealwith"  class="btn btn-rounded btn-info"  runat="server" Text="标记为已处理"  OnClick="btn_Dealwith_Click"/>&nbsp;&nbsp;
+              <asp:Button ID="btn_Invalid" class="btn btn-rounded btn-info"  runat="server" Text="标记为无效" OnClick="btn_Invalid_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+           
+
+
+
        <asp:Label ID="LabelCategory" runat="server"   class="btn btn-info"  Text="问题分类查询"></asp:Label>
                     <%-- <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:150px" runat="server" DataSourceID="SqlDataSource_Category" DataTextField="category" DataValueField="category" ></asp:DropDownList>
            <asp:SqlDataSource ID="SqlDataSource_Category" runat="server" ConnectionString="Data Source=.;Initial Catalog=UFB;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [category] FROM [Category]"></asp:SqlDataSource>--%>
-            <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:150px" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:200px" runat="server"></asp:DropDownList>
+                  <asp:Button ID="Btn_Category" runat="server" Text="搜索" class="btn btn-info"  OnClick="Btn_Category_Click"/>
+                
                  &nbsp;&nbsp;
-      
-            <asp:Button ID="btn_Star" runat="server"  class="btn btn-info"   Text="选择开始时间" OnClick="btn_Star_Click"/>
-                  <asp:TextBox ID="txbStar" runat="server"    ></asp:TextBox>
-             
-                 <asp:Label ID="Label1" runat="server" Text="--"></asp:Label>
-                 <asp:Button ID="btn_End" runat="server" class="btn btn-info"  Text="选择结束时间" OnClick="btn_End_Click" />
-                 <asp:TextBox ID="txbEnd" runat="server"></asp:TextBox>
+                 &nbsp;&nbsp;            
                  &nbsp;&nbsp;
-                  <asp:TextBox ID="txbSearch" class="form-control"  style="width:200px;float:right"  runat="server"></asp:TextBox>  
+                  <asp:TextBox ID="txbSearch" class="form-control"  style="width:250px;float:right"  runat="server"></asp:TextBox>  
+                 <asp:Button ID="btn_KeyWSearch" runat="server" Text="搜索" class="btn btn-info"  OnClick="btn_KeyWSearch_Click" />
                  &nbsp;&nbsp;
-                 <asp:Button ID="btn_Search" runat="server" Text="搜索" class="btn btn-info"  OnClick="btn_Search_Click" />
                  &nbsp;&nbsp;
-                 <asp:Button ID="btnDownload" runat="server" Text="导出" class="btn btn-info" OnClick="btnDownload_Click" />
+                 &nbsp;&nbsp;
+                 <asp:Button ID="btnDownload" runat="server" Text="导出Excel" class="btn btn-info" OnClick="btnDownload_Click" />
 </div><br /> 
                 
-                  <div class="row">
-
-                                       </div>
-                              <div class="row">
-        
-             <button class="btn btn-rounded btn-info" type="button" data-toggle="modal" data-target="#modal-1" style="width:80px">回复</button>&nbsp;&nbsp;          
-             <button class="btn btn-rounded btn-info" type="button" data-toggle="modal" data-target="#modal-2" style="width:80px">分配</button>&nbsp;&nbsp;
-              <asp:Button ID="btn_Dealwith"  class="btn btn-rounded btn-info"  runat="server" Text="标记为已处理"  OnClick="btn_Dealwith_Click"/>&nbsp;&nbsp;
-              <asp:Button ID="btn_Invalid" class="btn btn-rounded btn-info"  runat="server" Text="标记为无效" OnClick="btn_Invalid_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-         </div>  
-            <br />
+                 
+                              
+           
         &nbsp;&nbsp;&nbsp;
-        <asp:Calendar ID="Calendar_Star" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px" Width="220px" Visible="False" OnSelectionChanged="Calendar_Star_SelectionChanged">
-                 <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
-                 <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
-                 <OtherMonthDayStyle ForeColor="#999999" />
-                 <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-                 <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
-                 <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
-                 <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
-                 <WeekendDayStyle BackColor="#CCCCFF" />
-             </asp:Calendar>
-    
-
-             <asp:Calendar ID="Calendar_End" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px" Width="220px" OnSelectionChanged="Calendar_End_SelectionChanged" Visible="False">
-                 <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
-                 <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
-                 <OtherMonthDayStyle ForeColor="#999999" />
-                 <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-                 <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
-                 <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
-                 <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
-                 <WeekendDayStyle BackColor="#CCCCFF" />
-             </asp:Calendar>
-                       
-            <br />
+                               
+          
       
-            <asp:Label ID="Labeltest" runat="server" ></asp:Label>
+            <asp:Label ID="Labeltest" runat="server" Visible="false" ></asp:Label>
+          
+
+          
+           
        <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
-           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="feedbackID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >
+           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="feedbackID"  AllowPaging="True" OnRowDataBound="GridView1_RowDataBound" >
            <Columns>
-               <asp:TemplateField HeaderText="选择">
+               <asp:TemplateField HeaderText="选择" Visible="False">
                     <ItemTemplate>
                        <asp:CheckBox ID="Modify" runat="server"  />
+                    
+                         
+                   
                     </ItemTemplate>
                 </asp:TemplateField>
+             
                <asp:TemplateField HeaderText="反馈用户">
                    <EditItemTemplate>
                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:TextBox>
@@ -272,24 +241,93 @@
                </asp:TemplateField>
                <asp:BoundField DataField="Info" HeaderText="反馈内容" />
                <asp:BoundField DataField="contact" HeaderText="联系方式" />
-               <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />
+           <%--    <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />--%>
                <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
                <asp:BoundField DataField="handler" HeaderText="处理人" />
                <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
-                      
-                         <button  id="Btn_Dtr" class="btn btn-primary" type="button"  data-toggle="modal" data-target="#modal-2"  style="width:80px"  >分配</button>
+                      <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="选择" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
+                         
+                    
+                    
                    </ItemTemplate>
                </asp:TemplateField>
-               <asp:TemplateField>
+               <asp:TemplateField Visible="False">
                    <ItemTemplate>
-                       <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="分配1" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
+                       <button  id="Btn_Dtr"  class="btn btn-rounded btn-info" type="button"  data-toggle="modal" data-target="#modal-2"  style="width:80px"   >分配</button>
+                       <button  id="Btn_Reply" class="btn btn-rounded btn-info"" type="button"  data-toggle="modal" data-target="#modal-1"  style="width:80px"  >回复</button>
                    </ItemTemplate>
                </asp:TemplateField>
            </Columns>
 
+           <HeaderStyle Height="50px" />
+
 <RowStyle Height="50px"></RowStyle>
              </asp:GridView>
+
+            <br /> <br />
+                     
+                            <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">已分配反馈</button>
+                      <br /> 
+                
+         
+             
+               <asp:GridView ID="GridView2" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
+           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="feedbackID"  AllowPaging="True" OnRowDataBound="GridView1_RowDataBound" >
+           <Columns>
+               <asp:TemplateField HeaderText="选择" Visible="False">
+                    <ItemTemplate>
+                       <asp:CheckBox ID="Modify" runat="server"  />
+                    
+                         
+                   
+                    </ItemTemplate>
+                </asp:TemplateField>
+             
+               <asp:TemplateField HeaderText="反馈用户">
+                   <EditItemTemplate>
+                       <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:TextBox>
+                   </EditItemTemplate>
+                   <ItemTemplate>
+                       <asp:Label ID="Label1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+               <asp:BoundField DataField="feedbackTime" HeaderText="反馈时间" />
+               <asp:TemplateField HeaderText="反馈分类">
+                   <EditItemTemplate>
+                       <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Category.category") %>'></asp:TextBox>
+                   </EditItemTemplate>
+                   <ItemTemplate>
+                       <asp:Label ID="Label2" runat="server" Text='<%# Bind("Category.category") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+               <asp:BoundField DataField="Info" HeaderText="反馈内容" />
+               <asp:BoundField DataField="contact" HeaderText="联系方式" />
+           <%--    <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />--%>
+               <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
+               <asp:BoundField DataField="handler" HeaderText="处理人" />
+               <asp:TemplateField ShowHeader="False">
+                   <ItemTemplate>
+                      <asp:Button ID="Btn_Choose" runat="server"   CausesValidation="false" CommandName="getID"  Text="选择" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick ="Btn_Choos_Click"/>
+                         
+                    
+                    
+                   </ItemTemplate>
+               </asp:TemplateField>
+               <asp:TemplateField Visible="False">
+                   <ItemTemplate>
+                     
+                       <button  id="Btn_Reply" class="btn btn-rounded btn-info"" type="button"  data-toggle="modal" data-target="#modal-1"  style="width:80px"  >回复</button>
+                   </ItemTemplate>
+               </asp:TemplateField>
+           </Columns>
+
+           <HeaderStyle Height="50px" />
+
+<RowStyle Height="50px"></RowStyle>
+             </asp:GridView>
+
+               
 
 
    <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -303,11 +341,14 @@
             </div>
 
             <div class="modal-body">
-                <asp:Label ID="LabelReceive" runat="server" Text="回复给："></asp:Label>
-                <asp:Label ID="LabelName" runat="server" ></asp:Label>
-                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息"></asp:Label>
-                &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+              <%--  <asp:Label ID="LabelReceive" runat="server" Text="回复给："></asp:Label>--%>
+                <asp:Label ID="LabelName" runat="server"  Visible="false" ></asp:Label>
+
+                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息:"></asp:Label>
+                 <asp:RequiredFieldValidator ID="rfvtxbReply" runat="server" ControlToValidate="txtReply" Display="Dynamic" ErrorMessage="回复消息不可为空"></asp:RequiredFieldValidator>     
+                <br />     <br /> 
+                      
+                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="450px" Height="100px"></asp:TextBox>
                  
             </div>
 
@@ -332,13 +373,16 @@
             </div>
 
             <div class="modal-body">
-                 <asp:Label ID="Label4" runat="server" Text="分配给："></asp:Label>
-                <asp:DropDownList ID="DropDownList_Distribution" runat="server"></asp:DropDownList>
+                <div class="row">
+                  &nbsp;&nbsp;&nbsp; <asp:Label ID="Label4" runat="server" Text="分配给："></asp:Label>  &nbsp;&nbsp;&nbsp;
+                <asp:DropDownList ID="DropDownList_Distribution" class="form-control" Width="380px" runat="server"></asp:DropDownList>
+                    </div>
                 <br /><br />
-                 <asp:Label ID="Label3" runat="server" Text="分配描述"></asp:Label>
+                <div class="row">
+                 &nbsp;&nbsp;&nbsp;  <asp:Label ID="Label3" runat="server"  Text="分配描述:"></asp:Label>
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txtDistribution" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
-             
+                <asp:TextBox ID="txtDistribution" runat="server" TextMode="MultiLine" class="form-control" Width="380px" Height="100px"></asp:TextBox>
+             </div>
             </div>
 
             <div class="modal-footer" >
@@ -348,13 +392,13 @@
         </div>
     </div>
 </div>
-
+       </div>
 
 
 
        </div>
              </div>
-    </div>
+   
     
 
         </form>  
