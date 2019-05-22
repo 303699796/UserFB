@@ -60,11 +60,11 @@ def makeWordCloud(txt):
                     scale=4, #这个数值越大，产生的图片分辨率越高，字迹越清晰
                     font_path="C:\Windows\Fonts\STXINGKA.TTF")
     wc.generate_from_frequencies(txt)
-    wc.to_file('C:/Users/Weijie/Desktop/beijing003.png')
+    wc.to_file('C:/Users/Weijie/Desktop/beijing005.png')
 
     plt.axis("off")
     plt.imshow(wc, interpolation="bilinear")
-    plt.show()
+  #  plt.show()
 
    # new_report(test_report)
     # return file_new

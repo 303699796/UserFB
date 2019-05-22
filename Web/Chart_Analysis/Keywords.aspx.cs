@@ -18,11 +18,20 @@ namespace UserFB.Web.Chart_Analysis
             if (!IsPostBack)
             {
                 Bind();
+                Segment();
                 GetLoginName();
 
 
             }
         }
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
+        }
+
 
         private void Bind()
         {
@@ -37,17 +46,11 @@ namespace UserFB.Web.Chart_Analysis
             catch (SystemException ex)
             {
 
-                Response.Write("<script language=javascript>alert('申请失败！请重试')");
+                Response.Write("<script language=javascript>alert('加载失败！请重试')");
             }
         }
 
-        protected void GetLoginName()
-        {
-            BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
-
-            LabelUser.Text = admin1.adminName;
-        }
+      
 
 
         public static void RunPythonScript(string sArgName)
@@ -80,7 +83,7 @@ namespace UserFB.Web.Chart_Analysis
             p.Start();//启动进程 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        private void Segment()
         {
             try
             {
@@ -93,7 +96,7 @@ namespace UserFB.Web.Chart_Analysis
             catch (SystemException ex)
             {
 
-                Response.Write("<script language=javascript>alert('申请失败！请重试')");
+                Response.Write("<script language=javascript>alert('加载失败！请重试')");
             }
         }
 
@@ -101,7 +104,7 @@ namespace UserFB.Web.Chart_Analysis
         public static void RunPythonScript1(string sArgName)
         {
             Process p = new Process();
-           // string path = "F:/weijie/UserFB/UserFB/Web/Python/2.7test1.py";// 待处理python文件的路径
+         
             string path1 = "F:/weijie/UserFB/UserFB/Web/Python/test_txt.py";// 待处理python文件的路径
 
            // string sArguments = path;

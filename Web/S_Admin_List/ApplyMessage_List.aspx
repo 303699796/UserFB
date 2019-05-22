@@ -178,10 +178,13 @@
             </div>
 
              <div class="row">
+                 &nbsp; &nbsp; &nbsp;
                  <asp:Button ID="Btn_Agree" runat="server" class="btn btn-info" Text="同意申请" OnClick="Btn_Agree_Click" />
+                 &nbsp; &nbsp; &nbsp;
                  <asp:Button ID="Btn_Refuse" runat="server" class="btn btn-info" Text="拒绝申请" OnClick ="Btn_Refuse_Click" />
-                 <br />   <br />
+               
                  </div>
+              <br /> 
 
             <asp:GridView ID="GridView1" runat="server"  AllowPaging="True" 
             class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" OnPageIndexChanging ="GridView1_PageIndexChanging"

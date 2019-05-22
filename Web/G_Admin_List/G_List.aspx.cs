@@ -16,12 +16,22 @@ namespace UserFB.Web.G_Admin_List
             {
                 NewBind();
                 HisBind();
-              
+                GetLoginName();
 
 
 
             }
         }
+
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["GadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
+        }
+
+
         protected void NewBind()
         {
             Model.Distribution distribution = new Model.Distribution();

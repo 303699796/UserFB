@@ -39,17 +39,11 @@
                 <a href="../S_Admin_List/ApplyMessage_List.aspx">
                     <i class="fa fa-bell"></i>
                
-                    <asp:Label ID="LabelApply" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
+                    <asp:Label ID="LabelMessage" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
                 </a>
             </li>
 
-            <li class="nav-item d-md-down-none">
-                <a href="../S_Admin_List/Reply_Message.aspx">
-                    <i class="fa fa-envelope-open"></i>
-                
-                    <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" ></asp:Label>
-                </a>
-            </li>
+          
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

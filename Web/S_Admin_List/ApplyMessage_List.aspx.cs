@@ -42,62 +42,13 @@ namespace UserFB.Web.S_Admin_List
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
            
-            //ApplyMessage.ApplyID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            //ApplyMessage.name = (GridView1.Rows[e.RowIndex].FindControl("LabelName") as Label).Text;
-            //ApplyMessage.department = (GridView1.Rows[e.RowIndex].FindControl("LabelDepartment") as Label).Text;
-            //ApplyMessage.job = (GridView1.Rows[e.RowIndex].FindControl("LabelJob") as Label).Text;
-            //ApplyMessage.applyTime = DateTime.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelTime") as Label).Text);
-            //ApplyMessage.applyState = "已同意";
-            //ApplyMessage.permission= (GridView1.Rows[e.RowIndex].FindControl("LabelPermission") as Label).Text;
-            //ApplyMessage.applicantID= Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApplicantID") as Label).Text);
-            //ApplyMessage.approverID = Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApproverID") as Label).Text);
-
-            //bool bo = apply.Update(ApplyMessage);
-            //if (bo == true)
-            //{
-            //  //  Response.Write("<script language=javascript>alert('修改成功！')</script>");
-            //    GridView1.EditIndex = -1;
-            //    NewBind();
-            //    HistoryBind();
-            //}
-            //else
-            //{
-            //    Response.Write("<script language=javascript>alert('修改失败！请重试')");
-            //}
+       
 
             
         }
 
 
 
-        //protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        //{
-
-        //    ApplyMessage.ApplyID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-        //    ApplyMessage.name = (GridView1.Rows[e.RowIndex].FindControl("LabelName") as Label).Text;
-        //    ApplyMessage.department = (GridView1.Rows[e.RowIndex].FindControl("LabelDepartment") as Label).Text;
-        //    ApplyMessage.job = (GridView1.Rows[e.RowIndex].FindControl("LabelJob") as Label).Text;
-        //    ApplyMessage.applyTime = DateTime.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelTime") as Label).Text);
-        //    ApplyMessage.applyState = "已拒绝";
-        //    ApplyMessage.permission = (GridView1.Rows[e.RowIndex].FindControl("LabelPermission") as Label).Text;
-        //    ApplyMessage.applicantID = Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApplicantID") as Label).Text);
-        //    ApplyMessage.approverID = Int32.Parse((GridView1.Rows[e.RowIndex].FindControl("LabelApproverID") as Label).Text);
-
-        //    bool bo = apply.Update(ApplyMessage);
-        //    if (bo == true)
-        //    {
-        //        //  Response.Write("<script language=javascript>alert('修改成功！')</script>");
-        //        GridView1.EditIndex = -1;
-        //        NewBind();
-        //        HistoryBind();
-        //    }
-        //    else
-        //    {
-        //        Response.Write("<script language=javascript>alert('修改失败！请重试')");
-        //    }
-
-
-        //}
 
 
         protected void btnAgree_Click(object sender, EventArgs e)
@@ -190,32 +141,7 @@ namespace UserFB.Web.S_Admin_List
             HistoryBind();
         }
 
-        //protected void ButtonTest_Click(object sender, EventArgs e)
-        //{
-
-        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
-        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
-        //    string str = "remark='" + "1" + "'";
-        //    int number= apply.GetRecordCount(str);
-        //    LabelApply.Text = Convert.ToString(number);
-
-        //}
-
-        //protected void ApplyNumber()
-        //{
-           
-        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
-        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
-        //    string str = "remark='" + "1" + "'";
-        //    int number = apply.GetRecordCount(str);
-        //    if(number>0)
-        //    {
-        //        LabelApply.Visible = true;
-        //        LabelApply.Text = Convert.ToString(number);
-
-        //    }
-            
-       // }
+      
 
         protected void ApplyNumber()
         {

@@ -162,6 +162,7 @@
     <Content Include="G_Admin_List\G_List_Details.aspx" />
     <Content Include="Images\beijing003.png" />
     <Content Include="Images\blue2.jpg" />
+    <Content Include="Images\Figure_Number.png" />
     <Content Include="Images\top1.gif" />
     <Content Include="Images\用户反馈处理系统2.PNG" />
     <Content Include="Images\用户反馈系统2.PNG" />

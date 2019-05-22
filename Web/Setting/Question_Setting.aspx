@@ -163,11 +163,14 @@
         </div>
    
        <div class="content">
-          
+          <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">常见问题设置</button>
+               <br />  
            <button class="btn btn-primary px-5" type="button" data-toggle="modal" data-target="#modal-1" style="float:left">新增问题</button>
+           &nbsp; &nbsp; &nbsp; &nbsp;
+          <asp:Button ID="btnDelete" class="btn btn-primary px-5" runat="server" Text="删除" OnClick="btnDelete_Click"/>    
 
 
-            <br /><br /><br />
+            <br /><br />
            <%--  <div class="row">
                 <div class="col-md-6">
                     <div class="card">
@@ -185,25 +188,37 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">新增问题</h5>
+                <h5 class="modal-title">新增问题</h5> 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
             <div class="modal-body">
-                <asp:Label ID="LabelCategory" runat="server" Text="请选择新增问题分类"></asp:Label>
-                <asp:DropDownList ID="DropDownList_Category" runat="server"></asp:DropDownList>
+                <div class="row">
+                <asp:Label ID="LabelCategory" runat="server" Text="   &nbsp;&nbsp;&nbsp; 请选择新增问题分类 ："></asp:Label>
+                      &nbsp;&nbsp;&nbsp;
+                <asp:DropDownList ID="DropDownList_Category"  Width="270px" runat="server"></asp:DropDownList>
+                    </div>
                 <br /><br />
-                 <asp:Label ID="LabelQuestion" runat="server" Text="请输入新增问题描述"></asp:Label>
+                <div class="row">
+                 <asp:Label ID="LabelQuestion" runat="server" Text="  &nbsp;&nbsp;&nbsp;  请输入新增问题描述 ："></asp:Label>
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txtQuestion" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
-                  <br /><br />
-                <asp:Label ID="LabelSolution" runat="server" Text="请输入解决方案描述"></asp:Label>
+                <asp:TextBox ID="txtQuestion" runat="server" TextMode="MultiLine" Width="270px" Height="100px"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="rfvtxtQuestion" runat="server" ControlToValidate="txtQuestion" Display="Dynamic" ErrorMessage="必填"></asp:RequiredFieldValidator>     
+            
+                </div> 
+                 <br /><br />
+                <div class="row">
+               
+                <asp:Label ID="LabelSolution" runat="server" Text="  &nbsp;&nbsp;&nbsp;  请输入解决方案描述 ："></asp:Label>
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txtSolution" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+                <asp:TextBox ID="txtSolution" runat="server" TextMode="MultiLine" Width="270px" Height="100px"></asp:TextBox>
+                
+                      <asp:RequiredFieldValidator ID="rfvtxtSolution" runat="server" ControlToValidate="txtSolution" Display="Dynamic" ErrorMessage="必填"></asp:RequiredFieldValidator>     
             </div>
 
+        </div>
             <div class="modal-footer" >
                 <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>
                <%-- <button  type="button" class="btn btn-primary" onclick=""  >保存</button>--%>
@@ -230,9 +245,9 @@
 <ControlStyle Width="30px"></ControlStyle>
                             </asp:TemplateField> 
                             
-		                <asp:TemplateField HeaderText="categoryID" SortExpression="categoryID">
+		                <asp:TemplateField HeaderText="问题所属分类" SortExpression="categoryID">
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtCcategory" runat="server" Text='<%# Bind("categoryID") %>'></asp:TextBox>
+                                <asp:Label ID="txtCcategory" runat="server" Text='<%# Bind("categoryID") %>'></asp:Label>
                                <%-- <asp:DropDownList ID="ddl_category" runat="server"></asp:DropDownList>
                                 <asp:HiddenField ID="hf_Category" runat="server" Text='<%# Bind("categoryID") %>' />--%>
                             </EditItemTemplate>
@@ -241,7 +256,7 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="question" SortExpression="question">
+                        <asp:TemplateField HeaderText="问题描述" SortExpression="question">
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtQuestion" runat="server" Text='<%# Bind("question") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -250,7 +265,7 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="solution" SortExpression="solution">
+                        <asp:TemplateField HeaderText="解决方案" SortExpression="solution">
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtSolution" runat="server" Text='<%# Bind("solution") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -260,9 +275,15 @@
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
                             
-		<asp:BoundField DataField="time" HeaderText="time" SortExpression="time" ItemStyle-HorizontalAlign="Center"  > 
-<ItemStyle HorizontalAlign="Center"></ItemStyle>
-                        </asp:BoundField>
+		                <asp:TemplateField HeaderText="更新时间" SortExpression="time">
+                            <EditItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("time") %>'></asp:Label>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("time") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
                         <asp:CommandField HeaderText="编辑" ShowEditButton="True" />
                             
                         </Columns>
@@ -270,7 +291,7 @@
 <RowStyle HorizontalAlign="Center" Height="50px"></RowStyle>
                 </asp:GridView>
                    </div>
-          <asp:Button ID="btnDelete" runat="server" Text="删除" OnClick="btnDelete_Click"/>    
+     
 
 
 

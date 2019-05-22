@@ -181,7 +181,8 @@
 
 
         <div class="content">
-            
+            <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">问题分类设置</button>
+               <br />  
                    
                           <button class="btn btn-primary px-5" type="button" data-toggle="modal" data-target="#modal-1" style="float:left">新增问题分类</button>
 

@@ -58,6 +58,15 @@ namespace UserFB.Web.Setting {
         protected global::System.Web.UI.WebControls.Label LabelUser;
         
         /// <summary>
+        /// btnDelete 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
         /// LabelCategory 控件。
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace UserFB.Web.Setting {
         protected global::System.Web.UI.WebControls.TextBox txtQuestion;
         
         /// <summary>
+        /// rfvtxtQuestion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtQuestion;
+        
+        /// <summary>
         /// LabelSolution 控件。
         /// </summary>
         /// <remarks>
@@ -112,6 +130,15 @@ namespace UserFB.Web.Setting {
         protected global::System.Web.UI.WebControls.TextBox txtSolution;
         
         /// <summary>
+        /// rfvtxtSolution 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtSolution;
+        
+        /// <summary>
         /// BntSave 控件。
         /// </summary>
         /// <remarks>
@@ -128,14 +155,5 @@ namespace UserFB.Web.Setting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridView;
-        
-        /// <summary>
-        /// btnDelete 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete;
     }
 }

@@ -230,7 +230,7 @@
                                 <div>
                                     <span class="font-weight-light">本周已解决</span>
                                     <br /><br />
-                                    <asp:Label ID="LabelYdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" ></asp:Label>
+                                    <asp:Label ID="LabelYdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="5" ></asp:Label>
 
                                     
                                 </div>
@@ -248,7 +248,7 @@
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="font-weight-light">待解决</span><br /><br />
-                                    <asp:Label ID="LabelDdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2"></asp:Label>
+                                    <asp:Label ID="LabelDdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="9"></asp:Label>
                                     
                                 </div>
 

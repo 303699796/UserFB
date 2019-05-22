@@ -164,34 +164,18 @@
 
 
         <div class="content">
-           <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>我的回复消息</h5>
-                            <asp:Label ID="Labeltest" runat="server" Text="Label"></asp:Label>
-                     
-                        </div>
-                            
-                     </div>
-                </div>
-            </div>
-
-            
-
+           <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">用户回复消息</button>
+               <br />
+            <asp:Label ID="Labeltest" runat="server" Visible="false"></asp:Label>
 
             <div class="col-md-10">
                         <div class="card">
-                            <div class="card-header bg-light">
-                                
-                            </div>
                               <div class="card" style="width:120%;height:500px">
 
                             <div class="card-body">
                               
                                     <asp:GridView ID="GridView1" class="tab-content" style="width: 100%;text-align:left;word-break :break-all;word-wrap:break-word "
-           RowStyle-Height="50px" runat="server" AutoGenerateColumns="False" DataKeyNames="replyID" BorderWidth="0px" GridLines="Horizontal" ShowHeader="False">
+           RowStyle-Height="50px" runat="server" AutoGenerateColumns="False" DataKeyNames="replyID" BorderWidth="0px" GridLines="Horizontal" ShowHeader="False" Font-Size="Small">
                                         <Columns>
                                             <asp:TemplateField HeaderText="回复时间">
                                                 <EditItemTemplate>
@@ -242,6 +226,14 @@
                                                 </ItemTemplate>
                                                 <ItemStyle Font-Bold="True" />
                                             </asp:TemplateField>
+                                              <asp:TemplateField HeaderText="回复">
+                                                <EditItemTemplate>
+                                                    <asp:Label ID="LabelInfo" runat="server" Text="原反馈内容："></asp:Label>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="LabelInfo" runat="server" Text="原反馈内容："></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         <asp:TemplateField HeaderText="原反馈内容">
                                                 <EditItemTemplate>
                                                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Feedback.Info") %>'></asp:TextBox>
@@ -253,10 +245,17 @@
                                             <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
                       
-                         <button  id="Btn_Dtr" class="btn btn-primary" type="button"  data-toggle="modal" data-target="#modal-1"  style="width:80px"  >回复</button>
-                   
-                   <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="回复1" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
+                       
+                   <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="选择" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
                    </ItemTemplate>
+                                              
+               </asp:TemplateField>
+                       <asp:TemplateField ShowHeader="False" Visible="false">
+                   <ItemTemplate>
+                      
+                         <button  id="Btn_Dtr" class="btn btn-primary" type="button"  data-toggle="modal" data-target="#modal-1"   >回复</button>
+                   
+                    </ItemTemplate>
                                               
                </asp:TemplateField>
               
@@ -271,18 +270,20 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">回复用户</h5>
+                <h5 class="modal-title">回复:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <div class="modal-body">
-                <asp:Label ID="LabelReceive" runat="server" Text="回复给："></asp:Label>
-                <asp:Label ID="LabelName" runat="server" ></asp:Label>
-                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息"></asp:Label>
-                &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+              <div class="modal-body">    
+                <asp:Label ID="LabelName" runat="server"  Visible="false" ></asp:Label>
+
+                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息:"></asp:Label>
+                 <asp:RequiredFieldValidator ID="rfvtxbReply" runat="server" ControlToValidate="txtReply" Display="Dynamic" ErrorMessage="回复消息不可为空"></asp:RequiredFieldValidator>     
+                <br />     <br /> 
+                      
+                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="450px" Height="100px"></asp:TextBox>
                  
             </div>
 
@@ -298,6 +299,9 @@
                               
                                 <hr/>
           
+                 </div>
+            </div>
+                
                  </div>
             </div>
 

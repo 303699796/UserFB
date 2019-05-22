@@ -177,18 +177,8 @@
         </div>
 
         <div class="content">
-           <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>管理员设置</h5>
-                     
-                        </div>
-                            
-                     </div>
-                </div>
-            </div>
+        <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">管理员设置</button>
+               <br />  
                 <div class="card" style="width:100%;height:500px">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
                 class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px"

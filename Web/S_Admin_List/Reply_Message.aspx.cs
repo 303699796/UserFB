@@ -69,6 +69,7 @@ namespace UserFB.Web.S_Admin_List
 
             string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
             Labeltest.Text = b;
+            GridView1.Columns[9].Visible = true;
 
 
             //Model.Feedback feedback = new Model.Feedback();
@@ -77,7 +78,7 @@ namespace UserFB.Web.S_Admin_List
             //string s = Fmanager.GetListID(Str1);
             //LabelName.Text = s;
 
-          
+
         }
 
         protected void BntReply_Click(object sender, EventArgs e)

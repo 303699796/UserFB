@@ -243,7 +243,7 @@
                <asp:BoundField DataField="contact" HeaderText="联系方式" />
            <%--    <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />--%>
                <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
-               <asp:BoundField DataField="handler" HeaderText="处理人" />
+               <asp:BoundField DataField="handler" HeaderText="负责人" />
                <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
                       <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="选择" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
@@ -305,7 +305,7 @@
                <asp:BoundField DataField="contact" HeaderText="联系方式" />
            <%--    <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />--%>
                <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
-               <asp:BoundField DataField="handler" HeaderText="处理人" />
+               <asp:BoundField DataField="handler" HeaderText="负责人" />
                <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
                       <asp:Button ID="Btn_Choose" runat="server"   CausesValidation="false" CommandName="getID"  Text="选择" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick ="Btn_Choos_Click"/>

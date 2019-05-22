@@ -171,25 +171,16 @@
 
         <div class="content">
           
-             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>关键词分析</h5>
-                     
-                        </div>
-                            
-                     </div>
-                </div>
-            </div>
-
-
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/beijing003.png" CssClass="auto-style1" Width="748px" />
-            
+             <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">反馈关键词</button>
+               <br />
+        
+           
+  <div class ="card " style="width:100%;height:500px">
+      <div class="row">
+            <asp:Image ID="Image1" runat="server" ImageAlign="Middle" ImageUrl="~/Images/beijing003.png" CssClass="auto-style1" Height="500px" />
+            <asp:Image ID="Image2" runat="server"  ImageUrl="~/Images/Figure_Number.png" CssClass="auto-style1" Height="500px" />
+      </div>      
+       </div>
        </div>
              </div>
     </div>

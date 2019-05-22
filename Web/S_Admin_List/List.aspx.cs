@@ -37,7 +37,7 @@ namespace UserFB.Web.S_Admin_List
         protected void BindY()
         {
             //  GridView1.DataSource = feedbackManager.GetAllFeedback();
-            string state = "未处理";
+            string state = "待分配";
             string str= "handler= '" + state + "'";
             GridView1.DataSource = feedbackManager.GetFeedbackByS(str);
             GridView1.DataBind();
@@ -46,7 +46,7 @@ namespace UserFB.Web.S_Admin_List
         protected void BindN()
         {
             //  GridView1.DataSource = feedbackManager.GetAllFeedback();
-            string state = "未处理";
+            string state = "待分配";
             string str = "handler != '" + state + "'";
             GridView2.DataSource = feedbackManager.GetFeedbackByS(str);
             GridView2.DataBind();

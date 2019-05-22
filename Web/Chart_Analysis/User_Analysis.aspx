@@ -186,13 +186,8 @@
 
 
          <div class="content">
-              <div class="col-md-6">
-                    <div class="card">                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>用户画像</h5>                     
-                        </div>    
-                     </div>
-                </div>
+             <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">反馈用户画像</button>
+               <br />
 
 
 

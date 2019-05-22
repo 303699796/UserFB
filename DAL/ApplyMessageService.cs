@@ -368,7 +368,11 @@ namespace UserFB.DAL
         public DataSet GetNewList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select ApplyID,applicantID,approverID,name,department,job,permission,applyTime,applyState,remark");
+             strSql.Append("select ApplyID,applicantID,approverID,name,department,job,permission,applyTime,applyState,remark");
+            //strSql.Append("select ApplyID,applicantID,approverID,name,department,job,");
+           
+            //strSql.Append("applyTime,applyState,remark,");
+            //strSql.Append("  case   when permission=" + "1"+ " then  " + " 超级管理员" + " else  " + " 普通管理员 " + "  end ");
             strSql.Append(" FROM ApplyMessage ");
             strSql.Append(" where applyState is null ");
             if (strWhere.Trim() != "")
