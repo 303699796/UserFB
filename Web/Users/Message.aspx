@@ -31,48 +31,29 @@
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-md-down-none">
-                <a href="#">
+                <a href="../Users/Message.aspx">
                     <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
+               
+                    <asp:Label ID="LabelMessage" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
                 </a>
             </li>
 
-            <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-envelope-open"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-            </li>
+           
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="../Images/用户头像.jpg" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none">John Smith</span>
+                  
+                    <asp:Label ID="Label5" runat="server" class="small ml-1 d-md-down-none" Text="欢迎您！"></asp:Label>
+                    <asp:Label ID="LabelUser" runat="server" Font-Bold="true">  </asp:Label>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header">Account</div>
+                    <div class="dropdown-header"></div>
 
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-user"></i> Profile
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-envelope"></i> Messages
-                    </a>
-
-                    <div class="dropdown-header">Settings</div>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-bell"></i> Notifications
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-wrench"></i> Settings
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-lock"></i> Logout
+                   
+                    <a href="../Login/UserLogin.aspx" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 退出登录
                     </a>
                 </div>
             </li>
@@ -86,10 +67,14 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">常见问题</a>
-                            <a href="#" class="list-group-item active">填写反馈</a>
-                            <a href="#" class="list-group-item">我的消息</a>
+                           <a href="../Users\Question.aspx" class="list-group-item">常见问题</a>
+                            <a href="../Users/Fill_Feedback.aspx" class="list-group-item">填写反馈</a>
+                            <a href="../Users\Message.aspx"  class="list-group-item active">我的消息</a>
                             <a href="#" class="list-group-item">历史反馈</a>
+
+                             <a  class="list-group-item" >   &nbsp;</a>
+                               <a class="list-group-item" style="border:none;height:400px">  &nbsp;</a>
+                        
                         </div>
                     </div>
 
@@ -100,9 +85,9 @@
                             </div>
 
                             <div class="card-body">
-                                <asp:Label ID="Labeltest" runat="server" Text="Label"></asp:Label>
-                                    <asp:GridView ID="GridView1" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
-           RowStyle-Height="50px" runat="server" AutoGenerateColumns="False" DataKeyNames="replyID" BorderWidth="0px" GridLines="Horizontal" ShowHeader="False">
+                                <asp:Label ID="Labeltest" runat="server" Text="Label" Visible="false"></asp:Label>
+                                    <asp:GridView ID="GridView1" class="tab-content" style="width: 100%;text-align:left;word-break :break-all;word-wrap:break-word "
+           RowStyle-Height="50px" runat="server" AutoGenerateColumns="False" DataKeyNames="replyID" BorderWidth="0px" GridLines="Horizontal" Font-Size="Small" ShowHeader="False">
                                         <Columns>
                                             <asp:TemplateField HeaderText="回复时间">
                                                 <EditItemTemplate>
@@ -137,6 +122,14 @@
                                                 </ItemTemplate>
                                                 <ItemStyle Font-Bold="True" />
                                             </asp:TemplateField>
+                                             <asp:TemplateField HeaderText="回复">
+                                                <EditItemTemplate>
+                                                    <asp:Label ID="LabelInfo" runat="server" Text="原反馈内容："></asp:Label>
+                                                </EditItemTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label ID="LabelInfo" runat="server" Text="原反馈内容："></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:TemplateField HeaderText="原反馈内容">
                                                 <EditItemTemplate>
                                                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Feedback.Info") %>'></asp:TextBox>
@@ -147,15 +140,19 @@
                                             </asp:TemplateField>
                                                 <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
-                      
-                         <button  id="Btn_Dtr" class="btn btn-primary" type="button"  data-toggle="modal" data-target="#modal-1"  style="width:80px"  >回复</button>
-                   
-                   <asp:Button ID="Button2" runat="server"   CausesValidation="false" CommandName="getID"  Text="回复1" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Button2_Click"/>
+                        <asp:Button ID="Btn_select" runat="server"   CausesValidation="false" CommandName="getID"  Text="选择" CssClass="btn btn-primary"  CommandArgument='<%# Eval("feedbackID") %>' OnClick="Btn_select_Click"/>
+                     
+                   </ItemTemplate>
+                                                         </asp:TemplateField>
+                                                     <asp:TemplateField ShowHeader="False" Visible="false">
+                         <ItemTemplate>
+                          <button  id="Btn_Dtr" class="btn btn-primary"  type="button"  data-toggle="modal" data-target="#modal-1"  style="width:80px"  >回复</button>                   
+                 
                    </ItemTemplate>
                                               
                </asp:TemplateField>
                                         </Columns>
-
+  <HeaderStyle Height="50px" />
 <RowStyle Height="50px"></RowStyle>
                                     </asp:GridView> 
 
@@ -163,18 +160,20 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">回复用户</h5>
+                <h5 class="modal-title">回复:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <div class="modal-body">
-                <asp:Label ID="LabelReceive" runat="server" Text="回复给："></asp:Label>
-                <asp:Label ID="LabelName" runat="server" ></asp:Label>
-                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息"></asp:Label>
-                &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
+             <div class="modal-body">    
+                <asp:Label ID="LabelName" runat="server"  Visible="false" ></asp:Label>
+
+                 <asp:Label ID="LabelReply" runat="server" Text="请输入回复信息:"></asp:Label>
+                 <asp:RequiredFieldValidator ID="rfvtxbReply" runat="server" ControlToValidate="txtReply" Display="Dynamic" ErrorMessage="回复消息不可为空"></asp:RequiredFieldValidator>     
+                <br />     <br /> 
+                      
+                <asp:TextBox ID="txtReply" runat="server" TextMode="MultiLine" Width="450px" Height="100px"></asp:TextBox>
                  
             </div>
 

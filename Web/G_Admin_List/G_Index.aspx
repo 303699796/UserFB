@@ -53,19 +53,30 @@
          <div class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="nav">
-                    <li class="nav-title">Navigation</li>
+                    <li class="nav-title">菜单栏</li>
 
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active">
-                            <i class="icon icon-speedometer"></i> 首页
-                        </a>
-                    </li>
-                       <li class="nav-item">
-                        <a href="forms.html" class="nav-link">
+                   
+                     
+                                          <li class="nav-item">
+                        <a href="../G_Admin_List/G_List.aspx" class="nav-link ">
                             <i class="icon icon-puzzle"></i>分配列表
                         </a>
-                    </li>                                    
-                        </ul>                
+                    </li>   
+
+                      <li class="nav-item">
+                        <a href="../G_Admin_List/G_Index.aspx" class="nav-link active ">
+                            <i class="icon icon-grid"></i>反馈分析
+                        </a>
+                    </li>  
+                   
+                      <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="icon icon-target"></i>我的消息
+                        </a>
+                    </li>        
+                        </ul>
+                      
+                                   
             </nav>
         </div>
          </div>

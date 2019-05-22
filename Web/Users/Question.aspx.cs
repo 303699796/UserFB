@@ -22,9 +22,19 @@ namespace UserFB.Web.Users
                 Bind();
                // CategoryBind();
                 DDLCategoryBind();
+                GetLoginName();
 
             }
         }
+        protected void GetLoginName()
+        {
+
+
+            BLL.UsersManager usersM = new UsersManager();
+            Model.Users users = usersM.GetModel1(Session["userID"].ToString());
+            LabelUser.Text = users.userName;
+        }
+
         protected void Bind()
         {
             Model.Question question = new Model.Question();
@@ -46,7 +56,7 @@ namespace UserFB.Web.Users
 
             DataSet ds = new CategoryManager().GetAllList();
             DataRow dr = ds.Tables[0].NewRow();
-            dr["category"] = "请选择问题分类";
+            dr["category"] = "— —请选择— —";
             ds.Tables[0].Rows.InsertAt(dr, 0);
 
             DropDownList_Category.DataTextField = "category";
@@ -83,7 +93,7 @@ namespace UserFB.Web.Users
         {
             //LinkButton tempBTN = (LinkButton)sender;
             //Button1.Text = tempBTN.Text;
-            Button1.Text = DropDownList_Category.SelectedValue;
+          //  Button1.Text = DropDownList_Category.SelectedValue;
             string strWhere = "categoryID='" + DropDownList_Category.SelectedValue + "'";
             // string Str = "categoryID'" + DropDownList_Category.SelectedValue + "'";
             BLL.QuestionManager questionManager = new QuestionManager();
@@ -94,7 +104,15 @@ namespace UserFB.Web.Users
                 GridView3.DataBind();
                 GridView1.Visible = false;
                 GridView3.Visible = true;
+                Btn_All.Visible = true;
             }
+        }
+
+        protected void Btn_All_Click(object sender, EventArgs e)
+        {
+            GridView3.Visible = false;
+            GridView1.Visible = true;
+            Bind(); ;
         }
     }
 }

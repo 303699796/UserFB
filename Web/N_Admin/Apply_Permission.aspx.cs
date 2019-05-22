@@ -14,12 +14,20 @@ namespace UserFB.Web.N_Admin
             if (!IsPostBack)
             {
                 GetMassage();
+                GetLoginName();
             }
             
         }
-       
 
-            protected void GetMassage()
+        protected void GetLoginName()
+        {
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["NadminID"].ToString());
+
+            LabelUser.Text = admin1.adminName;
+        }
+
+        protected void GetMassage()
         {
            
             BLL.AdminManager adminManager1 = new BLL.AdminManager();

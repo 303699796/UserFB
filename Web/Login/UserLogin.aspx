@@ -27,6 +27,7 @@
                     <div class="card-header text-center text-uppercase h4 font-weight-light">
                         用户登录
                     </div>
+                      <a href="AdminLogin.aspx" class="btn btn-link" style="font-size:smaller">我是管理员 ></a>
 
 
                     <div class="card-body py-5">
@@ -49,7 +50,7 @@
                         <div class="row">
                           
                             <div class="col-6">
-                                <a href="Register.aspx" class="btn btn-link">未有账号？注册></a>
+                                <a href="UserRegister.aspx" class="btn btn-link">未有账号？注册></a>
                             </div>
                              <div class="col-6">
                                  <asp:Button ID="Btn_Login" runat="server" Text="登陆" CssClass="btn btn-primary px-5" OnClick="Btn_Login_Click" />

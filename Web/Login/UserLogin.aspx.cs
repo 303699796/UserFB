@@ -25,7 +25,7 @@ namespace UserFB.Web.Login
             if (ds.Tables[0].Rows.Count > 0)
             {
                 Session["userID"] = ds.Tables[0].Rows[0]["UserID"].ToString();
-                Session["username"] = txbUserName.Text.Trim();
+              //  Session["username"] = txbUserName.Text.Trim();
                // Session["password"] = ds.Tables[0].Rows[0]["userid"].ToString();
                
                 Response.Redirect("~/Users/Message.aspx");

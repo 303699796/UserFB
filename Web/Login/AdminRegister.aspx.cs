@@ -29,7 +29,7 @@ namespace UserFB.Web.Login
            
             if (bo == true)
             {
-                Response.Write("<script language=javascript>alert('申请成功！请耐心等待管理员同意')</script>");
+                Response.Redirect("~/N_Admin/N_Index.aspx");
             }
             else
             {

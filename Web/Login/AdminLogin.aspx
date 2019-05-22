@@ -27,9 +27,16 @@
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="card p-4">
+                     
+                          
+                            
                     <div class="card-header text-center text-uppercase h4 font-weight-light">
                         管理员登录
                     </div>
+                  
+                                <a href="UserLogin.aspx" class="btn btn-link" style="font-size:smaller">我是用户 ></a>
+                          
+                          
 
 
                     <div class="card-body py-5">

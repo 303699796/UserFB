@@ -31,48 +31,29 @@
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-md-down-none">
-                <a href="#">
+                <a href="../Users/Message.aspx">
                     <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
+               
+                    <asp:Label ID="LabelMessage" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
                 </a>
             </li>
 
-            <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-envelope-open"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-            </li>
+           
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="../Images/用户头像.jpg" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none">John Smith</span>
+                  
+                    <asp:Label ID="Label5" runat="server" class="small ml-1 d-md-down-none" Text="欢迎您！"></asp:Label>
+                    <asp:Label ID="LabelUser" runat="server" Font-Bold="true">  </asp:Label>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header">Account</div>
+                    <div class="dropdown-header"></div>
 
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-user"></i> Profile
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-envelope"></i> Messages
-                    </a>
-
-                    <div class="dropdown-header">Settings</div>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-bell"></i> Notifications
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-wrench"></i> Settings
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-lock"></i> Logout
+                   
+                     <a href="../Login/UserLogin.aspx" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 退出登录
                     </a>
                 </div>
             </li>
@@ -89,21 +70,14 @@
                    
                     <div class="col-md-2">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">常见问题</a>
-                            <a href="#" class="list-group-item active">填写反馈</a>
-                            <a href="#" class="list-group-item">我的消息</a>
+                             <a href="../Users\Question.aspx" class="list-group-item active">常见问题</a>
+                            <a href="../Users/Fill_Feedback.aspx" class="list-group-item">填写反馈</a>
+                            <a href="../Users\Message.aspx"  class="list-group-item ">我的消息</a>
                             <a href="#" class="list-group-item">历史反馈</a>
                           
                                <a  class="list-group-item" >   &nbsp;</a>
-                               <a class="list-group-item" style="border:none">  &nbsp;</a>
-                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
-                               <a class="list-group-item" style="border:none">  &nbsp;</a>
-                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
-                               <a class="list-group-item" style="border:none">  &nbsp;</a>
-                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
-                               <a class="list-group-item" style="border:none">  &nbsp;</a>
-                             <a  class="list-group-item" style="border:none">   &nbsp;</a>
-                               <a class="list-group-item" style="border:none">  &nbsp;</a>
+                             <a class="list-group-item" style="border:none;height:400px">  &nbsp;</a>
+                            
                             
                         </div>
                     </div>
@@ -115,11 +89,14 @@
 
                          <div class="row">
                          
-                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                                &nbsp; &nbsp; &nbsp;
+                             <asp:Button ID="Button2" class="btn btn-info" runat="server" Text="请选择问题分类" />
                           <asp:DropDownList ID="DropDownList_Category"  class="form-control" style="width:250px"  runat="server" > </asp:DropDownList>
                                 &nbsp; &nbsp; &nbsp; &nbsp;
                          <asp:Button ID="But_Search" runat="server" class="btn btn-info" Text="查  找" OnClick="But_Search_Click" />
-                         <asp:Button ID="Button1" runat="server" Text="Button" />                   
+                                 &nbsp; &nbsp; &nbsp; &nbsp;
+                             <asp:Button ID="Btn_All" runat="server" class="btn btn-info" Text="查看全部" OnClick="Btn_All_Click" Visible="false" />
+                     <%--    <asp:Button ID="Button1" runat="server" Text="Button" Visible="false" />          --%>         
                     </div>  
                         <div>
                        <%-- <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="categoryID"
@@ -140,10 +117,12 @@
                        
                          
                     </div>
-                  
+                        <br />
+                     
+                  <div class="card" style="height:550px">
                     &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="questionID"
-                         class="tab-content" style="width: 320%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="80px">
+                         class="tab-content" style="width: 1200px;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px">
                         <Columns>
                             <asp:TemplateField HeaderText="问题分类">
                                 <EditItemTemplate>
@@ -156,21 +135,21 @@
                             <asp:BoundField DataField="question" HeaderText="遇到的问题" />
                             <asp:BoundField DataField="solution" HeaderText="如何解决？" />
                         </Columns>
-
-<RowStyle Height="80px"></RowStyle>
+                          <HeaderStyle Height="50px" />
+<RowStyle Height="50px"></RowStyle>
 
                     </asp:GridView>
-
-
+                     
                     <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" Visible="False"
-                         class="tab-content" style="width: 320%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="80px">
+                         class="tab-content" style="width: 1200px;text-align:center ;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px">
                         <Columns>
                             <asp:BoundField DataField="question" HeaderText="遇到的问题" />
                             <asp:BoundField DataField="solution" HeaderText="如何解决" />
                         </Columns>
+                         <HeaderStyle Height="50px" />
                     </asp:GridView>
                         </div>
-                         
+                         </div>
                         </div>
                 
                 </div>

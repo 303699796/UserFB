@@ -30,7 +30,36 @@
 
             <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
                 <i class="fa fa-bars"></i>
-            </a>      
+            </a>     
+              <ul class="navbar-nav ml-auto">
+
+
+            <li class="nav-item d-md-down-none">
+                <a href="../S_Admin_List/Reply_Message.aspx">
+                    <i class="fa fa-envelope-open"></i>
+                
+                    <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" Text="2" ></asp:Label>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="../Images/用户头像.jpg" class="avatar avatar-sm" alt="logo">
+                  
+                    <asp:Label ID="Label5" runat="server" class="small ml-1 d-md-down-none" Text="欢迎您！"></asp:Label>
+                    <asp:Label ID="LabelUser" runat="server" Font-Bold="true">  </asp:Label>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header"></div>
+
+                   
+                    <a href="../Login/AdminLogin.aspx" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 退出登录
+                    </a>
+                </div>
+            </li>
+        </ul>
         </nav>
     </div>
 
@@ -39,16 +68,16 @@
          <div class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="nav">
-                    <li class="nav-title">Navigation</li>
+                      <li class="nav-title">目录</li>
 
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">
+                        <a href="N_Index.aspx" class="nav-link ">
                             <i class="icon icon-speedometer"></i> 首页
                         </a>
                     </li>
                        <li class="nav-item">
-                        <a href="forms.html" class="nav-link active">
-                            <i class="icon  icon-puzzle"></i> 申请权限
+                        <a href="Apply_Permission.aspx" class="nav-link active">
+                            <i class="icon icon-puzzle"></i> 申请权限
                         </a>
                     </li>  
                         </ul>    

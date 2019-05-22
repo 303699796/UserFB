@@ -183,13 +183,7 @@
 
 
          <div class="content">
-             <%-- <div class="col-md-6">
-                    <div class="card">                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>关键指标</h5>                     
-                        </div>    
-                     </div>
-                </div>--%>
+            
                       <button type="button" class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">反馈数量</button>
              <br />
             <div class="container-fluid">
@@ -346,7 +340,7 @@
     </script>
 </div>
 <div>
-     <%--<div class="col-md-6">--%>
+    
                     <div class="card" style="text-align:center">
                         <div class="card-header bg-light">
                             反馈数量明细

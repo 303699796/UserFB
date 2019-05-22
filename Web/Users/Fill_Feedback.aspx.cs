@@ -18,8 +18,19 @@ namespace UserFB.Web.Users
             if (!IsPostBack)
             {
                 CategoryDataBind();
+                GetLoginName();
             }
         }
+
+        protected void GetLoginName()
+        {
+
+
+            BLL.UsersManager usersM = new UsersManager();
+            Model.Users users = usersM.GetModel1(Session["userID"].ToString());
+            LabelUser.Text = users.userName;
+        }
+
         protected void CategoryDataBind()
         {
             Model.Category category1 = new Model.Category();

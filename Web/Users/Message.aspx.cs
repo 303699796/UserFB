@@ -15,7 +15,7 @@ namespace UserFB.Web.Users
             if (!IsPostBack)
             {
                 Bind();
-
+                GetLoginName();
 
 
             }
@@ -37,34 +37,18 @@ namespace UserFB.Web.Users
             GridView1.DataBind();
 
 
-            // string Str = " adminID='" + ID + "'and state is NULL";
-
-
-            //  string Str = " adminID='" + ID + "'and state !=  '" + "已解决" + "'";
-            //    GridView1.DataSource = manager.GetList(Str);
-            //    GridView1.DataBind();
-            //}
+            
 
         }
 
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void GetLoginName()
         {
-            Button btn = sender as Button;
-            GridViewRow row = btn.Parent.Parent as GridViewRow;
-            string a = row.Cells[0].ToString();//获得第一个单元格的值   
-
-            string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
-            Labeltest.Text = b;
-
-
-            //Model.Feedback feedback = new Model.Feedback();
-            //BLL.FeedbackManager Fmanager = new FeedbackManager();
-            //string Str1 = "feedbackID='" + Labeltest.Text + "'";
-            //string s = Fmanager.GetListID(Str1);
-            //LabelName.Text = s;
-
-
+            
+           
+            BLL.UsersManager usersM = new UsersManager();
+            Model.Users users = usersM.GetModel1(Session["userID"].ToString());
+            LabelUser.Text = users.userName;
         }
 
         protected void BntReply_Click(object sender, EventArgs e)
@@ -109,5 +93,16 @@ namespace UserFB.Web.Users
             }
         }
 
+        protected void Btn_select_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            GridViewRow row = btn.Parent.Parent as GridViewRow;
+            string a = row.Cells[0].ToString();//获得第一个单元格的值   
+
+            string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
+            Labeltest.Text = b;
+
+            GridView1.Columns[7].Visible = true;
+        }
     }
 }

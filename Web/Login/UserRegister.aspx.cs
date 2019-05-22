@@ -141,7 +141,7 @@ namespace UserFB.Web.Login
             bool bo = users1.Add(users);
             if (bo == true)
             {
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Users/Question.aspx");
             }
             else
             {

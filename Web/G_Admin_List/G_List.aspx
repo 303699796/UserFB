@@ -31,90 +31,79 @@
 
             <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
                 <i class="fa fa-bars"></i>
-            </a>      
+            </a>   
+            
+
+                 <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                <a href="../S_Admin_List/ApplyMessage_List.aspx">
+                    <i class="fa fa-bell"></i>
+               
+                    <asp:Label ID="LabelApply" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
+                </a>
+            </li>
+
+            <li class="nav-item d-md-down-none">
+                <a href="../S_Admin_List/Reply_Message.aspx">
+                    <i class="fa fa-envelope-open"></i>
+                
+                    <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" ></asp:Label>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="../Images/用户头像.jpg" class="avatar avatar-sm" alt="logo">
+                  
+                    <asp:Label ID="Label5" runat="server" class="small ml-1 d-md-down-none" Text="欢迎您！"></asp:Label>
+                    <asp:Label ID="LabelUser" runat="server" Font-Bold="true">  </asp:Label>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header"></div>
+
+                   
+                    <a href="../Login/AdminLogin.aspx" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 退出登录
+                    </a>
+                </div>
+            </li>
+        </ul>
         </nav>
     </div>
 
    <div class="main-container">
          <div class="sidebar">
             <nav class="sidebar-nav">
-                <ul class="nav">
-                    <li class="nav-title">Navigation</li>
+                 <ul class="nav">
+                    <li class="nav-title">目录</li>
 
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active">
-                            <i class="icon icon-speedometer"></i> 首页
-                        </a>
-                    </li>
+            
                        <li class="nav-item">
-                        <a href="forms.html" class="nav-link">
+                        <a href="../G_Admin_List/G_List.aspx" class="nav-link active">
                             <i class="icon icon-puzzle"></i>分配列表
                         </a>
-                    </li>                                    
-                         <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-target"></i> 反馈分析 <i class="fa fa-caret-left"></i>
+                    </li>   
+
+                      <li class="nav-item">
+                        <a href="../G_Admin_List/G_Index.aspx" class="nav-link ">
+                            <i class="icon icon-grid"></i>反馈分析
                         </a>
-
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="layouts-normal.html" class="nav-link">
-                                    <i class="icon icon-target"></i> 反馈数量
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="layouts-fixed-sidebar.html" class="nav-link">
-                                    <i class="icon icon-target"></i> 反馈分类
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="layouts-fixed-header.html" class="nav-link">
-                                    <i class="icon icon-target"></i> 热门关键词
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="layouts-hidden-sidebar.html" class="nav-link">
-                                    <i class="icon icon-target"></i> 用户画像
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-energy"></i> 设置 <i class="fa fa-caret-left"></i>
+                    </li>  
+                   
+                      <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="icon icon-target"></i>我的消息
                         </a>
-
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="alerts.html" class="nav-link">
-                                    <i class="icon icon-energy"></i> 常见问题
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="buttons.html" class="nav-link">
-                                    <i class="icon icon-energy"></i> 问题分类
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="cards.html" class="nav-link">
-                                    <i class="icon icon-energy"></i> 管理员设置
-                                </a>
-                            </li>                         
+                    </li>        
                         </ul>
-                    </li>                 
-                        </ul>     
+                      
             </nav>
         </div>
 
 
         <div class="content">
-            <div class="row">
+<%--            <div class="row">
                 <div class="col-md-6">
                     <div class="card">
                     
@@ -125,8 +114,17 @@
                             
                      </div>
                 </div>
-    </div>
+    </div>--%>
+
+             <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">未解决反馈</button>
+               <br />        
          
+
+             <asp:Button ID="Btn_Solve"  class="btn btn-primary" runat="server" CausesValidation="false" CommandName="" Text="标记为已解决" OnClick="Btn_Solve_Click" />
+            &nbsp;   &nbsp;   &nbsp;
+             <asp:Button ID="Btn_Block" class="btn btn-primary" runat="server" CausesValidation="false" CommandName="" Text="标记为阻塞" OnClick="Btn_Block_Click" />
+         <br />    
+            <br />
             <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
            RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID">
                 <Columns>
@@ -184,12 +182,11 @@
                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("state") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="标记为" ShowHeader="False">
+                <%--    <asp:TemplateField HeaderText="标记为" ShowHeader="False">
                         <ItemTemplate>
-                            <asp:Button ID="Btn_Solve" runat="server" CausesValidation="false" CommandName="" Text="已解决" OnClick="Btn_Solve_Click" />
-                               <asp:Button ID="Btn_Block" runat="server" CausesValidation="false" CommandName="" Text="阻塞" OnClick="Btn_Block_Click" />
+                           
                         </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
                     
                     <asp:HyperLinkField DataNavigateUrlFields="feedbackID" DataNavigateUrlFormatString="G_List_Details.aspx?feedbackID={0}" HeaderText="详情" Text="详情" />
                     
@@ -207,7 +204,7 @@
   
 
             <br />
-             <div class="row">
+          <%--   <div class="row">
                 <div class="col-md-6">
                     <div class="card">
                     
@@ -218,7 +215,11 @@
                             
                      </div>
                 </div>
-    </div>
+    </div>--%>
+
+            
+             <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">已解决反馈</button>
+               <br />   
 
               <asp:GridView ID="GridView2" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
            RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID">
