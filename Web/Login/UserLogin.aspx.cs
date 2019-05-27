@@ -28,7 +28,7 @@ namespace UserFB.Web.Login
               //  Session["username"] = txbUserName.Text.Trim();
                // Session["password"] = ds.Tables[0].Rows[0]["userid"].ToString();
                
-                Response.Redirect("~/Users/Message.aspx");
+                Response.Redirect("~/Users/Question.aspx");
                 return;
             }
             else

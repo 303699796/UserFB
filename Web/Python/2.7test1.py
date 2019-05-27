@@ -64,7 +64,7 @@ def makeWordCloud(txt):
 
     plt.axis("off")
     plt.imshow(wc, interpolation="bilinear")
-  #  plt.show()
+    plt.show()
 
    # new_report(test_report)
     # return file_new

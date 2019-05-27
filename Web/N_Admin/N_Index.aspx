@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="N_Index.aspx.cs" Inherits="UserFB.Web.N_Admin.N_Index" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="N_Index.aspx.cs" Inherits="UserFB.Web.N_Admin.N_Index" %>
 
 <!DOCTYPE html>
 
@@ -89,12 +90,12 @@
                     <li class="nav-title">目录</li>
 
                     <li class="nav-item">
-                        <a href="N_Index.aspx" class="nav-link ">
+                        <a href="N_Index.aspx" class="nav-link  active ">
                             <i class="icon icon-speedometer"></i> 首页
                         </a>
                     </li>
                        <li class="nav-item">
-                        <a href="Apply_Permission.aspx" class="nav-link active">
+                        <a href="Apply_Permission.aspx" class="nav-link ">
                             <i class="icon icon-puzzle"></i> 申请权限
                         </a>
                     </li>
@@ -156,7 +157,7 @@
                                 <div>
                                     <span class="font-weight-light">本周已解决</span>
                                     <br /><br />
-                                    <asp:Label ID="LabelYdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" ></asp:Label>
+                                    <asp:Label ID="LabelYdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="5" ></asp:Label>
 
                                     
                                 </div>
@@ -174,7 +175,7 @@
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="font-weight-light">待解决</span><br /><br />
-                                    <asp:Label ID="LabelDdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2"></asp:Label>
+                                    <asp:Label ID="LabelDdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="9"></asp:Label>
                                     
                                 </div>
 

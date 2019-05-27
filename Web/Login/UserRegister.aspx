@@ -80,7 +80,7 @@
                        <div class="row">
                           
                             <div class="col-6">
-                                <a href="Login.aspx" class="btn btn-link">已有密码？登陆 ></a>
+                                <a href="UserLogin.aspx" class="btn btn-link">已有账号？登陆 ></a>
                             </div>
                              <div class="col-6">
                                  <asp:Button ID="Btn_Register" runat="server" Text="注册" CssClass="btn btn-primary px-5" OnClick="Btn_Register_Click"/>

@@ -174,7 +174,7 @@ namespace UserFB.Web.S_Admin_List
             {
                 return;
             }
-            new BLL.FeedbackManager().UpdateSolution(solution, name, idList);
+            new BLL.FeedbackManager().UpdateSolution(solution,name, idList);
             Response.Write("<script language=javascript>alert('已标记为已处理！')</script>");
             BindY();
             BindN();
@@ -257,7 +257,8 @@ namespace UserFB.Web.S_Admin_List
             if (bo == true)
             {
                 Response.Write("<script language=javascript>alert('分配成功！')</script>");
-
+                txtDistribution.Text = "";
+                DropDownList_Distribution.SelectedIndex = 0;
                 UpdateFeedback(sender, e);
                 BindY();
                 BindN();

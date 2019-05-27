@@ -29,7 +29,9 @@ namespace UserFB.Web.Login
            
             if (bo == true)
             {
-                Response.Redirect("~/N_Admin/N_Index.aspx");
+                Session["N_adminName"] = txbUserName.Text.Trim();
+              //  Session["NadminID"] = ds0.Tables[0].Rows[0]["adminID"].ToString();
+                Response.Redirect("~/N_Admin/Apply_Permission.aspx");
             }
             else
             {

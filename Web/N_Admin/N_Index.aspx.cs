@@ -63,9 +63,9 @@ namespace UserFB.Web.N_Admin
         protected void GetLoginName()
         {
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            Model.Admin admin1 = adminManager1.GetModel1(Session["NadminID"].ToString());
+            Model.Admin admin1 = adminManager1.GetModel1(Session["NadminName"].ToString());
 
-            LabelUser.Text = admin1.adminName;
+          //  LabelUser.Text = admin1.adminName;
         }
 
 
