@@ -96,11 +96,11 @@ namespace UserFB.Web.S_Admin_List
             Response.Charset = "GB2312";
             DateTime dt = System.DateTime.Now;
             string str = dt.ToString("yyyyMMddhhmmss");
-            str = str + ".txt";
-            Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".txt");
+           // str = str + ".xls";
+            Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".xls");
 
             Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
-            Response.ContentType = "application/ms-txt";
+            Response.ContentType = "application/ms-excel";
 
             Response.Write("<meta http-equiv=Content-Type;content=/text/html;charset=GB2312/>");
             this.EnableViewState = false;

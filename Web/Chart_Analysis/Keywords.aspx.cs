@@ -9,6 +9,13 @@ using System.IO;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using UserFB.BLL;
+using System.Data;
+using System.Text;
+using NPOI.HSSF.UserModel;
+using System.Runtime.InteropServices;
+using Maticsoft.Common;
+using NPOI.SS.Util;
+
 
 namespace UserFB.Web.Chart_Analysis
 {
@@ -23,7 +30,7 @@ namespace UserFB.Web.Chart_Analysis
                 GetLoginName();
                 ApplyNumber();
                 ReplyNumber();
-
+                GBind();
             }
         }
         protected void GetLoginName()
@@ -167,6 +174,159 @@ namespace UserFB.Web.Chart_Analysis
 
             }
 
+        }
+
+        protected void GBind()
+        {
+            Model.Feedback feedback = new Model.Feedback();
+            BLL.FeedbackManager feedbackManager = new BLL.FeedbackManager();
+            GridView1.DataSource = feedbackManager.GetAllFeedback();
+            GridView1.DataBind();
+        }
+
+        private void GridExport(DataTable dt, string strFile, string strAppType)
+        {
+          // string strAppType = "";
+            //switch (strExt)
+            //{
+            //    case "xls":
+            //        strAppType = "application/ms-excel";
+            //        break;
+            //    case "doc":
+            //        strAppType = "application/ms-word";
+            //        break;
+            //    case "txt":
+                   strAppType = "application/ms-txt";
+            //        break;
+            //    case "html":
+            //    case "htm":
+            //        strAppType = "application/ms-html";
+            //        break;
+            //    default: return;
+            //}
+            //GridView MyGridView = new GridView();
+            //MyGridView.DataSource = dt;
+            //MyGridView.DataBind();
+            //HttpContext.Current.Response.Clear();
+            //HttpContext.Current.Response.Buffer = true;
+            //HttpContext.Current.Response.AddHeader("Content-Type", "text/html; charset=GB2312");
+            //HttpContext.Current.Response.AppendHeader("Content-Disposition", string.Format("attachment;filename={0}.{1}", HttpUtility.UrlEncode(strFile, Encoding.GetEncoding("GB2312")), strAppType));
+            //HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            //HttpContext.Current.Response.ContentType =" application / ms - txt";
+            ////MyGridView.Page.EnableViewState = false;
+            ////二、定义一个输入流
+            //System.Globalization.CultureInfo myCItrad = new System.Globalization.CultureInfo("ZH-CN", true);
+            //System.IO.StringWriter oStringWriter = new System.IO.StringWriter(myCItrad);
+            //System.Web.UI.HtmlTextWriter oHtmlTextWriter = new System.Web.UI.HtmlTextWriter(oStringWriter);
+            ////三、将目标数据绑定到输入流输出
+            //GridView1.RenderControl(oHtmlTextWriter);
+            //HttpContext.Current.Response.Write(oStringWriter.ToString());
+            //HttpContext.Current.Response.End();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //HttpContext.Current.Response.Clear();
+            //HttpContext.Current.Response.Buffer = true;
+            //HttpContext.Current.Response.AddHeader("Content-Type", "text/html; charset=GB2312");
+            //HttpContext.Current.Response.AppendHeader("Content-Disposition", string.Format("attachment;filename={0}.{1}", HttpUtility.UrlEncode("001", Encoding.GetEncoding("GB2312")), "xlsx"));
+            //HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            //HttpContext.Current.Response.ContentType = "application/ms-txt";
+            //Response.Write("<meta http-equiv=Content-Type;content=/text/html;charset=GB2312/>");
+            //GridView1.Page.EnableViewState = false;
+            ////二、定义一个输入流
+            //System.Globalization.CultureInfo myCItrad = new System.Globalization.CultureInfo("ZH-CN", true);
+            //System.IO.StringWriter oStringWriter = new System.IO.StringWriter(myCItrad);
+            //System.Web.UI.HtmlTextWriter oHtmlTextWriter = new System.Web.UI.HtmlTextWriter(oStringWriter);
+            ////三、将目标数据绑定到输入流输出
+            //GridView1.RenderControl(oHtmlTextWriter);
+            //HttpContext.Current.Response.Write(oStringWriter.ToString());
+            //HttpContext.Current.Response.End();
+
+
+            //Response.Clear();
+            //Response.Buffer = false;
+            //Response.Charset = "GB2312";
+            //DateTime dt = System.DateTime.Now;
+            //string str = dt.ToString("yyyyMMddhhmmss");
+            //// str = str + ".xls";
+            //Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".xlsx");
+
+            //Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            //Response.ContentType = "application/ms-excel";
+
+            //Response.Write("<meta http-equiv=Content-Type;content=/text/html;charset=GB2312/>");
+            //this.EnableViewState = false;
+            //System.IO.StringWriter oStringWriter = new System.IO.StringWriter();
+            //HtmlTextWriter oHtmlTextWriter = new HtmlTextWriter(oStringWriter);
+            //GridView1.RenderControl(oHtmlTextWriter);
+            //Response.Write(oStringWriter.ToString());
+            //Response.End();
+
+            Model.Feedback feedback = new Model.Feedback();
+            BLL.FeedbackManager feedbackManager = new BLL.FeedbackManager();
+           DataSet ds = feedbackManager.GetAllList();
+
+            //Response.Clear();
+            //Response.Buffer = false;
+            //Response.Charset = "GB2312";
+            //DateTime dt = System.DateTime.Now;
+            //string str = dt.ToString("yyyyMMddhhmmss");
+            //// str = str + ".xls";
+            //Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".xlsx");
+
+            //Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            //Response.ContentType = "application/ms-excel";
+
+            //Response.Write("<meta http-equiv=Content-Type;content=/text/html;charset=GB2312/>");
+            //this.EnableViewState = false;
+            //System.IO.StringWriter oStringWriter = new System.IO.StringWriter();
+            //HtmlTextWriter oHtmlTextWriter = new HtmlTextWriter(oStringWriter);
+            //ds.RenderControl(oHtmlTextWriter);
+            //Response.Write(oStringWriter.ToString());
+            //Response.End();
+
+
+
+            Response.Clear();
+            Response.Buffer = false;
+            Response.Charset = "GB2312";
+            DateTime dt = System.DateTime.Now;
+            string str = dt.ToString("yyyyMMddhhmmss");
+            // str = str + ".xls";
+            Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".txt");
+
+            Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            Response.ContentType = "application/ms-txt";
+            Response.Write("<meta http-equiv=Content-Type;content=/text/html;charset=GB2312/>");
+
+            // HttpContext.Current.Response.Clear（）;
+            // string FileName = fileName +“。txt”;
+            // HttpContext.Current.Response.Buffer = true;
+            // HttpContext.Current.Response.Charset =“GB2312”;
+            //   HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF7;
+            //  HttpContext.Current.Response.AppendHeader（“Content - Disposition”，“attachment; filename =”+HttpUtility.UrlEncode（FileName，Encoding.UTF8）.ToString（））;
+            //  HttpContext.Current.Response.ContentType =“application / ms - text”;
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        {
+                for(int j = 0; j < ds.Tables[0].Columns.Count; j++)
+            {
+                    sw.WriteLine(ds.Tables[0].Rows[i][j].ToString().Trim()+"\t");
+                }
+                sw.WriteLine("\r \n");
+            }
+            HttpContext.Current.Response.Write(sw.ToString());
+            sw.Close();
+            HttpContext.Current.Response.End();
+        
+
+    }
+
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            //base.VerifyRenderingInServerForm(control);
         }
     }
 }
