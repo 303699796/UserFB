@@ -9,6 +9,7 @@ using LTP.Accounts.Data;
 using Maticsoft.Common;
 using UserFB.BLL;
 using UserFB.Model;
+using System.Data;
 
 namespace UserFB.Web.Login
 {
@@ -138,10 +139,16 @@ namespace UserFB.Web.Login
             //users.birthDate = Convert.ToDateTime("1985-12-25"); 
 
             BLL.UsersManager users1 = new UsersManager();
+           
             bool bo = users1.Add(users);
             if (bo == true)
             {
+                string str = "username='" + txbUserName.Text.Trim() + "'";
+                DataSet ds = users1.GetList(str);       
+                Session["userID"] = ds.Tables[0].Rows[0]["UserID"].ToString();
+                Session["username"] = txbUserName.Text.Trim();
                 Response.Redirect("~/Users/Question.aspx");
+
             }
             else
             {

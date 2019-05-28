@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserFB.BLL;
 
 namespace UserFB.Web.Setting
 {
@@ -15,6 +16,8 @@ namespace UserFB.Web.Setting
             {
                 Bind();
                 GetLoginName();
+                ApplyNumber();
+                ReplyNumber();
             }
         }
         protected void Bind()
@@ -103,6 +106,42 @@ namespace UserFB.Web.Setting
             {
                 Response.Write("<script language=javascript>alert('添加失败！')");
             }
+        }
+
+        protected void ApplyNumber()
+        {
+
+            Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+            BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+            string str = "remark='" + "1" + "'";
+            int number = apply.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelApply.Visible = true;
+                LabelApply.Text = Convert.ToString(number);
+
+            }
+
+        }
+
+        protected void ReplyNumber()
+        {
+
+            Model.Reply reply = new Model.Reply();
+            BLL.ReplyManager replyManager = new ReplyManager();
+
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            int s = Convert.ToInt32(admin1.adminID);
+            string str = "remark='" + "1" + "'and receiverID='" + s + "'";
+            int number = replyManager.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelMessage.Visible = true;
+                LabelMessage.Text = Convert.ToString(number);
+
+            }
+
         }
     }
 }

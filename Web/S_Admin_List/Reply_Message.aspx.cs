@@ -53,6 +53,23 @@ namespace UserFB.Web.S_Admin_List
 
         }
 
+        //protected void ReplyNumber()
+        //{
+        //    LabelApply.Visible = false;
+
+        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+       // Model.Admin admin = adminManager.GetModel1(Session["SadminID"].ToString());
+
+        //    string str = "remark='" + "1" + "'and receiverID='" + s + "'";
+        //    apply.UpdateState(str);
+
+
+        //        LabelApply.Text = "0";
+
+        //}
+
+
         protected void GetLoginName()
         {
             BLL.AdminManager adminManager1 = new BLL.AdminManager();

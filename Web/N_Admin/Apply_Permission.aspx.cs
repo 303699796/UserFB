@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,13 +26,19 @@ namespace UserFB.Web.N_Admin
             Model.Admin admin1 = adminManager1.GetModel1(Session["NadminID"].ToString());
 
             LabelUser.Text = admin1.adminName;
+        //  LabelUser.Text = Convert.ToString(Session["NadminName"]);
         }
 
         protected void GetMassage()
         {
-           
+
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
+           // Model.Admin admin1 = adminManager1.GetModel1(Session["NadminName"].ToString());
+           // BLL.AdminManager adminManager1 = new BLL.AdminManager();
             Model.Admin admin1 = adminManager1.GetModel1(Session["NadminID"].ToString());
+           // DataSet ds = adminManager1.GetList();
+
+            LabelUser.Text = admin1.adminName;
             txtID.Text = Convert.ToString(admin1.adminID);
             txtName.Text = admin1.adminName;
             txtDepartment.Text = admin1.department;

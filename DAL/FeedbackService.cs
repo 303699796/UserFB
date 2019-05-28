@@ -381,7 +381,7 @@ namespace UserFB.DAL
             strSql.AppendFormat(" where  F.isInvalid <>0  or F.isInvalid is null");
             if (CID.Trim() != "")
             {
-                strSql.AppendFormat(" and " + CID );
+                strSql.AppendFormat(" and " + CID + "order by feedbackTime Desc");
             }
            
             SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());

@@ -44,11 +44,12 @@ namespace UserFB.Web.Users
 
         protected void GetLoginName()
         {
-            
-           
+
+
             BLL.UsersManager usersM = new UsersManager();
             Model.Users users = usersM.GetModel1(Session["userID"].ToString());
             LabelUser.Text = users.userName;
+            //  LabelUser.Text = Convert.ToString(Session["username"]);
         }
 
         protected void BntReply_Click(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace UserFB.Web.Users
             string str = "replyID='" + Labeltest.Text + "'";
             string id = replyManager1.GetUserID(str);
 
-            string str1 = "replyID='" + Labeltest.Text + "'";
+          //  string str1 = "replyID='" + Labeltest.Text + "'";
             string replyFB = replyManager1.GetFBID(str);
 
 
@@ -79,6 +80,7 @@ namespace UserFB.Web.Users
             reply.feedbackID = Convert.ToInt32(replyFB);
             reply.text = txtReply.Text;
             reply.replierID = s;
+            reply.remark = "1";
             reply.receiverID = Convert.ToInt32(id);
             bool bo = replyManager.Add(reply);
             if (bo == true)

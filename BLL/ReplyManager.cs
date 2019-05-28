@@ -192,6 +192,12 @@ namespace UserFB.BLL
         {
             return dal.GetFBID(strWhere);
         }
+
+
+        public bool UpdateState(string state1, int id)
+        {
+            return dal.UpdateState(state1, id);
+        }
         #endregion  ExtensionMethod
     }
 }

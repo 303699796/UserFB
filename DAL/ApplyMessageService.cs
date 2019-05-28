@@ -374,7 +374,7 @@ namespace UserFB.DAL
             //strSql.Append("applyTime,applyState,remark,");
             //strSql.Append("  case   when permission=" + "1"+ " then  " + " 超级管理员" + " else  " + " 普通管理员 " + "  end ");
             strSql.Append(" FROM ApplyMessage ");
-            strSql.Append(" where applyState is null ");
+            strSql.Append(" where applyState is null order by applyTime Desc");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);
@@ -387,7 +387,7 @@ namespace UserFB.DAL
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select ApplyID,applicantID,approverID,name,department,job,permission,applyTime,applyState,remark");
             strSql.Append(" FROM ApplyMessage ");
-            strSql.Append(" where applyState is not null ");
+            strSql.Append(" where applyState is not null  order by applyTime Desc ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);
@@ -408,6 +408,15 @@ namespace UserFB.DAL
             int rows = DbHelperSQL.ExecuteSql(sql);
             return rows >0?true:false;
         }
+
+        public bool UpdateState(string state1)
+        {
+            string sql = string.Format("update [ApplyMessage] set [remark] ={0} where [remark] =1", state1);
+            int rows = DbHelperSQL.ExecuteSql(sql);
+            return rows > 0 ? true : false;
+        }
+
+
 
         #endregion  ExtensionMethod
     }

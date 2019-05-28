@@ -32,6 +32,7 @@ namespace UserFB.Web.S_Admin_List
                 AdminDataBind();
                 ApplyNumber();
                 GetLoginName();
+                ReplyNumber();
             }
         }
         protected void BindY()
@@ -94,12 +95,12 @@ namespace UserFB.Web.S_Admin_List
             Response.Charset = "GB2312";
             DateTime dt = System.DateTime.Now;
             string str = dt.ToString("yyyyMMddhhmmss");
-            str = str + ".xls";
-            // Response.AppendHeader("Content-Disposition", "attachment;filename=pkmv_de.xls");
-            Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".xls");
+            str = str + ".txt";
+            Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".txt");
 
             Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
-            Response.ContentType = "application/ms-excel";
+            Response.ContentType = "application/ms-txt";
+
             Response.Write("<meta http-equiv=Content-Type;content=/text/html;charset=GB2312/>");
             this.EnableViewState = false;
             System.IO.StringWriter oStringWriter = new System.IO.StringWriter();
@@ -107,7 +108,62 @@ namespace UserFB.Web.S_Admin_List
             GridView1.RenderControl(oHtmlTextWriter);
             Response.Write(oStringWriter.ToString());
             Response.End();
+
+            //HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            ////HttpContext.Current.Response.ContentType =“application / ms-excel”; application / ms-txt
+            //HttpContext.Current.Response.ContentType ="application / ms - txt";
+            //HttpContext.Current.Response.AppendHeader("Content - Disposition","attachment; filename ="+ str + ".txt");
+            //this.Page.EnableViewState = false;
+            //System.IO.StringWriter tw = new System.IO.StringWriter();
+            //HtmlTextWriter hw = new HtmlTextWriter(tw);
+            //this.RenderControl(hw);
+            //HttpContext.Current.Response.Write(tw);
+            //HttpContext.Current.Response.End();
+
+            //DateTime dt = System.DateTime.Now;
+            //string str = dt.ToString("yyyyMMddhhmmss");
+            //str = str + ".xlsx";
+            //GridView1.AllowPaging = false;
+            //GridViewToExcel(GridView1, "application/ms-excel", str);
+
+            // Export(gvRecord, "application/ms-excel", str);
+
+
         }
+
+
+
+        public static void GridViewToExcel(Control ctrl, string FileType, string FileName)
+        {
+            HttpContext.Current.Response.Charset = "GB2312";
+            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;//注意编码
+            HttpContext.Current.Response.AppendHeader("Content-Disposition",
+                "attachment;filename=" + HttpUtility.UrlEncode(FileName, System.Text.Encoding.UTF8).ToString());
+            HttpContext.Current.Response.ContentType = FileType;//image/JPEG;text/HTML;image/GIF;vnd.ms-excel/msword 
+            ctrl.Page.EnableViewState = false;
+            StringWriter tw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(tw);
+            ctrl.RenderControl(hw);
+            HttpContext.Current.Response.Write(tw.ToString());
+            HttpContext.Current.Response.End();
+        }
+
+       
+
+        protected void gvRecord_PreRender(object sender, EventArgs e)
+        {
+            
+        }
+       
+       
+
+
+
+
+
+
+
+
         public override void VerifyRenderingInServerForm(Control control)
         {
 
@@ -196,13 +252,14 @@ namespace UserFB.Web.S_Admin_List
             reply.feedbackID = Convert.ToInt32(Labeltest.Text);
             reply.text = txtReply.Text;
             reply.replierID = s;
+            reply.remark = "1";
             reply.receiverID = Convert.ToInt32(LabelName.Text.Trim());
             bool bo = replyManager.Add(reply);
             if (bo == true)
             {
-
+               
                 Response.Write("<script language=javascript>alert('回复成功！')</script>");
-                reply.text = "";
+                txtReply.Text = "";
 
             }
             else
@@ -367,7 +424,28 @@ namespace UserFB.Web.S_Admin_List
 
         }
 
-       
+        protected void ReplyNumber()
+        {
+
+            Model.Reply reply = new Model.Reply();
+            BLL.ReplyManager replyManager = new ReplyManager();
+
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            int s = Convert.ToInt32(admin1.adminID);
+            string str = "remark='" + "1" + "'and receiverID='" + s + "'";
+            int number = replyManager.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelMessage.Visible = true;
+                LabelMessage.Text = Convert.ToString(number);
+
+            }
+
+        }
+
+
+
         protected void Btn_Category_Click(object sender, EventArgs e)
         {
            

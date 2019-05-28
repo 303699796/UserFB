@@ -357,7 +357,7 @@ namespace UserFB.DAL
             strSql.AppendLine("inner join Feedback as F on R.feedbackID=F.feedbackID");
             if (str.Trim() != "")
             {
-                strSql.Append(" where " + str);
+                strSql.Append(" where " + str + "order by time Desc");
             }
             SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
             while (reader.Read())
@@ -569,6 +569,12 @@ namespace UserFB.DAL
             }
         }
 
+        public bool UpdateState(string state1,int id)
+        {
+            string sql = string.Format("update [Reply] set [remark] ={0} where [remark] =1 and receiverID={1}", state1, id);
+            int rows = DbHelperSQL.ExecuteSql(sql);
+            return rows > 0 ? true : false;
+        }
 
 
         #endregion  ExtensionMethod

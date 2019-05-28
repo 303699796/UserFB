@@ -19,6 +19,7 @@ namespace UserFB.Web.Users
             {
                 CategoryDataBind();
                 GetLoginName();
+                ReplyNumber();
             }
         }
 
@@ -29,6 +30,7 @@ namespace UserFB.Web.Users
             BLL.UsersManager usersM = new UsersManager();
             Model.Users users = usersM.GetModel1(Session["userID"].ToString());
             LabelUser.Text = users.userName;
+            // LabelUser.Text = Convert.ToString(Session["username"]);
         }
 
         protected void CategoryDataBind()
@@ -77,7 +79,25 @@ namespace UserFB.Web.Users
                 }
             }
 
+        protected void ReplyNumber()
+        {
 
-           
+            Model.Reply reply = new Model.Reply();
+            BLL.ReplyManager replyManager = new ReplyManager();
+
+            BLL.UsersManager usersM = new UsersManager();
+            Model.Users users = usersM.GetModel1(Session["userID"].ToString());
+            int s = Convert.ToInt32(users.UserID);
+            string str = "remark='" + "1" + "'and receiverID='" + s + "'";
+            int number = replyManager.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelMessage.Visible = true;
+                LabelMessage.Text = Convert.ToString(number);
+
+            }
+
         }
+
+    }
     }

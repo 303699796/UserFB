@@ -218,7 +218,7 @@ namespace UserFB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select questionID,categoryID,question,solution,time ");
-			strSql.Append(" FROM Question ");
+			strSql.Append(" FROM Question order by time Desc");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);

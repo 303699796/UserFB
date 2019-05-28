@@ -201,7 +201,12 @@ namespace UserFB.BLL
             return dal.UpdateList(state,idList);
         }
 
-            #endregion  ExtensionMethod
+        public bool UpdateState(string state1)
+        {
+            return dal.UpdateState(state1);
         }
+
+        #endregion  ExtensionMethod
+    }
 }
 

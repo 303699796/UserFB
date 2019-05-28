@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -29,8 +30,10 @@ namespace UserFB.Web.Login
            
             if (bo == true)
             {
-                Session["N_adminName"] = txbUserName.Text.Trim();
-              //  Session["NadminID"] = ds0.Tables[0].Rows[0]["adminID"].ToString();
+                string str = "adminname='" + txbUserName.Text.Trim() + "'";
+                DataSet ds = admin1.GetList(str);    
+                Session["NadminID"] = ds.Tables[0].Rows[0]["adminID"].ToString();
+                Session["NadminName"] = txbUserName.Text.Trim();
                 Response.Redirect("~/N_Admin/Apply_Permission.aspx");
             }
             else

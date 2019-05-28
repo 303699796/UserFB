@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserFB.BLL;
 
 namespace UserFB.Web.S_Admin_List
 {
@@ -20,6 +21,7 @@ namespace UserFB.Web.S_Admin_List
                 HistoryBind();
                 ApplyNumber();
                 GetLoginName();
+                ReplyNumber();
             }
         }
         protected void NewBind()
@@ -147,7 +149,42 @@ namespace UserFB.Web.S_Admin_List
         {
             LabelApply.Text = "0";
             LabelApply.Visible = false;
+
+            Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+            BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+            string str = "0";
+            bool bo = apply.UpdateState(str);
+           if (bo=true)
+            {
+                LabelApply.Text = "0";
+            }
+            else
+            {
+                LabelApply.Text = "0";
+            }
+
         }
+
+        protected void ReplyNumber()
+        {
+
+            Model.Reply reply = new Model.Reply();
+            BLL.ReplyManager replyManager = new ReplyManager();
+
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            int s = Convert.ToInt32(admin1.adminID);
+            string str = "remark='" + "1" + "'and receiverID='" + s + "'";
+            int number = replyManager.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelMessage.Visible = true;
+                LabelMessage.Text = Convert.ToString(number);
+
+            }
+
+        }
+
         protected void GetLoginName()
         {
             BLL.AdminManager adminManager1 = new BLL.AdminManager();

@@ -20,9 +20,17 @@
 <form id="form1" runat="server">
 
 <div class="page-wrapper flex-row align-items-center">
+   
     <div class="container">
+        
         <div class="row justify-content-center">
+          
             <div class="col-md-5">
+                  <div  style="text-align:center">
+                    
+      <asp:Label ID="Label1" runat="server" Text="(用户名：User001，密码：1)" class="form-control-label" ></asp:Label>
+            </div>
+                  <br />
                 <div class="card p-4">
                     <div class="card-header text-center text-uppercase h4 font-weight-light">
                         用户登录
@@ -61,6 +69,7 @@
                 </div>
             </div>
         </div>
+          
     </div>
 </div>
    

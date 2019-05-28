@@ -26,6 +26,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
+                   <div  style="text-align:center">
+                    
+      <asp:Label ID="Label1" runat="server" Text="(用户名：admin1，密码：1)" class="form-control-label" ></asp:Label>
+            </div>
+                  <br />
                 <div class="card p-4">
                      
                           

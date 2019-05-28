@@ -23,7 +23,7 @@ namespace UserFB.Web.Users
                // CategoryBind();
                 DDLCategoryBind();
                 GetLoginName();
-
+                ReplyNumber();
             }
         }
         protected void GetLoginName()
@@ -33,6 +33,7 @@ namespace UserFB.Web.Users
             BLL.UsersManager usersM = new UsersManager();
             Model.Users users = usersM.GetModel1(Session["userID"].ToString());
             LabelUser.Text = users.userName;
+            // LabelUser.Text = Convert.ToString(Session["username"]);
         }
 
         protected void Bind()
@@ -113,6 +114,26 @@ namespace UserFB.Web.Users
             GridView3.Visible = false;
             GridView1.Visible = true;
             Bind(); ;
+        }
+
+        protected void ReplyNumber()
+        {
+
+            Model.Reply reply = new Model.Reply();
+            BLL.ReplyManager replyManager = new ReplyManager();
+
+            BLL.UsersManager usersM = new UsersManager();
+            Model.Users users = usersM.GetModel1(Session["userID"].ToString());
+            int s = Convert.ToInt32(users.UserID);
+            string str = "remark='" + "1" + "'and receiverID='" + s + "'";
+            int number = replyManager.GetRecordCount(str);
+            if (number > 0)
+            {
+                LabelMessage.Visible = true;
+                LabelMessage.Text = Convert.ToString(number);
+
+            }
+
         }
     }
 }
