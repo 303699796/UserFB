@@ -18,7 +18,7 @@ namespace UserFB.Web.S_Admin_List
                 Bind();
                 GetLoginName();
                 ApplyNumber();
-
+                ReplyNumber();
 
 
             }
@@ -53,21 +53,21 @@ namespace UserFB.Web.S_Admin_List
 
         }
 
-        //protected void ReplyNumber()
-        //{
-        //    LabelApply.Visible = false;
+        protected void ReplyNumber()
+        {
+          
 
-        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
-        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
-       // Model.Admin admin = adminManager.GetModel1(Session["SadminID"].ToString());
-
-        //    string str = "remark='" + "1" + "'and receiverID='" + s + "'";
-        //    apply.UpdateState(str);
-
-
-        //        LabelApply.Text = "0";
-
-        //}
+            Model.Reply reply1 = new Model.Reply();
+            BLL.ReplyManager replyManager1 = new ReplyManager();
+            BLL.AdminManager adminManager = new BLL.AdminManager();
+            Model.Admin admin = adminManager.GetModel1(Session["SadminID"].ToString());
+            int s = Convert.ToInt32(admin.adminID);
+            string str = "0";
+            int id = s;
+            replyManager1.UpdateState(str,s);
+            LabelApply.Text = "0";
+            LabelApply.Visible = false;
+        }
 
 
         protected void GetLoginName()
@@ -133,6 +133,15 @@ namespace UserFB.Web.S_Admin_List
             else
             {
                 Response.Write("<script language=javascript>alert('回复失败！请重试')");
+            }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
             }
         }
     }

@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="list-group" >
-                            <a href="../Users\Question.aspx" class="list-group-item">常见问题</a>
+                            <a href="../Users\Question.aspx" class="list-group-item">帮助列表</a>
                             <a href="../Users/Fill_Feedback.aspx" class="list-group-item active">填写反馈</a>
                             <a href="../Users\Message.aspx" class="list-group-item">我的消息</a>
                            

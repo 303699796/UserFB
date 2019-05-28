@@ -16,7 +16,7 @@ namespace UserFB.Web.Users
             {
                 Bind();
                 GetLoginName();
-
+                ReplyNumber();
 
             }
         }
@@ -50,6 +50,22 @@ namespace UserFB.Web.Users
             Model.Users users = usersM.GetModel1(Session["userID"].ToString());
             LabelUser.Text = users.userName;
             //  LabelUser.Text = Convert.ToString(Session["username"]);
+        }
+
+        protected void ReplyNumber()
+        {
+
+
+            Model.Reply reply1 = new Model.Reply();
+            BLL.ReplyManager replyManager1 = new ReplyManager();
+            BLL.UsersManager usersM = new UsersManager();
+            Model.Users users = usersM.GetModel1(Session["userID"].ToString());
+            int s = Convert.ToInt32(users.UserID);
+            string str = "0";
+            int id = s;
+            replyManager1.UpdateState(str, s);
+            LabelMessage.Text = "0";
+            LabelMessage.Visible = false;
         }
 
         protected void BntReply_Click(object sender, EventArgs e)
@@ -105,6 +121,22 @@ namespace UserFB.Web.Users
             Labeltest.Text = b;
 
             GridView1.Columns[7].Visible = true;
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
+            }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            Bind();
+
         }
     }
 }

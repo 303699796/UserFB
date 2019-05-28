@@ -14,7 +14,7 @@ namespace UserFB.Web.N_Admin
         {
             if (!IsPostBack)
             {
-                GetMassage();
+                GetMessage();
                 GetLoginName();
             }
             
@@ -29,7 +29,7 @@ namespace UserFB.Web.N_Admin
         //  LabelUser.Text = Convert.ToString(Session["NadminName"]);
         }
 
-        protected void GetMassage()
+        protected void GetMessage()
         {
 
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
@@ -61,7 +61,7 @@ namespace UserFB.Web.N_Admin
             Model.ApplyMessage applyMessage = new Model.ApplyMessage();
             applyMessage.applicantID = Convert.ToInt32(txtID.Text);
 
-            applyMessage.approverID = Convert.ToInt32("10010");
+            applyMessage.approverID = Convert.ToInt32("20000");
 
             applyMessage.name = txtName.Text.Trim();
             applyMessage.department = txtDepartment.Text.Trim();
@@ -81,5 +81,34 @@ namespace UserFB.Web.N_Admin
                 Response.Write("<script language=javascript>alert('申请失败！请重试')");
             }
         }
+
+        //protected void ApplyNumber()
+        //{
+
+
+        //    //Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+        //    //BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+
+        //    //BLL.AdminManager adminManager1 = new BLL.AdminManager();
+        //    //Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+        //    //int s = Convert.ToInt32(admin1.adminID);
+
+        //    //string str = "0";
+        //    //apply.UpdateState(str,s);
+        //    //LabelApply.Text = "0";
+        //    //LabelApply.Visible = false;
+
+
+        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
+        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
+
+
+
+        //    string str = "0";
+        //    apply.UpdateState(str);
+        //    LabelMessage.Text = "0";
+        //    LabelMessage.Visible = false;
+
+        //}
     }
 }

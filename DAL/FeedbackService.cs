@@ -475,12 +475,13 @@ namespace UserFB.DAL
             return rows > 0 ? true : false;
         }
 
-        public bool UpdateSolution(string solution, string name, string idList)
-        {
-            string sql = string.Format("update [Feedback] set [solutionState] ={0},[handler]={1} where [feedbackID] in({2})", solution, name,idList);
-            int rows = DbHelperSQL.ExecuteSql(sql);
-            return rows > 0 ? true : false;
-        }
+        //public bool UpdateSolution1(string solution, string name, string idList)
+        //{
+        //      string sql = string.Format("update [Feedback] set [solutionState] ={0},[handler]={1} where [feedbackID] in({2})", solution, name,idList);
+        
+        //    int rows = DbHelperSQL.ExecuteSql(sql);
+        //    return rows > 0 ? true : false;
+        //}
 
 
         public int GetRecordCountNum(string strWhere)

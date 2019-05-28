@@ -7,7 +7,7 @@
  <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>问题设置</title>
+    <title>申请审批信息</title>
      <link rel="stylesheet" href="../bootstrap/vendor/simple-line-icons/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
@@ -79,7 +79,7 @@
 
             
                        <li class="nav-item">
-                        <a href="../S_Admin_List/List.aspx" class="nav-link active">
+                        <a href="../S_Admin_List/List.aspx" class="nav-link ">
                             <i class="icon icon-puzzle"></i>反馈列表
                         </a>
                     </li>                                    
@@ -117,7 +117,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="../S_Admin_List/ApplyMessage_List.aspx" class="nav-link">
+                                <a href="../S_Admin_List/ApplyMessage_List.aspx" class="nav-link active">
                                     <i class="icon icon-target"></i> 审批消息
                                 </a>
                             </li>
@@ -141,7 +141,7 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="../Setting/Question_Setting.aspx" class="nav-link">
-                                    <i class="icon icon-energy"></i> 常见问题
+                                    <i class="icon icon-energy"></i> 帮助列表
                                 </a>
                             </li>
 
@@ -282,7 +282,7 @@
                 </div>
     </div>
 
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "  RowStyle-Height="50px" >
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "  RowStyle-Height="50px" OnRowDataBound="GridView2_RowDataBound" >
                 <Columns>
                     <asp:BoundField DataField="name" HeaderText="申请人" />
                     <asp:BoundField DataField="department" HeaderText="部门" />

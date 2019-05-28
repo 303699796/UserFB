@@ -7,7 +7,7 @@
  <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>填写反馈</title>
+    <title>帮助列表</title>
 
       <link rel="stylesheet" href="../bootstrap/vendor/simple-line-icons/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
@@ -70,7 +70,7 @@
                    
                     <div class="col-md-2">
                         <div class="list-group">
-                             <a href="../Users\Question.aspx" class="list-group-item active">常见问题</a>
+                             <a href="../Users\Question.aspx" class="list-group-item active">帮助列表</a>
                             <a href="../Users/Fill_Feedback.aspx" class="list-group-item">填写反馈</a>
                             <a href="../Users\Message.aspx"  class="list-group-item ">我的消息</a>
                            
@@ -122,7 +122,7 @@
                   <div class="card" style="height:550px">
                     &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="questionID"
-                         class="tab-content" style="width: 1200px;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px">
+                         class="tab-content" style="width: 1200px;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="50px" OnRowDataBound="GridView1_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText="问题分类">
                                 <EditItemTemplate>

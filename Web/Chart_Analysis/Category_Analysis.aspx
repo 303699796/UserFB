@@ -8,7 +8,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>首页</title>
+    <title>分类分析</title>
      <link rel="stylesheet" href="../bootstrap/vendor/simple-line-icons/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
@@ -109,7 +109,7 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="alerts.html" class="nav-link">
-                                    <i class="icon icon-energy"></i> 常见问题
+                                    <i class="icon icon-energy"></i> 帮助列表
                                 </a>
                             </li>
 

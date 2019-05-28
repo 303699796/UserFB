@@ -114,7 +114,7 @@ namespace UserFB.Web.G_Admin_List
             int ID = Convert.ToInt32(admin1.adminID);
 
             string Str1 = "solutionState='" + state + "'";
-            string Str2 = "adminID='" + ID + "'and state =  '" + state + "'";
+            string Str2 = "adminID='" + ID + "' and  state =  '" + state + "'";
             Fmanager.UpdateSolution(Str1, Str2);
 
 
@@ -153,7 +153,22 @@ namespace UserFB.Web.G_Admin_List
 
         }
 
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
+            }
+        }
 
-           
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
+            }
+        }
     }
     }

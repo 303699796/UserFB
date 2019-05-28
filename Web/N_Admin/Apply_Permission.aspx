@@ -34,13 +34,13 @@
               <ul class="navbar-nav ml-auto">
 
 
-            <li class="nav-item d-md-down-none">
-                <a href="../S_Admin_List/Reply_Message.aspx">
+           <%-- <li class="nav-item d-md-down-none">
+                <a href="../N_Admin_List/Apply_Permission.aspx">
                     <i class="fa fa-envelope-open"></i>
                 
                     <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" Text="2" ></asp:Label>
                 </a>
-            </li>
+            </li>--%>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

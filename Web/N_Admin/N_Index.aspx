@@ -53,13 +53,13 @@
              <ul class="navbar-nav ml-auto">
 
 
-            <li class="nav-item d-md-down-none">
-                <a href="../S_Admin_List/Reply_Message.aspx">
+          <%--  <li class="nav-item d-md-down-none">
+                  <a href="../N_Admin_List/Apply_Permission.aspx">
                     <i class="fa fa-envelope-open"></i>
                 
                     <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" Text="2" ></asp:Label>
                 </a>
-            </li>
+            </li>--%>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -157,7 +157,7 @@
                                 <div>
                                     <span class="font-weight-light">本周已解决</span>
                                     <br /><br />
-                                    <asp:Label ID="LabelYdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="5" ></asp:Label>
+                                    <asp:Label ID="LabelWSolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="5" ></asp:Label>
 
                                     
                                 </div>
@@ -175,7 +175,7 @@
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="font-weight-light">待解决</span><br /><br />
-                                    <asp:Label ID="LabelDdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="9"></asp:Label>
+                                    <asp:Label ID="LabelNSolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="9"></asp:Label>
                                     
                                 </div>
 

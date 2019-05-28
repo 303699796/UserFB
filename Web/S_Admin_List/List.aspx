@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="UserFB.Web.S_Admin_List.List"   EnableEventValidation="false"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="UserFB.Web.S_Admin_List.List"   EnableEventValidation="false" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
  <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>问题设置</title>
+    <title>反馈列表</title>
      <link rel="stylesheet" href="../bootstrap/vendor/simple-line-icons/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
@@ -140,7 +140,7 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="../Setting/Question_Setting.aspx" class="nav-link">
-                                    <i class="icon icon-energy"></i> 常见问题
+                                    <i class="icon icon-energy"></i>帮助列表
                                 </a>
                             </li>
 
@@ -163,20 +163,14 @@
 
 
         <div class="content">
-           <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">未分配反馈</button>
-               <br />        
-         
 
-
-
-
-             <div class="row">
+      <div class="row">
                   &nbsp;&nbsp;
                  &nbsp;&nbsp &nbsp;&nbsp
 
- <asp:Button ID="Button3"  class="btn btn-rounded btn-outline-info"  runat="server" OnClick="Button3_Click" Text="多选标记" />&nbsp;&nbsp;
-              <asp:Button ID="btn_Dealwith"  class="btn btn-rounded btn-info"  runat="server" Text="标记为已处理"  OnClick="btn_Dealwith_Click"/>&nbsp;&nbsp;
-              <asp:Button ID="btn_Invalid" class="btn btn-rounded btn-info"  runat="server" Text="标记为无效" OnClick="btn_Invalid_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+ <asp:Button ID="Button3"  class="btn btn-rounded btn-success"  runat="server" OnClick="Button3_Click" Text="多选标记" CausesValidation="False" />&nbsp;&nbsp;
+              <asp:Button ID="btn_Dealwith"  class="btn btn-rounded btn-info"  runat="server" Text="标记为已处理"  OnClick="btn_Dealwith_Click" CausesValidation="False"/>&nbsp;&nbsp;
+              <asp:Button ID="btn_Invalid" class="btn btn-rounded btn-info"  runat="server" Text="标记为无效" OnClick="btn_Invalid_Click" CausesValidation="False" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
            
 
 
@@ -184,23 +178,28 @@
        <asp:Label ID="LabelCategory" runat="server"   class="btn btn-info"  Text="问题分类查询"></asp:Label>
                     <%-- <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:150px" runat="server" DataSourceID="SqlDataSource_Category" DataTextField="category" DataValueField="category" ></asp:DropDownList>
            <asp:SqlDataSource ID="SqlDataSource_Category" runat="server" ConnectionString="Data Source=.;Initial Catalog=UFB;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [category] FROM [Category]"></asp:SqlDataSource>--%>
-            <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:200px" runat="server"></asp:DropDownList>
-                  <asp:Button ID="Btn_Category" runat="server" Text="搜索" class="btn btn-info"  OnClick="Btn_Category_Click"/>
+            <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:180px" runat="server"></asp:DropDownList>
+                  <asp:Button ID="Btn_Category" runat="server" Text="搜索" class="btn btn-info"   OnClick="Btn_Category_Click" CausesValidation="False"/>
+                
                 
                  &nbsp;&nbsp;
                  &nbsp;&nbsp;            
                  &nbsp;&nbsp;
-                  <asp:TextBox ID="txbSearch" class="form-control"  style="width:250px;float:right"  runat="server"></asp:TextBox>  
-                 <asp:Button ID="btn_KeyWSearch" runat="server" Text="搜索" class="btn btn-info"  OnClick="btn_KeyWSearch_Click" />
+                  <asp:TextBox ID="txbSearch" class="form-control"  style="width:240px;float:right"  runat="server"></asp:TextBox>  
+                 <asp:Button ID="btn_KeyWSearch" runat="server" Text="搜索" class="btn btn-info"  OnClick="btn_KeyWSearch_Click" CausesValidation="False" />
                  &nbsp;&nbsp;
-                 &nbsp;&nbsp;
-                 &nbsp;&nbsp;
-                 <asp:Button ID="btnDownload" runat="server" Text="导出Excel" class="btn btn-info" OnClick="btnDownload_Click" />
-</div><br /> 
+                  <asp:Button ID="Btn_All" runat="server" Text="查看全部" class="btn btn-info"   OnClick="Btn_All_Click" CausesValidation="False"  Visible="false"/>
+
                 
-                 
-                              
-           
+                 &nbsp;&nbsp;
+                 &nbsp;&nbsp;
+                 <asp:Button ID="btnDownload" runat="server" Text="导出Excel" class="btn btn-info" OnClick="btnDownload_Click" OnClientClick="return true" />
+</div><br /> 
+         <%--  <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">未分配反馈</button>
+           --%>       
+         
+            <asp:Button ID="Btn_title" runat="server" Text="未分配反馈"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px;background-color:rgba(108, 187, 244, 0.74)" />                   
+            <br />    
         &nbsp;&nbsp;&nbsp;
                                
           
@@ -254,7 +253,7 @@
                </asp:TemplateField>
                <asp:TemplateField Visible="False">
                    <ItemTemplate>
-                       <button  id="Btn_Dtr"  class="btn btn-rounded btn-info" type="button"  data-toggle="modal" data-target="#modal-2"  style="width:80px"   >分配</button>
+                       <button  id="Btn_Dtr"  class="btn btn-rounded btn-info" type="button"  data-toggle="modal" data-target="#modal-2"   style="width:80px"   >分配</button>
                        <button  id="Btn_Reply" class="btn btn-rounded btn-info"" type="button"  data-toggle="modal" data-target="#modal-1"  style="width:80px"  >回复</button>
                    </ItemTemplate>
                </asp:TemplateField>
@@ -267,9 +266,11 @@
 
             <br /> <br />
                      
-                            <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">已分配反馈</button>
+                       <%--     <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">已分配反馈</button>
                       <br /> 
-                
+                --%>
+            <asp:Button ID="Btn_title2" runat="server" Text="已分配反馈"  class="btn btn-block btn-success" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px;background-color:rgba(108, 187, 244, 0.74)" />                   
+            <br />  
          
              
                <asp:GridView ID="GridView2" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
@@ -354,7 +355,7 @@
 
             <div class="modal-footer" >
                 <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>   
-                <asp:Button ID="BntReply" type="button" runat="server"  class="btn btn-primary" OnClick="BntReply_Click"  Text="回复" />
+                <asp:Button ID="BntReply" type="button" runat="server"  class="btn btn-primary" OnClick="BntReply_Click"  Text="回复" OnClientClick="return true" />
             </div>
         </div>
     </div>
@@ -376,18 +377,23 @@
                 <div class="row">
                   &nbsp;&nbsp;&nbsp; <asp:Label ID="Label4" runat="server" Text="分配给："></asp:Label>  &nbsp;&nbsp;&nbsp;
                 <asp:DropDownList ID="DropDownList_Distribution" class="form-control" Width="380px" runat="server"></asp:DropDownList>
+                 <%--   <asp:Label ID="LabelDropDownList" runat="server" Text = "必填" ForeColor="Red" Visible ="false"></asp:Label>--%>
+                   <asp:RequiredFieldValidator ID="RFVDropDownList" runat="server" ControlToValidate="DropDownList_Distribution" Display="Dynamic" ErrorMessage="必填"></asp:RequiredFieldValidator>     
+               
                     </div>
                 <br /><br />
                 <div class="row">
                  &nbsp;&nbsp;&nbsp;  <asp:Label ID="Label3" runat="server"  Text="分配描述:"></asp:Label>
                 &nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="txtDistribution" runat="server" TextMode="MultiLine" class="form-control" Width="380px" Height="100px"></asp:TextBox>
-             </div>
+                 <%--   <asp:Label ID="LabelDistribution" runat="server" Text = "必填"  Visible ="false"></asp:Label>--%>
+            <asp:RequiredFieldValidator ID="RFVtxtDistribution" runat="server" ControlToValidate="txtDistribution" Display="Dynamic" ErrorMessage="必填"></asp:RequiredFieldValidator>  
+                </div>
             </div>
 
             <div class="modal-footer" >
                 <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>   
-                <asp:Button ID="Btn_Distribution" type="button" runat="server"  class="btn btn-primary" OnClick="Btn_Distribution_Click"  Text="确认分配" />
+                <asp:Button ID="Btn_Distribution" type="button" runat="server"  class="btn btn-primary" OnClick="Btn_Distribution_Click"  Text="确认分配" OnClientClick="return true" />
             </div>
         </div>
     </div>

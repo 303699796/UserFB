@@ -8,7 +8,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>问题设置</title>
+    <title>帮助列表设置</title>
      <link rel="stylesheet" href="../bootstrap/vendor/simple-line-icons/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../bootstrap/vendor/font-awesome/css/fontawesome-all.min.css"/>
      <link rel="stylesheet" href="../bootstrap/css/styles.css"/>
@@ -79,7 +79,7 @@
 
             
                        <li class="nav-item">
-                        <a href="../S_Admin_List/List.aspx" class="nav-link active">
+                        <a href="../S_Admin_List/List.aspx" class="nav-link ">
                             <i class="icon icon-puzzle"></i>反馈列表
                         </a>
                     </li>                                    
@@ -141,12 +141,12 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="../Setting/Question_Setting.aspx" class="nav-link">
-                                    <i class="icon icon-energy"></i> 常见问题
+                                    <i class="icon icon-energy"></i> 帮助列表
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="../Setting/Category_Setting.aspx" class="nav-link">
+                                <a href="../Setting/Category_Setting.aspx" class="nav-link active">
                                     <i class="icon icon-energy"></i> 问题分类
                                 </a>
                             </li>
@@ -167,7 +167,7 @@
                <br />  
            <button class="btn btn-primary px-5" type="button" data-toggle="modal" data-target="#modal-1" style="float:left">新增问题</button>
            &nbsp; &nbsp; &nbsp; &nbsp;
-          <asp:Button ID="btnDelete" class="btn btn-primary px-5" runat="server" Text="删除" OnClick="btnDelete_Click"/>    
+          <asp:Button ID="btnDelete" class="btn btn-primary px-5" runat="server" Text="删除" OnClick="btnDelete_Click" EnableViewState="True" CausesValidation="False" />    
 
 
             <br /><br />
@@ -284,7 +284,7 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
-                        <asp:CommandField HeaderText="编辑" ShowEditButton="True" />
+                        <asp:CommandField HeaderText="编辑" ShowEditButton="True" CausesValidation="False" />
                             
                         </Columns>
                 <HeaderStyle Height="50px" />

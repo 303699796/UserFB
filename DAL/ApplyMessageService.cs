@@ -411,12 +411,12 @@ namespace UserFB.DAL
 
         public bool UpdateState(string state1)
         {
-            string sql = string.Format("update [ApplyMessage] set [remark] ={0} where [remark] =1", state1);
+            string sql = string.Format("update [ApplyMessage] set [remark] ={0} where [remark] =1",  state1);
             int rows = DbHelperSQL.ExecuteSql(sql);
             return rows > 0 ? true : false;
         }
 
-
+      
 
         #endregion  ExtensionMethod
     }

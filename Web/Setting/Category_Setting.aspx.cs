@@ -52,7 +52,11 @@ namespace UserFB.Web.Setting
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
+            }
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)

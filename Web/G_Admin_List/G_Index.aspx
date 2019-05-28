@@ -53,13 +53,13 @@
             </a>      
 
                  <ul class="navbar-nav ml-auto">
-            <li class="nav-item d-md-down-none">
+            <%--<li class="nav-item d-md-down-none">
                 <a href="../S_Admin_List/ApplyMessage_List.aspx">
                     <i class="fa fa-bell"></i>
                
                     <asp:Label ID="LabelMessage" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
                 </a>
-            </li>
+            </li>--%>
 
           
 
@@ -104,11 +104,11 @@
                         </a>
                     </li>  
                    
-                      <li class="nav-item">
+                     <%-- <li class="nav-item">
                         <a href="#" class="nav-link ">
                             <i class="icon icon-target"></i>我的消息
                         </a>
-                    </li>        
+                    </li>    --%>    
                         </ul>
                       
                                    
@@ -168,7 +168,7 @@
                                 <div>
                                     <span class="font-weight-light">本周已解决</span>
                                     <br /><br />
-                                    <asp:Label ID="LabelYdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="5"></asp:Label>
+                                    <asp:Label ID="LabelWSolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="5"></asp:Label>
 
                                     
                                 </div>
@@ -186,7 +186,7 @@
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="font-weight-light">待解决</span><br /><br />
-                                    <asp:Label ID="LabelDdaySolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="9"></asp:Label>
+                                    <asp:Label ID="LabelNSolve" runat="server" class="h4 d-block font-weight-normal mb-2" Text="9"></asp:Label>
                                     
                                 </div>
 

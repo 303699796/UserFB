@@ -84,7 +84,7 @@
 
             
                        <li class="nav-item">
-                        <a href="../S_Admin_List/List.aspx" class="nav-link active">
+                        <a href="../S_Admin_List/List.aspx" class="nav-link ">
                             <i class="icon icon-puzzle"></i>反馈列表
                         </a>
                     </li>                                    
@@ -103,7 +103,7 @@
 
 
                             <li class="nav-item">
-                                <a href="../Chart_Analysis/Keywords.aspx" class="nav-link">
+                                <a href="../Chart_Analysis/Keywords.aspx" class="nav-link active">
                                     <i class="icon icon-grid"></i> 热门关键词
                                 </a>
                             </li>
@@ -147,7 +147,7 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="../Setting/Question_Setting.aspx" class="nav-link">
-                                    <i class="icon icon-energy"></i> 常见问题
+                                    <i class="icon icon-energy"></i> 帮助列表
                                 </a>
                             </li>
 

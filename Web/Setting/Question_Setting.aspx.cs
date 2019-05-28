@@ -76,14 +76,11 @@ namespace UserFB.Web.Setting
 
         protected void gridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //e.Row.Attributes.Add("style", "background:#FFF");
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //    LinkButton linkbtnDel = (LinkButton)e.Row.FindControl("LinkButton1");
-            //    linkbtnDel.Attributes.Add("onclick", "return confirm(\"你确认要删除吗\")");
-
-
-            //}
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
+            }
         }
 
         protected void gridView_RowCreated(object sender, GridViewRowEventArgs e)
@@ -191,7 +188,7 @@ namespace UserFB.Web.Setting
             question.question = (gridView.Rows[e.RowIndex].FindControl("txtQuestion") as TextBox).Text;
             question.solution=(gridView.Rows[e.RowIndex].FindControl("txtSolution") as TextBox).Text;
             question.questionID = Convert.ToInt32(gridView.DataKeys[e.RowIndex].Value);
-            question.categoryID=Int32.Parse((gridView.Rows[e.RowIndex].FindControl("txtCcategory") as TextBox).Text); 
+            question.categoryID=Int32.Parse((gridView.Rows[e.RowIndex].FindControl("txtCcategory") as Label).Text); 
 
             BLL.QuestionManager questionManager = new BLL.QuestionManager();
             bool bo = questionManager.Update(question);

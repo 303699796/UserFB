@@ -196,10 +196,10 @@ namespace UserFB.BLL
             return dal.UpdateInvalid(state,idList);
         }
 
-        public bool UpdateSolution(string solution, string name, string idList)
-        {
-            return dal.UpdateSolution(solution,name,idList);
-        }
+        //public bool UpdateSolution1(string solution, string name, string idList)
+        //{
+        //    return dal.UpdateSolution1(solution,name,idList);
+        //}
 
         public int GetRecordCountNum(string strWhere)
         {
@@ -231,7 +231,11 @@ namespace UserFB.BLL
         {
             return dal.GetListID(strWhere);
         }
-            
+
+        public int GetAllRecordCount()
+        {
+            return dal.GetRecordCount("");
+        }
 
         #endregion  ExtensionMethod
     }

@@ -93,7 +93,7 @@
 
             
                        <li class="nav-item">
-                        <a href="../S_Admin_List/List.aspx" class="nav-link active">
+                        <a href="../S_Admin_List/List.aspx" class="nav-link">
                             <i class="icon icon-puzzle"></i>反馈列表
                         </a>
                     </li>                                    
@@ -155,12 +155,12 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a href="../Setting/Question_Setting.aspx" class="nav-link">
-                                    <i class="icon icon-energy"></i> 常见问题
+                                    <i class="icon icon-energy"></i> 帮助列表
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="../Setting/Category_Setting.aspx" class="nav-link">
+                                <a href="../Setting/Category_Setting.aspx" class="nav-link  active">
                                     <i class="icon icon-energy"></i> 问题分类
                                 </a>
                             </li>
@@ -218,7 +218,7 @@
                                 <asp:Label ID="Labeltime" runat="server" Text='<%# Bind("time") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" CausesValidation="False" />
            </Columns>
                <HeaderStyle Height="50px" />
 <RowStyle Height="50px"></RowStyle>
@@ -238,7 +238,8 @@
             <div class="modal-body">
                  <asp:Label ID="Label1" runat="server" Text="请输入新增问题分类"></asp:Label>
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="txbAdd" runat="server" Width="300px" Height="30px"></asp:TextBox>
+                <asp:TextBox ID="txbAdd" runat="server" Width="280px" Height="30px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RfvtxbAdd" runat="server" ControlToValidate="txbAdd" ErrorMessage="必填"></asp:RequiredFieldValidator>
             </div>
 
             <div class="modal-footer" >

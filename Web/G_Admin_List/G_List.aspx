@@ -35,13 +35,13 @@
             
 
                  <ul class="navbar-nav ml-auto">
-            <li class="nav-item d-md-down-none">
+          <%--  <li class="nav-item d-md-down-none">
                 <a href="../S_Admin_List/ApplyMessage_List.aspx">
                     <i class="fa fa-bell"></i>
                
                     <asp:Label ID="LabelMessage" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
                 </a>
-            </li>
+            </li>--%>
 
           
 
@@ -85,11 +85,11 @@
                         </a>
                     </li>  
                    
-                      <li class="nav-item">
+                    <%--  <li class="nav-item">
                         <a href="#" class="nav-link ">
                             <i class="icon icon-target"></i>我的消息
                         </a>
-                    </li>        
+                    </li>      --%>  
                         </ul>
                       
             </nav>
@@ -120,7 +120,7 @@
          <br />    
             <br />
             <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
-           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID">
+           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
                       <asp:TemplateField HeaderText="选择">
                          
@@ -216,7 +216,7 @@
                <br />   
 
               <asp:GridView ID="GridView2" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
-           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID">
+           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID" OnRowDataBound="GridView2_RowDataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="分配时间">
                         <EditItemTemplate>

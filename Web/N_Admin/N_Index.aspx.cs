@@ -44,6 +44,7 @@ namespace UserFB.Web.N_Admin
                 GetRows5();
                 GetRows6();
                 GetRows7();
+                GetSolution();
 
 
             }
@@ -287,6 +288,22 @@ namespace UserFB.Web.N_Admin
 
         }
 
-      
+        protected void GetSolution()
+        {
+            Model.Feedback feedback = new Model.Feedback();
+            BLL.FeedbackManager feedbackManager = new BLL.FeedbackManager();
+
+            DateTime StimeW = DateTime.Now;
+            DateTime EtimeW = DateTime.Now.AddDays(0).Date;
+
+            string strWhere5 = "feedbackTime>'" + StimeW + "'and feedbackTime<'" + EtimeW + "'and solutionState='" + "1" + "'";
+            int rows5 = feedbackManager.GetRecordCount(strWhere5);
+
+            LabelWSolve.Text = rows5.ToString();
+            int Sum = feedbackManager.GetAllRecordCount();
+            int NSolve = Sum - rows5;
+            LabelNSolve.Text = Convert.ToString(NSolve);
+        }
+
     }
 }

@@ -14,6 +14,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls.WebParts;
 using System.IO;
 using System.Reflection;
+using Maticsoft.Common;
 
 namespace UserFB.Web.S_Admin_List
 {
@@ -133,20 +134,20 @@ namespace UserFB.Web.S_Admin_List
 
 
 
-        public static void GridViewToExcel(Control ctrl, string FileType, string FileName)
-        {
-            HttpContext.Current.Response.Charset = "GB2312";
-            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;//注意编码
-            HttpContext.Current.Response.AppendHeader("Content-Disposition",
-                "attachment;filename=" + HttpUtility.UrlEncode(FileName, System.Text.Encoding.UTF8).ToString());
-            HttpContext.Current.Response.ContentType = FileType;//image/JPEG;text/HTML;image/GIF;vnd.ms-excel/msword 
-            ctrl.Page.EnableViewState = false;
-            StringWriter tw = new StringWriter();
-            HtmlTextWriter hw = new HtmlTextWriter(tw);
-            ctrl.RenderControl(hw);
-            HttpContext.Current.Response.Write(tw.ToString());
-            HttpContext.Current.Response.End();
-        }
+        //public static void GridViewToExcel(Control ctrl, string FileType, string FileName)
+        //{
+        //    HttpContext.Current.Response.Charset = "GB2312";
+        //    HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;//注意编码
+        //    HttpContext.Current.Response.AppendHeader("Content-Disposition",
+        //        "attachment;filename=" + HttpUtility.UrlEncode(FileName, System.Text.Encoding.UTF8).ToString());
+        //    HttpContext.Current.Response.ContentType = FileType;//image/JPEG;text/HTML;image/GIF;vnd.ms-excel/msword 
+        //    ctrl.Page.EnableViewState = false;
+        //    StringWriter tw = new StringWriter();
+        //    HtmlTextWriter hw = new HtmlTextWriter(tw);
+        //    ctrl.RenderControl(hw);
+        //    HttpContext.Current.Response.Write(tw.ToString());
+        //    HttpContext.Current.Response.End();
+        //}
 
        
 
@@ -223,17 +224,37 @@ namespace UserFB.Web.S_Admin_List
             string solution = "1";
             string idList = GetSelIDList();
 
-            BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            Model.Admin admin = adminManager1.GetModel1(Session["SadminID"].ToString());
-            string name = admin.adminName;
+            //BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            //Model.Admin admin = adminManager1.GetModel1(Session["SadminID"].ToString());
+            //string name = admin.adminName;
+
+            //new BLL.FeedbackManager().UpdateSolution(solution,name, idList);
+            //Response.Write("<script language=javascript>alert('已标记为已处理！')</script>");
+            //BindY();
+            //BindN();
+
             if (idList.Trim().Length == 0)
             {
                 return;
             }
-            new BLL.FeedbackManager().UpdateSolution(solution,name, idList);
+            BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            string name = Convert.ToString(admin1.adminName);
+
+            Model.Feedback feedback = new Model.Feedback();
+            BLL.FeedbackManager Fmanager = new FeedbackManager();
+            string Str1 = "solutionState='" + solution + "' ,  handler =  '" + name + "'";
+            string Str2 = "feedbackID in(" + idList + ")";
+
+
+
+            //string Str1 = "solutionState='" + solution +"'";
+            //string Str2 = "adminID='" + ID + "'and state =  '" + solution + "'";
+            Fmanager.UpdateSolution(Str1, Str2);
             Response.Write("<script language=javascript>alert('已标记为已处理！')</script>");
             BindY();
             BindN();
+
         }
 
         protected void BntReply_Click(object sender, EventArgs e)
@@ -276,15 +297,19 @@ namespace UserFB.Web.S_Admin_List
         {
 
 
+          
+            //if (this.txtDistribution.Text.Trim().Length == 0)
+            //{
+            //    LabelDropDownList.Visible = true;
+               
+            //}
+            //if(DropDownList_Distribution.SelectedIndex==0)
+            //{
+            //    LabelDistribution.Visible = true;
+            //}
 
 
-            //    // int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
-
-
-            //  //  int row4 = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
-            //   // string sno = GridView1.Rows[row4].Cells[3].Text;
-
-
+          
 
 
             Model.Distribution distribution = new Model.Distribution();
@@ -319,6 +344,9 @@ namespace UserFB.Web.S_Admin_List
                 UpdateFeedback(sender, e);
                 BindY();
                 BindN();
+                //LabelDropDownList.Visible = false;
+                //LabelDistribution.Visible = false;
+
             }
             else
             {
@@ -336,11 +364,17 @@ namespace UserFB.Web.S_Admin_List
             BLL.AdminManager adminManager = new AdminManager();
             DropDownList_Distribution.DataTextField = "adminName";
             DropDownList_Distribution.DataValueField = "adminID";
-            DataSet ds = new AdminManager().GetAllList();
-            DataRow dr = ds.Tables[0].NewRow();
-            dr["adminID"] = 0;
-            dr["adminName"] = "---请选择---";
-            ds.Tables[0].Rows.InsertAt(dr, 0);
+            //BLL.AdminManager adminManager1 = new BLL.AdminManager();
+            //Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
+            //int s = Convert.ToInt32(admin1.adminID);
+
+            string str = "permission='" + 2 + "'";
+
+            DataSet ds = new AdminManager().GetList(str);
+            //DataRow dr = ds.Tables[0].NewRow();
+            //dr["adminID"] = 0;
+            //dr["adminName"] = "---请选择---";
+            //ds.Tables[0].Rows.InsertAt(dr, 0);
             DropDownList_Distribution.DataSource = ds;
             DropDownList_Distribution.DataBind();
 
@@ -453,14 +487,19 @@ namespace UserFB.Web.S_Admin_List
             BLL.FeedbackManager managerC = new FeedbackManager();
             int CID = Convert.ToInt32( DropDownList_Category.SelectedValue);
             string strC= "F.categoryID='" + CID + "'";
-          //  List dsC = managerC.GetFeedbackByS(strC);   
-                // if (dsC.Tables[0].Rows.Count > 0)
-            
+            //  List dsC = managerC.GetFeedbackByS(strC);   
+            // if (dsC.Tables[0].Rows.Count > 0)
+           
+        
+                GridView2.Visible = false;
                 GridView1.DataSource = managerC.GetFeedbackByS(strC);
                 GridView1.DataBind();
+                Btn_title.Visible = false;
+                Btn_All.Visible = true;
+               Btn_title2.Visible = false;
 
 
-            
+
 
             //else 
             //{
@@ -487,6 +526,7 @@ namespace UserFB.Web.S_Admin_List
           //  string strC = "F.categoryID='" + CID + "'or F.Info like '%" + Keyword + "%'";
             GridView1.DataSource = managerC.GetFeedbackByS(strC);
             GridView1.DataBind();
+            Btn_All.Visible = true;
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -522,6 +562,16 @@ namespace UserFB.Web.S_Admin_List
             LabelName.Text = s;
 
             GridView2.Columns[9].Visible = true;
+        }
+
+        protected void Btn_All_Click(object sender, EventArgs e)
+        {
+            Btn_title.Visible = true;
+            GridView2.Visible = true;
+            Btn_All.Visible = false;
+            Btn_title2.Visible = true;
+            BindY();
+            BindN();
         }
 
         //protected void Button2_Click(object sender, EventArgs e)
