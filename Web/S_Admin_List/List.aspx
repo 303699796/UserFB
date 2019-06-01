@@ -176,8 +176,7 @@
 
 
        <asp:Label ID="LabelCategory" runat="server"   class="btn btn-info"  Text="问题分类查询"></asp:Label>
-                    <%-- <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:150px" runat="server" DataSourceID="SqlDataSource_Category" DataTextField="category" DataValueField="category" ></asp:DropDownList>
-           <asp:SqlDataSource ID="SqlDataSource_Category" runat="server" ConnectionString="Data Source=.;Initial Catalog=UFB;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [category] FROM [Category]"></asp:SqlDataSource>--%>
+                  
             <asp:DropDownList ID="DropDownList_Category" class="form-control"  style="width:180px" runat="server"></asp:DropDownList>
                   <asp:Button ID="Btn_Category" runat="server" Text="搜索" class="btn btn-info"   OnClick="Btn_Category_Click" CausesValidation="False"/>
                 
@@ -194,11 +193,8 @@
                  &nbsp;&nbsp;
                  &nbsp;&nbsp;
                  <asp:Button ID="btnDownload" runat="server" Text="导出Excel" class="btn btn-info" OnClick="btnDownload_Click" OnClientClick="return true" />
-</div><br /> 
-         <%--  <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">未分配反馈</button>
-           --%>       
-         
-            <asp:Button ID="Btn_title" runat="server" Text="未分配反馈"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px;background-color:rgba(108, 187, 244, 0.74)" />                   
+</div>
+      
             <br />    
         &nbsp;&nbsp;&nbsp;
                                
@@ -221,7 +217,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
              
-               <asp:TemplateField HeaderText="反馈用户">
+               <asp:TemplateField HeaderText="反馈用户" ItemStyle-Width="90px">
                    <EditItemTemplate>
                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:TextBox>
                    </EditItemTemplate>
@@ -229,8 +225,8 @@
                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:Label>
                    </ItemTemplate>
                </asp:TemplateField>
-               <asp:BoundField DataField="feedbackTime" HeaderText="反馈时间" />
-               <asp:TemplateField HeaderText="反馈分类">
+               <asp:BoundField DataField="feedbackTime" HeaderText="反馈时间"  ItemStyle-Width="135px"/>
+               <asp:TemplateField HeaderText="反馈分类" ItemStyle-Width="120px">
                    <EditItemTemplate>
                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Category.category") %>'></asp:TextBox>
                    </EditItemTemplate>
@@ -238,8 +234,8 @@
                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Category.category") %>'></asp:Label>
                    </ItemTemplate>
                </asp:TemplateField>
-               <asp:BoundField DataField="Info" HeaderText="反馈内容" />
-               <asp:BoundField DataField="contact" HeaderText="联系方式" />
+               <asp:BoundField DataField="Info" HeaderText="反馈内容" ItemStyle-Width="330px"/>
+               <asp:BoundField DataField="contact" HeaderText="联系方式" ItemStyle-Width="130px"/>
            <%--    <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />--%>
                <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
                <asp:BoundField DataField="handler" HeaderText="负责人" />
@@ -264,12 +260,13 @@
 <RowStyle Height="50px"></RowStyle>
              </asp:GridView>
 
-            <br /> <br />
+           
                      
                        <%--     <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">已分配反馈</button>
                       <br /> 
                 --%>
-            <asp:Button ID="Btn_title2" runat="server" Text="已分配反馈"  class="btn btn-block btn-success" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px;background-color:rgba(108, 187, 244, 0.74)" />                   
+           <%-- <asp:Button ID="Btn_title2" runat="server" Text="已分配反馈"  class="btn btn-block btn-success" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px;background-color:rgba(108, 187, 244, 0.74)" />                   
+           --%> 
             <br />  
          
              
@@ -285,7 +282,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
              
-               <asp:TemplateField HeaderText="反馈用户">
+               <asp:TemplateField HeaderText="反馈用户" ItemStyle-Width="90px">
                    <EditItemTemplate>
                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:TextBox>
                    </EditItemTemplate>
@@ -293,8 +290,8 @@
                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:Label>
                    </ItemTemplate>
                </asp:TemplateField>
-               <asp:BoundField DataField="feedbackTime" HeaderText="反馈时间" />
-               <asp:TemplateField HeaderText="反馈分类">
+               <asp:BoundField DataField="feedbackTime" HeaderText="反馈时间" ItemStyle-Width="135px" />
+               <asp:TemplateField HeaderText="反馈分类" ItemStyle-Width="120px">
                    <EditItemTemplate>
                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Category.category") %>'></asp:TextBox>
                    </EditItemTemplate>
@@ -302,8 +299,8 @@
                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Category.category") %>'></asp:Label>
                    </ItemTemplate>
                </asp:TemplateField>
-               <asp:BoundField DataField="Info" HeaderText="反馈内容" />
-               <asp:BoundField DataField="contact" HeaderText="联系方式" />
+               <asp:BoundField DataField="Info" HeaderText="反馈内容" ItemStyle-Width="330px" />
+               <asp:BoundField DataField="contact" HeaderText="联系方式" ItemStyle-Width="130px"/>
            <%--    <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />--%>
                <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
                <asp:BoundField DataField="handler" HeaderText="负责人" />

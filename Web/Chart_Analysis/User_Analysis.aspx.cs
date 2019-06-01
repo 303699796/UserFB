@@ -23,7 +23,6 @@ namespace UserFB.Web.Chart_Analysis
             {
                 if (method == "getdata")
                 {
-
                     dataGender();
                 }
             }
@@ -77,8 +76,6 @@ namespace UserFB.Web.Chart_Analysis
             
             object JSONObj = (Object)JsonConvert.SerializeObject(lists);
             Response.Write(JSONObj);
-
-            // Response.Write(JSONObj);
             //  一定要加，不然前端接收失败
             Response.End();
         }
@@ -104,10 +101,6 @@ namespace UserFB.Web.Chart_Analysis
         {
             Model.Feedback feedback = new Model.Feedback();
             BLL.FeedbackManager feedbackManager = new BLL.FeedbackManager();
-            //Model.Users users = new Model.Users();
-            //BLL.UsersManager usersManager = new BLL.UsersManager();
-
-            //string strG = "gender ='"+Label1.Text.Trim()+ "'";
             string StrAll = "gender='" + "女" + "'";
             int GnumAll = feedbackManager.GetRecordCountNum(StrAll);
             return GnumAll;
@@ -118,10 +111,6 @@ namespace UserFB.Web.Chart_Analysis
         {
             Model.Feedback feedback = new Model.Feedback();
             BLL.FeedbackManager feedbackManager = new BLL.FeedbackManager();
-            //Model.Users users = new Model.Users();
-            //BLL.UsersManager usersManager = new BLL.UsersManager();
-
-            //string strG = "gender ='"+Label1.Text.Trim()+ "'";
             string StrAll = "gender='" + "男" + "'";
             int BnumAll = feedbackManager.GetRecordCountNum(StrAll);
             return BnumAll;
@@ -166,10 +155,7 @@ namespace UserFB.Web.Chart_Analysis
             lists.Add(obj6);
 
             object JSONObj1 = (Object)JsonConvert.SerializeObject(lists);
-            Response.Write(JSONObj1);
-
-            // Response.Write(JSONObj);
-            //  一定要加，不然前端接收失败
+            Response.Write(JSONObj1);     
             Response.End();
         }
 
@@ -272,26 +258,7 @@ namespace UserFB.Web.Chart_Analysis
         }
 
 
-        protected void Btn_Today_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Btn_Yesterday_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Btn_7days_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Btn_Month_Click(object sender, EventArgs e)
-        {
-          
-          
-        }
+      
 
         protected void ApplyNumber()
         {
@@ -329,10 +296,6 @@ namespace UserFB.Web.Chart_Analysis
 
         }
 
-        //private string GetSelIDList()
-        //{
-        //    string v = "j";
-        //    return v;
-        //}
+      
     }
 }

@@ -44,7 +44,6 @@ namespace UserFB.Web.Login
             }
         }
 
-
         //判断闰年
         private bool CheckLeap(int year)
         {
@@ -56,8 +55,6 @@ namespace UserFB.Web.Login
             {
                 return false;
             }
-
-
         }
         //绑定每月的天数
         private void BindDays(int year, int month)
@@ -100,9 +97,6 @@ namespace UserFB.Web.Login
             DropDownListDay.DataSource = AlDay;
             DropDownListDay.DataBind();
         }
-
-
-
         //选择年
         private void DropDownListYear_SelectedIndexChanged(object sender, System.EventArgs e)
         {
@@ -112,8 +106,6 @@ namespace UserFB.Web.Login
             BindDays(year, month);
         }
         //选择月
-
-
         private void DropDownList2_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             int year, month;
@@ -131,12 +123,10 @@ namespace UserFB.Web.Login
             users.gender = DropDownList1.SelectedItem.Text;
 
             string date = DropDownListYear.SelectedItem.Text.Trim().ToString() + "/" + DropDownListMonth.SelectedItem.Text.Trim().ToString() + "/" + DropDownListDay.SelectedItem.Text.Trim().ToString();
-            //string dateString = date;
-            //DateTime dt = DateTime.ParseExact(dateString, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
-            //users.birthDate = dt;
+ 
             DateTime time = Convert.ToDateTime(date);
             users.birthDate = time;
-            //users.birthDate = Convert.ToDateTime("1985-12-25"); 
+
 
             BLL.UsersManager users1 = new UsersManager();
            

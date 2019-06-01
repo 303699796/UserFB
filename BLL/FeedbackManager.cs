@@ -182,10 +182,13 @@ namespace UserFB.BLL
             return dal.GetAllFeedback("");
         }
 
-
+        public DataSet GetTXTList()
+        {
+            return dal.GetTXTList();
+        }
 
         ///<summary>
-        ///批量更新申请状态
+        ///批量更新有效状态
         /// </summary>
         /// <param name="state">状态信息</param>
         /// <param name="idList">要修改的申请消息</param>
@@ -196,20 +199,13 @@ namespace UserFB.BLL
             return dal.UpdateInvalid(state,idList);
         }
 
-        //public bool UpdateSolution1(string solution, string name, string idList)
-        //{
-        //    return dal.UpdateSolution1(solution,name,idList);
-        //}
 
         public int GetRecordCountNum(string strWhere)
         {
             return dal.GetRecordCountNum(strWhere);
         }
 
-        //public int GetRecordCountTime(string strWhere, string strTime)
-        //{
-        //    return dal.GetRecordCountTime(strWhere, strTime);
-        //}
+      
 
         public bool UpdateHandler(string strWhere, string str)
         {

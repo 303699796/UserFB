@@ -53,13 +53,6 @@
              <ul class="navbar-nav ml-auto">
 
 
-          <%--  <li class="nav-item d-md-down-none">
-                  <a href="../N_Admin_List/Apply_Permission.aspx">
-                    <i class="fa fa-envelope-open"></i>
-                
-                    <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" Text="2" ></asp:Label>
-                </a>
-            </li>--%>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -122,7 +115,7 @@
                                      <span class="font-weight-light">昨日反馈量</span>
                                     <br /><br />
                                     <asp:Label ID="LabelYdayNum" runat="server" class="h4 d-block font-weight-normal mb-2" ></asp:Label>
-                                    <%--<span class="h4 d-block font-weight-normal mb-2">54</span>--%>
+                                  
                                    
                                 </div>
 
@@ -215,8 +208,8 @@
         }]
     });
     mychart.showLoading();
-    var names =[];    //类别数组（实际用来盛放X轴坐标值）
-    var nums = [];    //销量数组（实际用来盛放Y坐标值）
+    var names =[];    //数组（实际用来盛放X轴坐标值）
+    var nums = [];    //数组（实际用来盛放Y坐标值）
  
     $.ajax({
         type: "post",
@@ -229,19 +222,13 @@
             //请求成功时执行该函数内容，result即为服务器返回的json对象
             if (result) {
 
-              // var json = $.parseJSON(result);
-
-             //  alert(result);
               
                for (var i = 0; i < result.length; i++) {
-
-                  // alert(result[i].name);
-
                    names.push(result[i].names);    //挨个取出类别并填入类别数组
                   
                 }
                 for (var i = 0; i < result.length; i++) {
-                   nums.push(result[i].nums);    //挨个取出销量并填入销量数组
+                   nums.push(result[i].nums);    //挨个取出并填入销量数组
                 }
                 mychart.hideLoading();    //隐藏加载动画
                 mychart.setOption({        //加载数据图表

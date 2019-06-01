@@ -39,12 +39,8 @@ namespace UserFB.Web.G_Admin_List
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
             Model.Admin admin1 = adminManager1.GetModel1(Session["GadminID"].ToString());
        
-            int ID= Convert.ToInt32(admin1.adminID);
-           
-           // string Str = " adminID='" + ID + "'and state is NULL";
-            string Str = " adminID='" + ID + "'and state !=  '" + "1" + "'";
-
-            //  string Str = " adminID='" + ID + "'and state !=  '" + "已解决" + "'";
+            int ID= Convert.ToInt32(admin1.adminID);          
+            string Str = " adminID='" + ID + "'and state !=  '" + "1" + "'";       
             GridView1.DataSource = manager.GetList(Str);
             GridView1.DataBind();
         }
@@ -60,7 +56,6 @@ namespace UserFB.Web.G_Admin_List
             int ID = Convert.ToInt32(admin1.adminID);
 
             string Str = " adminID='" + ID + "'and state =  '" + "1" + "'";
-           // string Str1 = "adminname='" + txbUserName.Text.Trim() + "'and adminpassword='" + txbPassword.Text + "'and permission='" + 1 + "'";
             GridView2.DataSource = manager.GetList(Str);
             GridView2.DataBind();
         }
@@ -147,10 +142,7 @@ namespace UserFB.Web.G_Admin_List
             string Str1 = "solutionState='" + state + "'";
             string Str2 = "adminID='" + ID + "'and state =  '" + state + "'";
              Fmanager.UpdateSolution(Str1, Str2);
-           
-
-
-
+  
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

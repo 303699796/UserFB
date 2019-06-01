@@ -22,9 +22,7 @@ namespace UserFB.Web.Setting
 
             if (!Page.IsPostBack)
             {
-                //gridView.BorderColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_bordercolorlight"].ToString());
-                //gridView.HeaderStyle.BackColor = ColorTranslator.FromHtml(Application[Session["Style"].ToString() + "xtable_titlebgcolor"].ToString());
-                //btnDelete.Attributes.Add("onclick", "return confirm(\"你确认要删除吗？\")");
+               
                 BindData();
                CategoryDataBind();
                 GetLoginName();
@@ -59,15 +57,7 @@ namespace UserFB.Web.Setting
 
         }
        
-        protected void Bind()
-        {
-           
-            //Model.Question question1 = new Model.Question();
-            //BLL.QuestionManager question2 = new BLL.QuestionManager();
-            //GridView1.DataSource = question2.GetAllList();
-            //GridView1.DataBind();
-
-        }
+      
 
         protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -163,17 +153,14 @@ namespace UserFB.Web.Setting
         {
             gridView.EditIndex = e.NewEditIndex;
             BindData();
-          //  CategoryModifyBind(e.NewEditIndex);
+         
         }
-        //private void CategoryModifyBind(int questionID)
-        //{
-        //    DropDownList list = gridView.Rows[questionID].FindControl("DDL_Category") as DropDownList;
-        //    BLL.CategoryManager categoryM = new CategoryManager();
+         BLL.CategoryManager categoryM = new CategoryManager();
          
 
 
 
-        //}
+      
 
 
         protected void gridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

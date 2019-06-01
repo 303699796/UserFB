@@ -164,20 +164,31 @@
 
 
         <div class="content">
-           <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>权限申请消息</h5>
-                     
-                        </div>
-                            
-                     </div>
-                </div>
-            </div>
+         
+             
+            <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">权限申请消息</button>
+               <br />
 
-             <div class="row">
+
+            <div style="width:200%">
+                            <div class="col-md-6 mb-4"  style="width:300%">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home" style="width:100%;font-size:16px;font-weight:700;text-align:center">未审批消息</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" style="width:100%;font-size:16px;font-weight:700;text-align:center">已审批消息</a>
+                        </li>
+
+                        
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home" role="tabpanel">
+                           
+
+<div class="row">
                  &nbsp; &nbsp; &nbsp;
                  <asp:Button ID="Btn_Agree" runat="server" class="btn btn-info" Text="同意申请" OnClick="Btn_Agree_Click" />
                  &nbsp; &nbsp; &nbsp;
@@ -269,20 +280,13 @@
 
             </asp:GridView>
             <br />
-             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>历史申请消息</h5>
-                           
-                        </div>
-                            
-                     </div>
-                </div>
-    </div>
 
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "  RowStyle-Height="50px" OnRowDataBound="GridView2_RowDataBound" >
+
+
+                        </div>
+
+                        <div class="tab-pane" id="profile" role="tabpanel">
+                          <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "  RowStyle-Height="50px" OnRowDataBound="GridView2_RowDataBound" >
                 <Columns>
                     <asp:BoundField DataField="name" HeaderText="申请人" />
                     <asp:BoundField DataField="department" HeaderText="部门" />
@@ -295,7 +299,19 @@
                 <RowStyle Height="50px" />
 
             </asp:GridView>
+  
 
+
+
+                        </div>
+
+                       
+                    </div>
+                </div>
+                </div>
+
+
+           
                  </div>
             </div>
 

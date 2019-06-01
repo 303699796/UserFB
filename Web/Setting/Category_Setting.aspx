@@ -244,7 +244,7 @@
 
             <div class="modal-footer" >
                 <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>
-               <%-- <button  type="button" class="btn btn-primary" onclick=""  >保存</button>--%>
+          
                 <asp:Button ID="BntSave" type="button" runat="server"  class="btn btn-primary" OnClick="BntSave_Click"  Text="保存" />
             </div>
         </div>

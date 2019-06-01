@@ -53,15 +53,7 @@
             </a>      
 
                  <ul class="navbar-nav ml-auto">
-            <%--<li class="nav-item d-md-down-none">
-                <a href="../S_Admin_List/ApplyMessage_List.aspx">
-                    <i class="fa fa-bell"></i>
-               
-                    <asp:Label ID="LabelMessage" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
-                </a>
-            </li>--%>
-
-          
+      
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -103,21 +95,14 @@
                             <i class="icon icon-grid"></i>反馈分析
                         </a>
                     </li>  
-                   
-                     <%-- <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="icon icon-target"></i>我的消息
-                        </a>
-                    </li>    --%>    
+
                         </ul>
                       
                                    
             </nav>
         </div>
          </div>
-               
-
-
+   
 
           <div class="content">
                 
@@ -133,8 +118,7 @@
                                      <span class="font-weight-light">昨日反馈量</span>
                                     <br /><br />
                                     <asp:Label ID="LabelYdayNum" runat="server" class="h4 d-block font-weight-normal mb-2" ></asp:Label>
-                                    <%--<span class="h4 d-block font-weight-normal mb-2">54</span>--%>
-                                   
+                                  
                                 </div>
 
                                 <div class="h2 text-muted">
@@ -226,14 +210,14 @@
         }]
     });
     mychart.showLoading();
-    var names =[];    //类别数组（实际用来盛放X轴坐标值）
-    var nums = [];    //销量数组（实际用来盛放Y坐标值）
+    var names =[];    //数组（实际用来盛放X轴坐标值）
+    var nums = [];    //数组（实际用来盛放Y坐标值）
  
     $.ajax({
         type: "post",
         async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
         url: "G_Index.aspx?method=getdata",
-        //url:"Handler.ashx?method=getdata",
+  
         data: {},
         dataType: "json",        //返回数据形式为json
         success: function (result) {
@@ -248,11 +232,11 @@
 
                   // alert(result[i].name);
 
-                   names.push(result[i].names);    //挨个取出类别并填入类别数组
+                   names.push(result[i].names);    //挨个取出并填入类别数组
                   
                 }
                 for (var i = 0; i < result.length; i++) {
-                   nums.push(result[i].nums);    //挨个取出销量并填入销量数组
+                   nums.push(result[i].nums);    //挨个取出并填入销量数组
                 }
                 mychart.hideLoading();    //隐藏加载动画
                 mychart.setOption({        //加载数据图表

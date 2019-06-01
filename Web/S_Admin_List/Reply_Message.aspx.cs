@@ -89,12 +89,6 @@ namespace UserFB.Web.S_Admin_List
             GridView1.Columns[9].Visible = true;
 
 
-            //Model.Feedback feedback = new Model.Feedback();
-            //BLL.FeedbackManager Fmanager = new FeedbackManager();
-            //string Str1 = "feedbackID='" + Labeltest.Text + "'";
-            //string s = Fmanager.GetListID(Str1);
-            //LabelName.Text = s;
-
 
         }
 
@@ -103,7 +97,6 @@ namespace UserFB.Web.S_Admin_List
             Model.Reply reply = new Model.Reply();
             BLL.ReplyManager replyManager = new ReplyManager();
 
-
             Model.Reply reply1 = new Model.Reply();
             BLL.ReplyManager replyManager1 = new ReplyManager();
             string str = "replyID='" + Labeltest.Text + "'";
@@ -111,10 +104,6 @@ namespace UserFB.Web.S_Admin_List
 
             string str1 = "replyID='" + Labeltest.Text + "'";
             string replyFB = replyManager1.GetFBID(str);
-
-
-
-
 
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
             Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());

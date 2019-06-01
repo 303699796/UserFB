@@ -157,7 +157,7 @@
                                 </div>
                             
                             <div class="card-footer bg-light text-center">
-                               <%-- <button type="submit" class="btn btn-primary" >提 &nbsp; &nbsp; &nbsp;交</button>--%>
+                           
                                 <asp:Button ID="But_submit" runat="server" class="btn btn-primary" Text="提   交" OnClick="But_submit_Click" />
                             </div>
                         </div>

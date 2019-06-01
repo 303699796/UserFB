@@ -49,7 +49,7 @@ namespace UserFB.Web.Users
             BLL.UsersManager usersM = new UsersManager();
             Model.Users users = usersM.GetModel1(Session["userID"].ToString());
             LabelUser.Text = users.userName;
-            //  LabelUser.Text = Convert.ToString(Session["username"]);
+         
         }
 
         protected void ReplyNumber()
@@ -79,7 +79,7 @@ namespace UserFB.Web.Users
             string str = "replyID='" + Labeltest.Text + "'";
             string id = replyManager1.GetUserID(str);
 
-          //  string str1 = "replyID='" + Labeltest.Text + "'";
+       
             string replyFB = replyManager1.GetFBID(str);
 
 
@@ -88,10 +88,7 @@ namespace UserFB.Web.Users
             int s = Convert.ToInt32(users.UserID);
 
 
-            //BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            //Model.Admin admin1 = adminManager1.GetModel1(Session["UserID"].ToString());
-            //int s = Convert.ToInt32(admin1.adminID);
-
+          
 
             reply.feedbackID = Convert.ToInt32(replyFB);
             reply.text = txtReply.Text;
@@ -115,7 +112,7 @@ namespace UserFB.Web.Users
         {
             Button btn = sender as Button;
             GridViewRow row = btn.Parent.Parent as GridViewRow;
-            string a = row.Cells[0].ToString();//获得第一个单元格的值   
+            string a = row.Cells[0].ToString();
 
             string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
             Labeltest.Text = b;

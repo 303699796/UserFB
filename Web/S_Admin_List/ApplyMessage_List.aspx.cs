@@ -151,25 +151,10 @@ namespace UserFB.Web.S_Admin_List
 
         protected void ApplyNumber()
         {
-          
-
-            //Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
-            //BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
-
-            //BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            //Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
-            //int s = Convert.ToInt32(admin1.adminID);
-
-            //string str = "0";
-            //apply.UpdateState(str,s);
-            //LabelApply.Text = "0";
-            //LabelApply.Visible = false;
-
+         
 
             Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
             BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
-
-          
 
             string str = "0";
             apply.UpdateState(str);

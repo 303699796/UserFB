@@ -48,8 +48,7 @@
                                 
                                 <asp:DropDownList ID="DropDownListDay" runat="server"></asp:DropDownList>
                                 <span>&nbsp;日 &nbsp;</span>
-                             <%-- onchange="setDays()"--%>
-
+                         
                             </div>
 
                           <div class="form-group">

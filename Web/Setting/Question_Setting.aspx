@@ -140,13 +140,13 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="../Setting/Question_Setting.aspx" class="nav-link">
+                                <a href="../Setting/Question_Setting.aspx" class="nav-link active">
                                     <i class="icon icon-energy"></i> 帮助列表
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="../Setting/Category_Setting.aspx" class="nav-link active">
+                                <a href="../Setting/Category_Setting.aspx" class="nav-link ">
                                     <i class="icon icon-energy"></i> 问题分类
                                 </a>
                             </li>
@@ -171,18 +171,7 @@
 
 
             <br /><br />
-           <%--  <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>管理员设置</h5>
-                     
-                        </div>
-                            
-                     </div>
-                </div>
-            </div>--%>
+         
 
          <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -221,7 +210,7 @@
         </div>
             <div class="modal-footer" >
                 <button type="button" class="btn btn-link"  data-dismiss="modal">取消</button>
-               <%-- <button  type="button" class="btn btn-primary" onclick=""  >保存</button>--%>
+           
                 <asp:Button ID="BntSave" type="button" runat="server"  class="btn btn-primary" OnClick="BntSave_Click"  Text="保存" />
             </div>
         </div>
@@ -248,8 +237,7 @@
 		                <asp:TemplateField HeaderText="问题所属分类" SortExpression="categoryID">
                             <EditItemTemplate>
                                 <asp:Label ID="txtCcategory" runat="server" Text='<%# Bind("categoryID") %>'></asp:Label>
-                               <%-- <asp:DropDownList ID="ddl_category" runat="server"></asp:DropDownList>
-                                <asp:HiddenField ID="hf_Category" runat="server" Text='<%# Bind("categoryID") %>' />--%>
+                          
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("categoryID") %>'></asp:Label>

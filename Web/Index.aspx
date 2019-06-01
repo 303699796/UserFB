@@ -96,7 +96,7 @@
 
             
                        <li class="nav-item">
-                        <a href="../S_Admin_List/List.aspx" class="nav-link active">
+                        <a href="../S_Admin_List/List.aspx" class="nav-link ">
                             <i class="icon icon-puzzle"></i>反馈列表
                         </a>
                     </li>                                    
@@ -107,7 +107,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="../Index.aspx" class="nav-link">
+                                <a href="../Index.aspx" class="nav-link active">
                                     <i class="icon icon-grid"></i> 反馈数量
                                 </a>
                             </li>
@@ -195,7 +195,7 @@
                                      <span class="font-weight-light">昨日反馈量</span>
                                     <br /><br />
                                     <asp:Label ID="LabelYdayNum" runat="server" class="h4 d-block font-weight-normal mb-2" ></asp:Label>
-                                    <%--<span class="h4 d-block font-weight-normal mb-2">54</span>--%>
+                                 
                                    
                                 </div>
 
@@ -288,14 +288,14 @@
         }]
     });
     mychart.showLoading();
-    var names =[];    //类别数组（实际用来盛放X轴坐标值）
-    var nums = [];    //销量数组（实际用来盛放Y坐标值）
+    var names =[];    //（实际用来盛放X轴坐标值）
+    var nums = [];    //（实际用来盛放Y坐标值）
  
     $.ajax({
         type: "post",
         async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
         url: "Index.aspx?method=getdata",
-        //url:"Handler.ashx?method=getdata",
+    
         data: {},
         dataType: "json",        //返回数据形式为json
         success: function (result) {
@@ -310,11 +310,11 @@
 
                   // alert(result[i].name);
 
-                   names.push(result[i].names);    //挨个取出类别并填入类别数组
+                   names.push(result[i].names);   
                   
                 }
                 for (var i = 0; i < result.length; i++) {
-                   nums.push(result[i].nums);    //挨个取出销量并填入销量数组
+                   nums.push(result[i].nums);    
                 }
                 mychart.hideLoading();    //隐藏加载动画
                 mychart.setOption({        //加载数据图表

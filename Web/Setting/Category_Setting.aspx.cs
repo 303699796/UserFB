@@ -98,12 +98,12 @@ namespace UserFB.Web.Setting
         {
             Model.Category category3 = new Model.Category();
             BLL.CategoryManager category4 = new BLL.CategoryManager();
-            //users.userName = txbUserName.Text;
+
             category3.category = txbAdd.Text;
             bool bo = category4.Add(category3);
             if (bo == true)
             {
-                // Response.Redirect("~/Default.aspx");
+               
                 Bind();
             }
             else

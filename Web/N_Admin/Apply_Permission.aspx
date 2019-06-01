@@ -34,14 +34,6 @@
               <ul class="navbar-nav ml-auto">
 
 
-           <%-- <li class="nav-item d-md-down-none">
-                <a href="../N_Admin_List/Apply_Permission.aspx">
-                    <i class="fa fa-envelope-open"></i>
-                
-                    <asp:Label ID="LabelMessage" runat="server"  class="badge badge-pill badge-danger" Text="2" ></asp:Label>
-                </a>
-            </li>--%>
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="../Images/用户头像.jpg" class="avatar avatar-sm" alt="logo">
@@ -97,9 +89,9 @@
                         <div class="card-body">
                             <div class="table-responsive">
 
-
-                                <div class="col-md-6">
-                                         <div class="form-group">    
+                                 <br />
+                                <div class="col-md-6"> 
+                                         <div class="form-group">  
                                           <asp:Label ID="LabelID"   class="form-control-label" runat="server" Text="用户ID :"></asp:Label>
                                            
                                            <asp:TextBox ID="txtID" class="form-control" Width="190%" runat="server" ReadOnly></asp:TextBox>
@@ -115,6 +107,7 @@
                                            <asp:TextBox ID="txtJob" class="form-control" Width="190%" runat="server" ReadOnly></asp:TextBox>
  </div>
                                         </div>
+                                 <br />   <br />   <br />  
 
                             </div>
                         </div>
@@ -140,14 +133,14 @@
                           
                                 <asp:Button ID="But_Apply" runat="server" class="btn btn-primary" Text="提   交" OnClick="But_Apply_Click" />
                             </div>
-                                  <br />   <br />
+                                  <br />   <br /> <br /> 
                                 <div style="text-align:center">
                                       <h5>— — — 权限介绍— — — </h5>
                                 </div>
                         
-                                 <br />
-                                <h6> ①  普通管理员：</h6>
-                                <h6> ②  超级管理员：</h6>
+                                 <br />  <br />
+                                <h6> ①  普通管理员：接收反馈问题任务，并对其进行解决处理，建议开发人员、测试人员申请。</h6>
+                                <h6> ②  超级管理员：拥有系统的最高权限，可以查看反馈详细以及反馈分析，对反馈问题进行分配，建议产品管理人员申请。</h6>
                               
                              
                                

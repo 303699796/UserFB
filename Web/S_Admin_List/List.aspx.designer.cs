@@ -148,15 +148,6 @@ namespace UserFB.Web.S_Admin_List {
         protected global::System.Web.UI.WebControls.Button btnDownload;
         
         /// <summary>
-        /// Btn_title 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_title;
-        
-        /// <summary>
         /// Labeltest 控件。
         /// </summary>
         /// <remarks>
@@ -173,15 +164,6 @@ namespace UserFB.Web.S_Admin_List {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// Btn_title2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_title2;
         
         /// <summary>
         /// GridView2 控件。

@@ -20,7 +20,7 @@ namespace UserFB.Web.Users
             if (!IsPostBack)
             {
                 Bind();
-               // CategoryBind();
+             
                 DDLCategoryBind();
                 GetLoginName();
                 ReplyNumber();
@@ -33,7 +33,7 @@ namespace UserFB.Web.Users
             BLL.UsersManager usersM = new UsersManager();
             Model.Users users = usersM.GetModel1(Session["userID"].ToString());
             LabelUser.Text = users.userName;
-            // LabelUser.Text = Convert.ToString(Session["username"]);
+          
         }
 
         protected void Bind()
@@ -44,13 +44,7 @@ namespace UserFB.Web.Users
             GridView1.DataBind();
 
         }
-        //protected void CategoryBind()
-        //{
-           
-        //    GridView2.DataSource = categoryManager.GetAllList();         
-        //    GridView2.DataBind();
-
-        //}
+      
 
         private void DDLCategoryBind()
         {
@@ -66,23 +60,7 @@ namespace UserFB.Web.Users
             DropDownList_Category.DataBind();
         }
 
-        //protected void LinkButton1_Click(object sender, EventArgs e)
-        //{
-           
-        //    //LinkButton tempBTN = (LinkButton)sender;
-        //    //Button1.Text = tempBTN.Text;
-        //    Button1.Text = DropDownList_Category.SelectedValue;
-        //    string strWhere = "categoryID='" + DropDownList_Category.SelectedValue + "'";
-        //   // string Str = "categoryID'" + DropDownList_Category.SelectedValue + "'";
-        //    BLL.QuestionManager questionManager = new QuestionManager();
-        //    DataSet ds = questionManager.GetList(strWhere);
-        //    if (ds.Tables[0].Rows.Count > 0)
-        //    { 
-        //        GridView3.DataSource = ds;
-        //        GridView3.DataBind();
-        //        GridView1.Visible = false;
-        //        GridView3.Visible = true;
-        //    }
+   
 
 
 
@@ -92,11 +70,9 @@ namespace UserFB.Web.Users
 
         protected void But_Search_Click(object sender, EventArgs e)
         {
-            //LinkButton tempBTN = (LinkButton)sender;
-            //Button1.Text = tempBTN.Text;
-          //  Button1.Text = DropDownList_Category.SelectedValue;
+         
             string strWhere = "categoryID='" + DropDownList_Category.SelectedValue + "'";
-            // string Str = "categoryID'" + DropDownList_Category.SelectedValue + "'";
+       
             BLL.QuestionManager questionManager = new QuestionManager();
             DataSet ds = questionManager.GetList(strWhere);
             if (ds.Tables[0].Rows.Count > 0)

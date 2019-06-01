@@ -339,30 +339,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			SqlParameter[] parameters = {
-					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
-					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
-					new SqlParameter("@PageSize", SqlDbType.Int),
-					new SqlParameter("@PageIndex", SqlDbType.Int),
-					new SqlParameter("@IsReCount", SqlDbType.Bit),
-					new SqlParameter("@OrderType", SqlDbType.Bit),
-					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
-					};
-			parameters[0].Value = "Feedback";
-			parameters[1].Value = "feedbackID";
-			parameters[2].Value = PageSize;
-			parameters[3].Value = PageIndex;
-			parameters[4].Value = 0;
-			parameters[5].Value = 0;
-			parameters[6].Value = strWhere;	
-			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
-		}*/
+
 
 		#endregion  BasicMethod
 		#region  ExtensionMethod
@@ -370,8 +347,6 @@ namespace UserFB.DAL
         {
             List<feedbackEX> feedbackList = new List<feedbackEX>();
             StringBuilder strSql = new StringBuilder();
-            // strSql.Append(" feedbackID,UserID,feedbackTime,categoryID,Info,contact,isInvalid,solutionState,handler,remark ");
-            // strSql.Append(" FROM Feedback ");
             strSql.AppendLine("select F.feedbackID,U.UserID as UserID,U.userName as userName,");
             strSql.AppendLine("F.feedbackTime,C.categoryID as categoryID,C.category as category,");
             strSql.AppendLine("F.Info,F.contact,F.isInvalid,F.solutionState,F.handler,F.remark");
@@ -381,7 +356,7 @@ namespace UserFB.DAL
             strSql.AppendFormat(" where  F.isInvalid <>0  or F.isInvalid is null");
             if (CID.Trim() != "")
             {
-                strSql.AppendFormat(" and " + CID + "order by feedbackTime Desc");
+                strSql.AppendFormat(" and " + CID + " order by feedbackTime Desc");
             }
            
             SqlDataReader reader = DbHelperSQL.ExecuteReader(strSql.ToString());
@@ -416,6 +391,16 @@ namespace UserFB.DAL
             reader.Close();
             return feedbackList;
         }
+
+
+        public DataSet GetTXTList()
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select Info  FROM Feedback");
+            
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
 
         ///<summary>
         ///查看详情
@@ -475,13 +460,7 @@ namespace UserFB.DAL
             return rows > 0 ? true : false;
         }
 
-        //public bool UpdateSolution1(string solution, string name, string idList)
-        //{
-        //      string sql = string.Format("update [Feedback] set [solutionState] ={0},[handler]={1} where [feedbackID] in({2})", solution, name,idList);
-        
-        //    int rows = DbHelperSQL.ExecuteSql(sql);
-        //    return rows > 0 ? true : false;
-        //}
+ 
 
 
         public int GetRecordCountNum(string strWhere)
@@ -506,28 +485,7 @@ namespace UserFB.DAL
             }
         }
 
-        //public int GetRecordCountTime(string strWhere,string strTime)
-        //{
-        //    StringBuilder strSql = new StringBuilder();
-        //    strSql.Append("select count(distinct UserID ) FROM Feedback ");
-        //    if (strWhere.Trim() != "")
-        //    {
-
-        //        strSql.Append(" where UserID in");
-        //        strSql.Append("(select UserID FROM Users where " + strWhere + ") and "+ strTime);
-        //        //  strSql.Append("  inner join Users as U on F.UserID = U.UserID");
-
-        //    }
-        //    object obj = DbHelperSQL.GetSingle(strSql.ToString());
-        //    if (obj == null)
-        //    {
-        //        return 0;
-        //    }
-        //    else
-        //    {
-        //        return Convert.ToInt32(obj);
-        //    }
-        //}
+   
 
 
         public bool UpdateHandler(string strWhere,string str)

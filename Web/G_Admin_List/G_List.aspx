@@ -35,13 +35,7 @@
             
 
                  <ul class="navbar-nav ml-auto">
-          <%--  <li class="nav-item d-md-down-none">
-                <a href="../S_Admin_List/ApplyMessage_List.aspx">
-                    <i class="fa fa-bell"></i>
-               
-                    <asp:Label ID="LabelMessage" runat="server" class="badge badge-pill badge-danger" ></asp:Label>
-                </a>
-            </li>--%>
+      
 
           
 
@@ -84,12 +78,7 @@
                             <i class="icon icon-grid"></i>反馈分析
                         </a>
                     </li>  
-                   
-                    <%--  <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="icon icon-target"></i>我的消息
-                        </a>
-                    </li>      --%>  
+            
                         </ul>
                       
             </nav>
@@ -97,29 +86,32 @@
 
 
         <div class="content">
-<%--            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>未处理反馈</h5>
-                     
-                        </div>
-                            
-                     </div>
-                </div>
-    </div>--%>
+                 <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">反馈列表</button>
+               <br />    
+             <div style="width:200%">
+                            <div class="col-md-6 mb-4"  style="width:300%">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home" style="width:100%;font-size:16px;font-weight:700;text-align:center">未处理列表</a>
+                        </li>
 
-             <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">未解决反馈</button>
-               <br />        
-         
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" style="width:100%;font-size:16px;font-weight:700;text-align:center">已处理列表</a>
+                        </li>
 
-             <asp:Button ID="Btn_Solve"  class="btn btn-primary" runat="server" CausesValidation="false" CommandName="" Text="标记为已解决" OnClick="Btn_Solve_Click" />
+                        
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home" role="tabpanel">
+              <br />               
+   <asp:Button ID="Btn_Solve"  class="btn btn-primary" runat="server" CausesValidation="false" CommandName="" Text="标记为已解决" OnClick="Btn_Solve_Click" />
             &nbsp;   &nbsp;   &nbsp;
              <asp:Button ID="Btn_Block" class="btn btn-primary" runat="server" CausesValidation="false" CommandName="" Text="标记为阻塞" OnClick="Btn_Block_Click" />
-         <br />    
-            <br />
-            <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
+         <br />      <br />    
+             
+
+             <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
            RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
                       <asp:TemplateField HeaderText="选择">
@@ -176,46 +168,27 @@
                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("state") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                <%--    <asp:TemplateField HeaderText="标记为" ShowHeader="False">
-                        <ItemTemplate>
-                           
-                        </ItemTemplate>
-                    </asp:TemplateField>--%>
-                    
-                    <asp:HyperLinkField DataNavigateUrlFields="feedbackID" DataNavigateUrlFormatString="G_List_Details.aspx?feedbackID={0}" HeaderText="详情" Text="详情" />
+               
                     
                 </Columns>
-
+ <HeaderStyle Height="50px" />
 <RowStyle Height="50px"></RowStyle>
             </asp:GridView>
-  
 
 
 
 
 
             <br />
-  
 
-            <br />
-          <%--   <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                    
-                        <div class="card-header bg-light" style="width:1200px;height:50px;border:none">
-                         <h5>已处理反馈</h5>
-                     
+
+
                         </div>
-                            
-                     </div>
-                </div>
-    </div>--%>
 
-            
-             <button type="button"  class="btn btn-block btn-info" style="width:100%;height:40px;border:none;font-weight:900;font-size:17px">已解决反馈</button>
-               <br />   
-
-              <asp:GridView ID="GridView2" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
+                        <div class="tab-pane" id="profile" role="tabpanel">
+                        
+                             <br /> 
+                             <asp:GridView ID="GridView2" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
            RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="distributionID" OnRowDataBound="GridView2_RowDataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="分配时间">
@@ -271,10 +244,42 @@
                     <asp:HyperLinkField DataNavigateUrlFields="feedbackID" DataNavigateUrlFormatString="G_List_Details.aspx?feedbackID={0}" HeaderText="详情" Text="详情" />
                     
                 </Columns>
-
+ <HeaderStyle Height="50px" />
 <RowStyle Height="50px"></RowStyle>
             </asp:GridView>
 
+  
+
+
+
+                        </div>
+
+                       
+                    </div>
+                </div>
+                </div>
+
+            
+         
+
+          
+            <br />
+         
+  
+
+
+
+
+
+            <br />
+  
+
+            <br />
+         
+
+            
+
+             
 
 
        </div>

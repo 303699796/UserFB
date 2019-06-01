@@ -296,30 +296,7 @@ namespace UserFB.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-        /*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			SqlParameter[] parameters = {
-					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
-					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
-					new SqlParameter("@PageSize", SqlDbType.Int),
-					new SqlParameter("@PageIndex", SqlDbType.Int),
-					new SqlParameter("@IsReCount", SqlDbType.Bit),
-					new SqlParameter("@OrderType", SqlDbType.Bit),
-					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
-					};
-			parameters[0].Value = "Users";
-			parameters[1].Value = "UserID";
-			parameters[2].Value = PageSize;
-			parameters[3].Value = PageIndex;
-			parameters[4].Value = 0;
-			parameters[5].Value = 0;
-			parameters[6].Value = strWhere;	
-			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
-		}*/
+      
 
         #endregion  BasicMethod
         #region  ExtensionMethod
@@ -346,72 +323,17 @@ namespace UserFB.DAL
             }
         }
 
-        //public int GetRecordCountNum(string strWhere)
-        //{
-        //    StringBuilder strSql = new StringBuilder();
-        //    strSql.Append("select count(1) FROM Users ");
-        //    if (strWhere.Trim() != "")
-        //    {
-        //        strSql.Append(" where Users.UserID=Feedback.UserID and " + strWhere);
-        //    }
-        //    object obj = DbHelperSQL.GetSingle(strSql.ToString());
-        //    if (obj == null)
-        //    {
-        //        return 0;
-        //    }
-        //    else
-        //    {
-        //        return Convert.ToInt32(obj);
-        //    }
-        //}
-
-        /// <summary>
-        /// 获取年龄记录总数
-        /// </summary>
-    //    public int GetAgeCount(string strWhere)
-    //    {
-    //    StringBuilder strSql = new StringBuilder();
-    //    strSql.Append("select a.age,count(*) from (select year(getdate()) - year(rq) as "age" from tab1) a group by a.age; ");
-
-
-    //        if (strWhere.Trim() != "")
-    //        {
-    //            strSql.Append(" where " + strWhere);
-    //        }
-    //object obj = DbHelperSQL.GetSingle(strSql.ToString());
-    //        if (obj == null)
-    //        {
-    //            return 0;
-    //        }
-    //        else
-    //        {
-    //            return Convert.ToInt32(obj);
-    //        }
      
-    //    }
-
         public int GetAge(int strWhere1, int strWhere2)
         {
             StringBuilder strSql = new StringBuilder();
-          //  strSql.Append("select count(1) FROM Users WHERE datediff(year,birthDate,getdate()) BETWEEN 0 and 20");
-         //   strSql.Append("select count(1) FROM Users WHERE Users.UserID = Feedback.UserID and datediff(year,birthDate,getdate()) BETWEEN 0 and 20");
+         
             strSql.Append("select count(1) FROM Users ");
-            // strSql.Append(" BETWEEN 0 and 20 ");
-         //   strSql.AppendLine(" left join Feedback on Users.UserID=Feedback.UserID");
-            //   strSql.AppendFormat(" and Users.UserID = Feedback.UserID"); 
-            //  strSql.Append("select count(1) FROM Users where select datediff(year,birthDate,getdate()) BETWEEN 0 and 20 ");
-           // strSql.Append(" WHERE Feedback.UserID = Users.UserID and datediff(year,birthDate,getdate()) BETWEEN 0 and 20");
+          
             strSql.Append(" WHERE UserID in (select UserID from Feedback)");
             strSql.Append("  and datediff(year,birthDate,getdate()) ");
             strSql.AppendFormat("  between {0} and {1}", strWhere1, strWhere2);
-          //  strSql.Append("  between 2 and 20");
-
-
-
-            //if (strWhere.Trim() != "")
-            //{
-            //    strSql.Append(" where " + strWhere);
-            //}
+        
             object obj = DbHelperSQL.GetSingle(strSql.ToString());
             if (obj == null)
             {

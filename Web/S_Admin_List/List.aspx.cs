@@ -37,8 +37,7 @@ namespace UserFB.Web.S_Admin_List
             }
         }
         protected void BindY()
-        {
-            //  GridView1.DataSource = feedbackManager.GetAllFeedback();
+        {            
             string state = "待分配";
             string str= "handler= '" + state + "'";
             GridView1.DataSource = feedbackManager.GetFeedbackByS(str);
@@ -46,8 +45,7 @@ namespace UserFB.Web.S_Admin_List
         }
 
         protected void BindN()
-        {
-            //  GridView1.DataSource = feedbackManager.GetAllFeedback();
+        {           
             string state = "待分配";
             string str = "handler != '" + state + "'";
             GridView2.DataSource = feedbackManager.GetFeedbackByS(str);
@@ -84,10 +82,6 @@ namespace UserFB.Web.S_Admin_List
 
         }
 
-       
-
-
-      
 
         protected void btnDownload_Click(object sender, EventArgs e)
         {
@@ -96,12 +90,9 @@ namespace UserFB.Web.S_Admin_List
             Response.Charset = "GB2312";
             DateTime dt = System.DateTime.Now;
             string str = dt.ToString("yyyyMMddhhmmss");
-           // str = str + ".xls";
             Response.AppendHeader("Content-Disposition", "attachment;filename=" + str + ".xls");
-
             Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
             Response.ContentType = "application/ms-excel";
-
             Response.Write("<meta http-equiv=Content-Type;content=/text/html;charset=GB2312/>");
             this.EnableViewState = false;
             System.IO.StringWriter oStringWriter = new System.IO.StringWriter();
@@ -110,60 +101,13 @@ namespace UserFB.Web.S_Admin_List
             Response.Write(oStringWriter.ToString());
             Response.End();
 
-            //HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
-            ////HttpContext.Current.Response.ContentType =“application / ms-excel”; application / ms-txt
-            //HttpContext.Current.Response.ContentType ="application / ms - txt";
-            //HttpContext.Current.Response.AppendHeader("Content - Disposition","attachment; filename ="+ str + ".txt");
-            //this.Page.EnableViewState = false;
-            //System.IO.StringWriter tw = new System.IO.StringWriter();
-            //HtmlTextWriter hw = new HtmlTextWriter(tw);
-            //this.RenderControl(hw);
-            //HttpContext.Current.Response.Write(tw);
-            //HttpContext.Current.Response.End();
-
-            //DateTime dt = System.DateTime.Now;
-            //string str = dt.ToString("yyyyMMddhhmmss");
-            //str = str + ".xlsx";
-            //GridView1.AllowPaging = false;
-            //GridViewToExcel(GridView1, "application/ms-excel", str);
-
-            // Export(gvRecord, "application/ms-excel", str);
-
-
         }
-
-
-
-        //public static void GridViewToExcel(Control ctrl, string FileType, string FileName)
-        //{
-        //    HttpContext.Current.Response.Charset = "GB2312";
-        //    HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;//注意编码
-        //    HttpContext.Current.Response.AppendHeader("Content-Disposition",
-        //        "attachment;filename=" + HttpUtility.UrlEncode(FileName, System.Text.Encoding.UTF8).ToString());
-        //    HttpContext.Current.Response.ContentType = FileType;//image/JPEG;text/HTML;image/GIF;vnd.ms-excel/msword 
-        //    ctrl.Page.EnableViewState = false;
-        //    StringWriter tw = new StringWriter();
-        //    HtmlTextWriter hw = new HtmlTextWriter(tw);
-        //    ctrl.RenderControl(hw);
-        //    HttpContext.Current.Response.Write(tw.ToString());
-        //    HttpContext.Current.Response.End();
-        //}
-
-       
 
         protected void gvRecord_PreRender(object sender, EventArgs e)
         {
             
         }
        
-       
-
-
-
-
-
-
-
 
         public override void VerifyRenderingInServerForm(Control control)
         {
@@ -224,15 +168,6 @@ namespace UserFB.Web.S_Admin_List
             string solution = "1";
             string idList = GetSelIDList();
 
-            //BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            //Model.Admin admin = adminManager1.GetModel1(Session["SadminID"].ToString());
-            //string name = admin.adminName;
-
-            //new BLL.FeedbackManager().UpdateSolution(solution,name, idList);
-            //Response.Write("<script language=javascript>alert('已标记为已处理！')</script>");
-            //BindY();
-            //BindN();
-
             if (idList.Trim().Length == 0)
             {
                 return;
@@ -246,10 +181,6 @@ namespace UserFB.Web.S_Admin_List
             string Str1 = "solutionState='" + solution + "' ,  handler =  '" + name + "'";
             string Str2 = "feedbackID in(" + idList + ")";
 
-
-
-            //string Str1 = "solutionState='" + solution +"'";
-            //string Str2 = "adminID='" + ID + "'and state =  '" + solution + "'";
             Fmanager.UpdateSolution(Str1, Str2);
             Response.Write("<script language=javascript>alert('已标记为已处理！')</script>");
             BindY();
@@ -297,17 +228,6 @@ namespace UserFB.Web.S_Admin_List
         {
 
 
-          
-            //if (this.txtDistribution.Text.Trim().Length == 0)
-            //{
-            //    LabelDropDownList.Visible = true;
-               
-            //}
-            //if(DropDownList_Distribution.SelectedIndex==0)
-            //{
-            //    LabelDistribution.Visible = true;
-            //}
-
 
           
 
@@ -317,17 +237,7 @@ namespace UserFB.Web.S_Admin_List
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
             Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
             int s = Convert.ToInt32(admin1.adminID);
-            //    //  = Convert.(admin1);
-
-            //    //  int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
-            //    //  string a=GridView1.Rows[row].Cells[1].Text;
-            //    distribution.feedbackID = Convert.ToInt32(GridView1.DataKeys[0].Value);
-
-            //    //Button btn = sender as Button;
-            //    //GridViewRow row = btn.Parent.Parent as GridViewRow;
-            //    //string a = row.Cells[1].ToString();//获得第一个单元格的值   
-            //    //string b = Convert.ToString( this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
-
+  
 
 
             distribution.feedbackID = Convert.ToInt32(Labeltest.Text);
@@ -344,9 +254,7 @@ namespace UserFB.Web.S_Admin_List
                 UpdateFeedback(sender, e);
                 BindY();
                 BindN();
-                //LabelDropDownList.Visible = false;
-                //LabelDistribution.Visible = false;
-
+  
             }
             else
             {
@@ -364,17 +272,10 @@ namespace UserFB.Web.S_Admin_List
             BLL.AdminManager adminManager = new AdminManager();
             DropDownList_Distribution.DataTextField = "adminName";
             DropDownList_Distribution.DataValueField = "adminID";
-            //BLL.AdminManager adminManager1 = new BLL.AdminManager();
-            //Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
-            //int s = Convert.ToInt32(admin1.adminID);
-
             string str = "permission='" + 2 + "'";
 
             DataSet ds = new AdminManager().GetList(str);
-            //DataRow dr = ds.Tables[0].NewRow();
-            //dr["adminID"] = 0;
-            //dr["adminName"] = "---请选择---";
-            //ds.Tables[0].Rows.InsertAt(dr, 0);
+ 
             DropDownList_Distribution.DataSource = ds;
             DropDownList_Distribution.DataBind();
 
@@ -383,24 +284,14 @@ namespace UserFB.Web.S_Admin_List
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //if (e.CommandName == "getID")
-            //{
-            //    int RowIndex = Convert.ToInt32(e.CommandArgument);
-            //    DataKey keys = GridView1.DataKeys[RowIndex];      //行中的数据;
-            //    string perid = keys.Value.ToString();
-            //    Labeltest.Text = perid;
-
-            //}
-
-
-
+ 
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             GridViewRow row = btn.Parent.Parent as GridViewRow;
-            string a = row.Cells[0].ToString();//获得第一个单元格的值   
+            string a = row.Cells[0].ToString();
 
             string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
             Labeltest.Text = b;
@@ -487,27 +378,15 @@ namespace UserFB.Web.S_Admin_List
             BLL.FeedbackManager managerC = new FeedbackManager();
             int CID = Convert.ToInt32( DropDownList_Category.SelectedValue);
             string strC= "F.categoryID='" + CID + "'";
-            //  List dsC = managerC.GetFeedbackByS(strC);   
-            // if (dsC.Tables[0].Rows.Count > 0)
+      
            
         
                 GridView2.Visible = false;
                 GridView1.DataSource = managerC.GetFeedbackByS(strC);
                 GridView1.DataBind();
-                Btn_title.Visible = false;
+     
                 Btn_All.Visible = true;
-               Btn_title2.Visible = false;
-
-
-
-
-            //else 
-            //{
-
-            //    Response.Write("<script language=javascript>alert('暂无该分类反馈！')</script>");
-            //    Bind();
-
-            //}
+      
 
 
         }
@@ -516,14 +395,10 @@ namespace UserFB.Web.S_Admin_List
         {
             Model.Feedback feedbackC = new Model.Feedback();
             BLL.FeedbackManager managerC = new FeedbackManager();
-          //  int CID = Convert.ToInt32(DropDownList_Category.SelectedValue);
-          //  string strC = "F.categoryID='" + CID + "'";
-
+ 
             string Keyword = txbSearch.Text;
             string strC = "F.Info like '%" + Keyword + "%'";
-            //  List dsC = managerC.GetFeedbackByS(strC);   
-            // if (dsC.Tables[0].Rows.Count > 0)
-          //  string strC = "F.categoryID='" + CID + "'or F.Info like '%" + Keyword + "%'";
+  
             GridView1.DataSource = managerC.GetFeedbackByS(strC);
             GridView1.DataBind();
             Btn_All.Visible = true;
@@ -531,6 +406,8 @@ namespace UserFB.Web.S_Admin_List
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+          
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#D1EEEE'");
@@ -549,7 +426,7 @@ namespace UserFB.Web.S_Admin_List
         {
             Button btn = sender as Button;
             GridViewRow row = btn.Parent.Parent as GridViewRow;
-            string a = row.Cells[0].ToString();//获得第一个单元格的值   
+            string a = row.Cells[0].ToString();
 
             string b = Convert.ToString(this.GridView1.DataKeys[row.DataItemIndex].Values[0]);//获得DataKeys的值   
             Labeltest.Text = b;
@@ -566,24 +443,14 @@ namespace UserFB.Web.S_Admin_List
 
         protected void Btn_All_Click(object sender, EventArgs e)
         {
-            Btn_title.Visible = true;
+  
             GridView2.Visible = true;
             Btn_All.Visible = false;
-            Btn_title2.Visible = true;
             BindY();
             BindN();
         }
 
-        //protected void Button2_Click(object sender, EventArgs e)
-        //{
-
-
-        //    int row = ((GridViewRow)((Button)sender).NamingContainer).RowIndex;
-        //    string sno = GridView1.Rows[row].Cells[2].Text;
-        //    string s = sno;
-        //    Response.Write("<script>alert('" + sno + "')</script>");
-        //}
-
+       
 
     }
 }

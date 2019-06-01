@@ -26,18 +26,16 @@ namespace UserFB.Web.N_Admin
             Model.Admin admin1 = adminManager1.GetModel1(Session["NadminID"].ToString());
 
             LabelUser.Text = admin1.adminName;
-        //  LabelUser.Text = Convert.ToString(Session["NadminName"]);
+    
         }
 
         protected void GetMessage()
         {
 
             BLL.AdminManager adminManager1 = new BLL.AdminManager();
-           // Model.Admin admin1 = adminManager1.GetModel1(Session["NadminName"].ToString());
-           // BLL.AdminManager adminManager1 = new BLL.AdminManager();
+    
             Model.Admin admin1 = adminManager1.GetModel1(Session["NadminID"].ToString());
-           // DataSet ds = adminManager1.GetList();
-
+      
             LabelUser.Text = admin1.adminName;
             txtID.Text = Convert.ToString(admin1.adminID);
             txtName.Text = admin1.adminName;
@@ -82,33 +80,5 @@ namespace UserFB.Web.N_Admin
             }
         }
 
-        //protected void ApplyNumber()
-        //{
-
-
-        //    //Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
-        //    //BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
-
-        //    //BLL.AdminManager adminManager1 = new BLL.AdminManager();
-        //    //Model.Admin admin1 = adminManager1.GetModel1(Session["SadminID"].ToString());
-        //    //int s = Convert.ToInt32(admin1.adminID);
-
-        //    //string str = "0";
-        //    //apply.UpdateState(str,s);
-        //    //LabelApply.Text = "0";
-        //    //LabelApply.Visible = false;
-
-
-        //    Model.ApplyMessage ApplyMessage = new Model.ApplyMessage();
-        //    BLL.ApplyMessageManager apply = new BLL.ApplyMessageManager();
-
-
-
-        //    string str = "0";
-        //    apply.UpdateState(str);
-        //    LabelMessage.Text = "0";
-        //    LabelMessage.Visible = false;
-
-        //}
     }
 }

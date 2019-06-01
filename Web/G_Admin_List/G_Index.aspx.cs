@@ -75,17 +75,13 @@ namespace UserFB.Web.G_Admin_List
             BLL.FeedbackManager feedbackManager = new BLL.FeedbackManager();
 
             //今天数据
-            //  string Day1 = DateTime.Now.AddDays(0).ToString("yyyy-MM-dd");
+           
             DateTime Stime1 = DateTime.Now.AddDays(0).Date;
             DateTime Etime1 = DateTime.Now.AddDays(1).Date;
             string strWhere1 = "feedbackTime>'" + Stime1 + "'and feedbackTime<'" + Etime1 + "'";
             int rows1 = feedbackManager.GetRecordCount(strWhere1);
-            LabelDdayNum.Text = rows1.ToString();
-
-            //  LabelDay1.Text = Day1;
+            LabelDdayNum.Text = rows1.ToString();          
             LabelNum1.Text = rows1.ToString();
-
-
             string Day1 = GetDay1();
 
             //昨天数据
@@ -95,7 +91,6 @@ namespace UserFB.Web.G_Admin_List
             string strWhere2 = "feedbackTime>'" + Stime2 + "'and feedbackTime<'" + Etime2 + "'";
             int rows2 = feedbackManager.GetRecordCount(strWhere2);
             LabelYdayNum.Text = rows2.ToString();
-
             LabelDay2.Text = Day2;
             LabelNum2.Text = rows2.ToString();
 
@@ -234,11 +229,6 @@ namespace UserFB.Web.G_Admin_List
 
         public void GetNumber()
         {
-
-
-
-
-
             string Day1 = GetDay1();
             string Day2 = GetDay2();
             string Day3 = GetDay3();

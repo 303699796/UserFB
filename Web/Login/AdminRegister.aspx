@@ -65,13 +65,7 @@
                              <asp:TextBox runat="server" ID="txbPassword2" CssClass="form-control" TextMode="Password"></asp:TextBox>
                            
                         </div>   
-                        <%-- <div class="form-group">
-                            <label class="form-control-label">申请权限</label>
-                             <asp:DropDownList ID="DropDownListPermission" runat="server" class="form-control">
-                                 <asp:ListItem Value="General">普通管理员</asp:ListItem>
-                                 <asp:ListItem Value="Super">超级管理员</asp:ListItem>
-                             </asp:DropDownList>
-                    </div>--%>
+              
 
                     <div class="card-footer">
                        <div class="row">

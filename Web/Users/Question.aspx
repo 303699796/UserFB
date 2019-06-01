@@ -96,23 +96,10 @@
                          <asp:Button ID="But_Search" runat="server" class="btn btn-info" Text="查  找" OnClick="But_Search_Click" />
                                  &nbsp; &nbsp; &nbsp; &nbsp;
                              <asp:Button ID="Btn_All" runat="server" class="btn btn-info" Text="查看全部" OnClick="Btn_All_Click" Visible="false" />
-                     <%--    <asp:Button ID="Button1" runat="server" Text="Button" Visible="false" />          --%>         
+                 
                     </div>  
                         <div>
-                       <%-- <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="categoryID"
-                              class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word " RowStyle-Height="100px">
-                            <Columns>
-                                <asp:TemplateField HeaderText="请选择问题分类" ShowHeader="False">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="" OnClick="LinkButton1_Click" Text='<%# Eval("category") %>'></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                
-                            </Columns>
-
-<RowStyle Height="100px"></RowStyle>
-                            
-                        </asp:GridView>--%>
+                       
 
                        
                          

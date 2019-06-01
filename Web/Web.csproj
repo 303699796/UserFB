@@ -118,10 +118,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ApplyMessage\Add.aspx" />
-    <Content Include="ApplyMessage\List.aspx" />
-    <Content Include="ApplyMessage\Modify.aspx" />
-    <Content Include="ApplyMessage\Show.aspx" />
     <Content Include="App_Themes\BlueTheme\Default.css" />
     <Content Include="App_Themes\Green2Theme\Default.css" />
     <Content Include="App_Themes\GreenTheme\Default.css" />
@@ -151,34 +147,21 @@
     <Content Include="bootstrap\vendor\popper.js\popper.min.js" />
     <Content Include="bootstrap\vendor\simple-line-icons\css\simple-line-icons.css" />
     <Content Include="bootstrap\vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
-    <Content Include="Category\Add.aspx" />
-    <Content Include="Category\List.aspx" />
-    <Content Include="Category\Modify.aspx" />
-    <Content Include="Category\Show.aspx" />
-    <Content Include="Chart_Analysis\Category_Analysis.aspx" />
     <Content Include="Chart_Analysis\Keywords.aspx" />
     <Content Include="Chart_Analysis\User_Analysis.aspx" />
     <Content Include="Controls\checkright.ascx" />
     <Content Include="Controls\copyright.ascx" />
-    <Content Include="Distribution\Add.aspx" />
-    <Content Include="Distribution\List.aspx" />
-    <Content Include="Distribution\Modify.aspx" />
-    <Content Include="Distribution\Show.aspx" />
     <Content Include="Echarts\echarts.min.js" />
     <Content Include="Echarts\macarons.js" />
-    <Content Include="Echart_Test.aspx" />
-    <Content Include="Feedback\Add.aspx" />
-    <Content Include="Feedback\List.aspx" />
-    <Content Include="Feedback\Modify.aspx" />
-    <Content Include="Feedback\Show.aspx" />
     <Content Include="Global.asax" />
     <Content Include="G_Admin_List\G_Index.aspx" />
     <Content Include="G_Admin_List\G_List.aspx" />
-    <Content Include="G_Admin_List\G_List_Details.aspx" />
     <Content Include="Images\beijing003.png" />
     <Content Include="Images\blue2.jpg" />
     <Content Include="Images\Figure_Number.png" />
+    <Content Include="Images\number_1.png" />
     <Content Include="Images\top1.gif" />
+    <Content Include="Images\wordcloud.png" />
     <Content Include="Images\用户反馈处理系统2.PNG" />
     <Content Include="Images\用户反馈系统2.PNG" />
     <Content Include="Images\用户头像.jpg" />
@@ -189,100 +172,21 @@
     <Content Include="Login\UserRegister.aspx" />
     <Content Include="N_Admin\Apply_Permission.aspx" />
     <Content Include="N_Admin\N_Index.aspx" />
-    <Content Include="Pytest.aspx" />
-    <Content Include="Python\2.7test1.py" />
-    <Content Include="Python\test001.py" />
-    <Content Include="Python\test_txt.py" />
-    <Content Include="Question\Add.aspx" />
-    <Content Include="Question\List.aspx" />
-    <Content Include="Question\Modify.aspx" />
-    <Content Include="Question\Show.aspx" />
-    <Content Include="Question\WebForm1.aspx" />
-    <Content Include="Reply\Add.aspx" />
-    <Content Include="Reply\List.aspx" />
-    <Content Include="Reply\Modify.aspx" />
-    <Content Include="Reply\Show.aspx" />
+    <Content Include="Python\keyword.py" />
     <Content Include="Setting\Admin_Setting.aspx" />
     <Content Include="Setting\Category_Setting.aspx" />
     <Content Include="Setting\Question_Setting.aspx" />
     <Content Include="S_Admin_List\ApplyMessage_List.aspx" />
     <Content Include="S_Admin_List\List.aspx" />
     <Content Include="S_Admin_List\Reply_Message.aspx" />
-    <Content Include="Users\Add.aspx" />
     <Content Include="Users\Fill_Feedback.aspx" />
-    <Content Include="Users\List.aspx" />
     <Content Include="Users\Message.aspx" />
-    <Content Include="Users\Modify.aspx" />
     <Content Include="Users\Question.aspx" />
-    <Content Include="Users\Show.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplyMessage\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ApplyMessage\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ApplyMessage\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ApplyMessage\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ApplyMessage\Modify.aspx.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ApplyMessage\Modify.aspx.designer.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ApplyMessage\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ApplyMessage\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Category\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Category\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Category\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Category\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Category\Modify.aspx.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Category\Modify.aspx.designer.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Category\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Category\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Chart_Analysis\Category_Analysis.aspx.cs">
-      <DependentUpon>Category_Analysis.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Chart_Analysis\Category_Analysis.aspx.designer.cs">
-      <DependentUpon>Category_Analysis.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Chart_Analysis\Keywords.aspx.cs">
       <DependentUpon>Keywords.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -311,76 +215,6 @@
     <Compile Include="Controls\CopyRight.ascx.designer.cs">
       <DependentUpon>copyright.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Distribution\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Distribution\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Distribution\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Distribution\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Distribution\Modify.aspx.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Distribution\Modify.aspx.designer.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Distribution\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Distribution\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Echart_Test.aspx.cs">
-      <DependentUpon>Echart_Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Echart_Test.aspx.designer.cs">
-      <DependentUpon>Echart_Test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Feedback\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Feedback\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Feedback\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Feedback\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Feedback\Modify.aspx.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Feedback\Modify.aspx.designer.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Feedback\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Feedback\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -397,13 +231,6 @@
     </Compile>
     <Compile Include="G_Admin_List\G_List.aspx.designer.cs">
       <DependentUpon>G_List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="G_Admin_List\G_List_Details.aspx.cs">
-      <DependentUpon>G_List_Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="G_Admin_List\G_List_Details.aspx.designer.cs">
-      <DependentUpon>G_List_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -469,77 +296,6 @@
       <DependentUpon>N_Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublicClass.cs" />
-    <Compile Include="Pytest.aspx.cs">
-      <DependentUpon>Pytest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pytest.aspx.designer.cs">
-      <DependentUpon>Pytest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Question\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Question\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Question\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Question\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Question\Modify.aspx.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Question\Modify.aspx.designer.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Question\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Question\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Question\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Question\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reply\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reply\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reply\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reply\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reply\Modify.aspx.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reply\Modify.aspx.designer.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reply\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reply\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Setting\Admin_Setting.aspx.cs">
       <DependentUpon>Admin_Setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -582,26 +338,12 @@
     <Compile Include="S_Admin_List\Reply_Message.aspx.designer.cs">
       <DependentUpon>Reply_Message.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Users\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Users\Fill_Feedback.aspx.cs">
       <DependentUpon>Fill_Feedback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Users\Fill_Feedback.aspx.designer.cs">
       <DependentUpon>Fill_Feedback.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Users\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Users\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Message.aspx.cs">
       <DependentUpon>Message.aspx</DependentUpon>
@@ -610,13 +352,6 @@
     <Compile Include="Users\Message.aspx.designer.cs">
       <DependentUpon>Message.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users\Modify.aspx.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Users\Modify.aspx.designer.cs">
-      <DependentUpon>Modify.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Users\Question.aspx.cs">
       <DependentUpon>Question.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -624,16 +359,8 @@
     <Compile Include="Users\Question.aspx.designer.cs">
       <DependentUpon>Question.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Users\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
     <Content Include="Style.css" />
   </ItemGroup>
   <ItemGroup>

@@ -177,53 +177,15 @@
            
   <div class ="card " style="width:100%;height:500px">
       <div class="row">
-            <asp:Image ID="Image1" runat="server" ImageAlign="Middle" ImageUrl="~/Images/beijing003.png" CssClass="auto-style1" Height="500px" />
-            <asp:Image ID="Image2" runat="server"  ImageUrl="~/Images/Figure_Number.png" CssClass="auto-style1" Height="500px" />
+          <br /><br />  <br /><br />
+            <asp:Image ID="Image1" runat="server" ImageAlign="Middle" ImageUrl="~/Images/wordcloud.png" CssClass="auto-style1" Height="350px" />
+            <asp:Image ID="Image2" runat="server"  ImageUrl="~/Images/number_1.png" CssClass="auto-style1" Height="400px"/>
       </div>      
        </div>
+                <br /><br />
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
 
-              <asp:GridView ID="GridView1" runat="server" class="tab-content" style="width: 100%;text-align:center;word-break :break-all;word-wrap:break-word "
-           RowStyle-Height="50px" AutoGenerateColumns="False" DataKeyNames="feedbackID"  AllowPaging="True"  >
-           <Columns>
-              
-             
-               <asp:TemplateField HeaderText="反馈用户">
-                   <EditItemTemplate>
-                       <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:TextBox>
-                   </EditItemTemplate>
-                   <ItemTemplate>
-                       <asp:Label ID="Label1" runat="server" Text='<%# Bind("Users.userName") %>'></asp:Label>
-                   </ItemTemplate>
-               </asp:TemplateField>
-               <asp:BoundField DataField="feedbackTime" HeaderText="反馈时间" />
-               <asp:TemplateField HeaderText="反馈分类">
-                   <EditItemTemplate>
-                       <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Category.category") %>'></asp:TextBox>
-                   </EditItemTemplate>
-                   <ItemTemplate>
-                       <asp:Label ID="Label2" runat="server" Text='<%# Bind("Category.category") %>'></asp:Label>
-                   </ItemTemplate>
-               </asp:TemplateField>
-               <asp:BoundField DataField="Info" HeaderText="反馈内容" />
-               <asp:BoundField DataField="contact" HeaderText="联系方式" />
-           <%--    <asp:BoundField DataField="isInvalid" HeaderText="有效状态" />--%>
-               <asp:BoundField DataField="solutionState" HeaderText="解决状态" />
-               <asp:BoundField DataField="handler" HeaderText="负责人" />
-               
-               
-           </Columns>
-
-           <HeaderStyle Height="50px" />
-
-<RowStyle Height="50px"></RowStyle>
-             </asp:GridView>
-
-
-
-
-
-
+ 
 
        </div>
              </div>
